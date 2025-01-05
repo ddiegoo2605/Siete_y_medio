@@ -1,13 +1,23 @@
 #Registro de jugadores, creación de perfiles de juego
 jugadores = []
 
+def imprimir_titulo(titulo):
+    largo_titulo = len(titulo)
+    margen = 20
+    largo_linea = largo_titulo + margen * 2
+    espacio = " " * margen
+
+    print("\n" + "-" * largo_linea)
+    print("-" * margen + titulo.center(largo_linea - margen * 2) + "-" * margen)
+    print("-" * largo_linea)
+
 def registrar_jugador():
-    print("--- Registro de Jugador ---")
+    imprimir_titulo("Registro de jugador")
     nombre = input("Introduce tu nombre: ").strip()
     puntos_iniciales = 20
 
     # Selección del perfil
-    print("Selecciona tu rango de atrevido:")
+    print("Selecciona tu perfil de riesgo:")
     print("1. Atrevido (Apuestas altas y arriesgadas)")
     print("2. Normal (Apuestas equilibradas)")
     print("3. Prudente (Apuestas bajas y seguras)")
@@ -67,15 +77,30 @@ def eliminar_jugador():
     except IndexError:
         print("No has seleccionado un numero de los jugadores mostrados. No se puede eliminar.")
 
+def imprimir_opciones():
+    opciones = [
+        "1. Registrar jugador",
+        "2. Mostrar jugadores registrados"
+        "3. Eliminar jugador"
+        "4. Volver al menú principal"
+    ]
+    espacio = " " * 20
+    for opcion in opciones:
+        print(f"{espacio}{opcion}")
+
 def gestion_jugadores():
     while True:
-        print("\n--- Gestión de jugadores ---")
-        print("1. Registrar jugador")
-        print("2. Mostrar jugadores registrados")
-        print("3. Eliminar jugador")
-        print("4. Volver al menú principal")
+        titulo = "Gestión de jugadores"
+        largo_titulo = len(titulo)
+        margen = 20
+        largo_linea = largo_titulo + margen * 2 
+        espacio = " " * margen
 
-        opcion = input("Elige una opción: ").strip()
+        print("\n"+"-"* margen + titulo.center(largo_linea - margen * 2) +"-"* margen)
+        
+        imprimir_opciones()
+
+        opcion = input(f"\n{espacio}Elige una opción: ").strip()
 
         if opcion == '1':
             registrar_jugador()
