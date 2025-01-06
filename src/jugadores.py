@@ -13,7 +13,7 @@ def imprimir_titulo(titulo):
 
 def registrar_jugador():
     imprimir_titulo("Registro de jugador")
-    nombre = input("Introduce tu nombre: ").strip()
+    nombre = input("Introduce tu nombre: ")
     puntos_iniciales = 20
 
     # Selección del perfil
@@ -22,7 +22,7 @@ def registrar_jugador():
     print("2. Normal (Apuestas equilibradas)")
     print("3. Prudente (Apuestas bajas y seguras)")
 
-    rango_opcion = input("Elige una opción (1, 2 o 3): ").strip()
+    rango_opcion = input("Elige una opción (1, 2 o 3): ")
 
     # Asignación del perfil según la opción seleccionada
     if rango_opcion == '1':
@@ -80,9 +80,9 @@ def eliminar_jugador():
 def imprimir_opciones():
     opciones = [
         "1. Registrar jugador",
-        "2. Mostrar jugadores registrados"
-        "3. Eliminar jugador"
-        "4. Volver al menú principal"
+        "2. Mostrar jugadores registrados",
+        "3. Eliminar jugador",
+        "4. Volver al menú principal",
     ]
     espacio = " " * 20
     for opcion in opciones:
