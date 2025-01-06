@@ -8,11 +8,9 @@ def menu_principal():
         largo_linea = largo_titulo + margen * 2 
         espacio = " " * margen
 
-        print("\n" + "-" * largo_linea)
-        print("-" * margen + titulo.center(largo_linea - margen * 2) + "-" * margen)
-        print("-" * largo_linea)
-        print("\n"+ espacio + "MENÚ PRINCIPAL")
-        print("\n")
+        menu ="\n" + "-" * largo_linea+ "\n"+ "-" * margen + titulo.center(largo_linea - margen * 2) + "-" * margen + "\n" + "-" * largo_linea + "\n"+ espacio + "MENÚ PRINCIPAL" + "\n"
+
+        print(menu)
         opciones = [
             "1. Gestión de jugadores",
             "2. Ajustes",
@@ -44,5 +42,3 @@ def menu_principal():
             break
         else:
             print("Error. Escoge una opción valida entre (1-6)")
-if __name__ == "__main__":
-    menu_principal()

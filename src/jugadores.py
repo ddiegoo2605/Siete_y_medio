@@ -80,8 +80,8 @@ def eliminar_jugador():
 def imprimir_opciones():
     opciones = [
         "1. Registrar jugador",
-        "2. Mostrar jugadores registrados"
-        "3. Eliminar jugador"
+        "2. Mostrar jugadores registrados",
+        "3. Eliminar jugador",
         "4. Volver al menú principal"
     ]
     espacio = " " * 20
