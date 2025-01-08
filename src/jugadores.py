@@ -1,4 +1,5 @@
 #Registro de jugadores, creación de perfiles de juego
+import random
 jugadores = []
 
 def imprimir_titulo(titulo):
@@ -24,16 +25,9 @@ def registrar_jugador():
 
     rango_opcion = input("Elige una opción (1, 2 o 3): ")
 
-    # Asignación del perfil según la opción seleccionada
-    if rango_opcion == '1':
-        rango = 'Atrevido'
-    elif rango_opcion == '2':
-        rango = 'Normal'
-    elif rango_opcion == '3':
-        rango = 'Prudente'
-    else:
-        print("Opción no válida. Registrando como 'Normal' por defecto.")
-        rango = 'Normal'
+    perfiles={"1": "Arriesgado", "2": "Moderado", "3":"Prudente"}
+    rango = perfiles.get(rango_opcion, "Normal")
+
 
     # Crea un diccionario para el jugador y lo añade a la lista
     jugador = {
@@ -43,6 +37,27 @@ def registrar_jugador():
     }
     jugadores.append(jugador)
     print(f"Jugador {nombre} registrado con éxito con 20 puntos y rango '{rango}'.\n")
+
+def registrar_bot():
+    imprimir_titulo("Creación de un Bot")
+    puntos_iniciales = 20
+
+    # Nombres únicos para los bots (Bot 1, Bot 2, ...)
+    bot_id = len([jugador for jugador in jugadores if "Bot" in jugador['nombre']]) + 1
+    nombre_bot = f"Bot {bot_id}"
+
+    # Asignación de perfil aleatorio
+    perfiles = ["Atrevido", "Normal", "Prudente"]
+    rango = random.choice(perfiles)
+
+    # Añadir el bot a la lista de jugadores
+    bot = {
+        'nombre': nombre_bot,
+        'puntos': puntos_iniciales,
+        'rango': rango
+    }
+    jugadores.append(bot)
+    print(f"Se ha creado el {nombre_bot} con 20 puntos y perfil de riesgo '{rango}'.\n")
 
 
 def mostrar_jugadores():
