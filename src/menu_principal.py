@@ -1,5 +1,22 @@
 import jugadores
+def menu_principal():
+    print("""
+    ********************************************************************************************************************************************
+                                     _____                         ___              __   __  __      ______
+                                    / ___/___ _   _____  ____     /   |  ____  ____/ /  / / / /___ _/ / __/
+                                    \__ \/ _ \ | / / _ \/ __ \   / /| | / __ \/ __  /  / /_/ / __ `/ / /_
+                                   ___/ /  __/ |/ /  __/ / / /  / ___ |/ / / / /_/ /  / __  / /_/ / / __/
+                                  /____/\___/|___/\___/_/ /_/  /_/  |_/_/ /_/\__,_/  /_/ /_/\__,_/_/_/
+                     
+                       ____ ___
+                       \      /
+                        \    /
+                         /  / 
+                        /__/   
 
+
+     ********************************************************************************************************************************************
+    """)
 def menu_principal():
     while True:
         titulo = "JUEGO SIETE Y MEDIO"
@@ -12,12 +29,12 @@ def menu_principal():
 
         print(menu)
         opciones = [
-            "1. Gestión de jugadores",
-            "2. Ajustes",
-            "3. Jugar",
-            "4. Estadísticas",
-            "5. Reportes",
-            "6. Salir"
+            "1. Add/Remove/Show Players",
+            "2. Settings",
+            "3. Play Game",
+            "4. Ranking",
+            "5. Reports",
+            "6. Exit"
         ]
         
         for opcion in opciones:
@@ -42,3 +59,5 @@ def menu_principal():
             break
         else:
             print("Error. Escoge una opción valida entre (1-6)")
+if __name__ == "__main__":
+    menu_principal()
