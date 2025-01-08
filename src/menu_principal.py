@@ -29,12 +29,12 @@ def menu_principal():
 
         print(menu)
         opciones = [
-            "1. Gestión de jugadores",
-            "2. Ajustes",
-            "3. Jugar",
-            "4. Estadísticas",
-            "5. Reportes",
-            "6. Salir"
+            "1. Add/Remove/Show Players",
+            "2. Settings",
+            "3. Play Game",
+            "4. Ranking",
+            "5. Reports",
+            "6. Exit"
         ]
         
         for opcion in opciones:

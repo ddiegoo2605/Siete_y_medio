@@ -146,7 +146,7 @@ def cabecera_game_over():
 
     *******************************************************************************************************************   
 """)
-cabecera_game_over()
+
 
 
 # Aquí evitamos la ejecución automática del código cuando se importa el módulo
