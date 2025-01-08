@@ -117,7 +117,7 @@ def new_human_player():
     while correcto == False:    
         crear = input("Is ok ? Y/n:")
         if crear == 'Y':
-            jugadores.append(jugador)
+            jugadores.jugadores.append(jugador)
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
             primera_opcion()
             return
@@ -157,7 +157,7 @@ def new_boot():
     while correcto == False:    
         crear = input("Is ok ? Y/n:")
         if crear == 'Y':
-            bots.append(jugador)
+            jugadores.bots.append(jugador)
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
             primera_opcion()
             return
@@ -168,8 +168,23 @@ def new_boot():
         else:
             print("Invalid option")
 
-def show_remove_minecraft():
-
+def show_remove():
+    jugadores.imprimir_titulo("SHOW REMOVE")
+    dnis = jugadores.bots.keys()
+    for i in range(len(jugadores.bots)):
+        if jugadores.bots[dnis[i]]["type"] == 50:
+            type = "Ambicious"
+        elif jugadores.bots[dnis[i]]["type"] == 40:
+            type = "Moderated"
+        elif jugadores.bots[dnis[i]]["type"] == 30:
+            type = "Bold"
+        if jugadores.jugadores[dnis[i]]["type"] == 50:
+            type = "Ambicious"
+        elif jugadores.jugadores[dnis[i]]["type"] == 40:
+            type = "Moderated"
+        elif jugadores.jugadores[dnis[i]]["type"] == 30:
+            type = "Bold"
+        print(f"{dnis[i]} {jugadores.bots[dnis[i]]['name']} {type} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
 #    SEGUNDA OPCIÓN
 
 
@@ -184,5 +199,3 @@ def nif_random():
     nif = str(dni_num) + letrasDni[num]
     return nif
 
-if __name__ == "__main__":
-    menu_principal()
