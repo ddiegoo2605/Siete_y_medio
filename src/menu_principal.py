@@ -32,7 +32,7 @@ def menu_principal():
         if seleccion == '1':
            primera_opcion()
         elif seleccion == '2':
-            print("Ajustes. Todavia falta por implementar")
+            print("Jugar. Todavia falta por implementar")
         elif seleccion == '3':
             print("Jugar. Todavia falta por implementar")
         elif seleccion == '4':
