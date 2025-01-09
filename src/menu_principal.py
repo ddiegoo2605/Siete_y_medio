@@ -1,4 +1,4 @@
-import Players
+import jugadores
 import random
 
 
@@ -82,6 +82,7 @@ def new_human_player():
     print(f"Name: \t\t{name}")
     nif = input("NIF:\n")
     print(f"NIF: \t\t{nif}")
+
     menu_juego_persona = "Select your Profile:\n\n1)Cautious\n\n2)Moderated\n\n3)Bold"
     print(menu_juego_persona)
     correcto = False
