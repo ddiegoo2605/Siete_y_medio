@@ -1,3 +1,5 @@
+#Creación de barajas, manejo de cartas, y usabilidad
+
 #AQUÍ ES DÓNDE SE ENCUENTRAN TODOS LOS MENUS DEL PROGRAMA
 
 menu00 = "1)Add/Remove/Show Players\n2)Settings\n3)Play Game\n4)Ranking\n5)Reports\n6)Exit"
@@ -127,6 +129,9 @@ def elegir_baraja():
         return baraja_poker
     else:
         raise ValueError 
+    
+
+
     
     
 
