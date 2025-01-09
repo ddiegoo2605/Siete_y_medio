@@ -1,4 +1,4 @@
-import jugadores
+import Players
 import random
 
 
@@ -45,7 +45,7 @@ def menu_principal():
             break
         else:
             print("Error. Escoge una opción valida entre (1-6)")
-<<<<<<< Updated upstream
+
 
 #PRIMER OPCIÓN
 def primera_opcion():
@@ -211,7 +211,7 @@ def nif_random():
     return nif
 
 menu_principal()
-=======
+
 if __name__ == "__main__":
     menu_principal()
->>>>>>> Stashed changes
+
