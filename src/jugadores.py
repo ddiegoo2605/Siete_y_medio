@@ -121,11 +121,7 @@ def imprimir_opciones():
         "1. Registrar jugador",
         "2. Mostrar jugadores registrados",
         "3. Eliminar jugador",
-<<<<<<< HEAD
-        "4. Volver al menú principal",
-=======
         "4. Volver al menú principal"
->>>>>>> ad50dbda54d46db5acdbd7e120d5f6c6495c5c77
     ]
     espacio = " " * 20
     for opcion in opciones:

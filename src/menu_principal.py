@@ -62,10 +62,6 @@ def menu_principal():
             break
         else:
             print("Error. Escoge una opción valida entre (1-6)")
-<<<<<<< HEAD
-if __name__ == "__main__":
-    menu_principal()
-=======
 
 #PRIMER OPCIÓN
 def primera_opcion():
@@ -203,4 +199,3 @@ def nif_random():
     nif = str(dni_num) + letrasDni[num]
     return nif
 
->>>>>>> ad50dbda54d46db5acdbd7e120d5f6c6495c5c77
