@@ -1,7 +1,6 @@
 #Registro de jugadores, creación de perfiles de juego
-import random
-jugadores = []
-bots = []
+jugadores = {}
+bots = {}
 def imprimir_titulo(titulo):
     largo_titulo = len(titulo)
     margen = 20
@@ -32,13 +31,6 @@ def registrar_jugador():
         else:
             print("Por favor, introduce un número válido (entero).")
 
-<<<<<<< HEAD
-    rango_opcion = input("Elige una opción (1, 2 o 3): ")
-
-    perfiles={"1": "Arriesgado", "2": "Moderado", "3":"Prudente"}
-    rango = perfiles.get(rango_opcion, "Normal")
-
-=======
 
     
 
@@ -49,7 +41,6 @@ def registrar_jugador():
         rango = 'Normal'
     elif num_opcion == 3:
         rango = 'Prudente'
->>>>>>> ad50dbda54d46db5acdbd7e120d5f6c6495c5c77
 
     # Crea un diccionario para el jugador y lo añade a la lista
     jugador = {
@@ -59,27 +50,6 @@ def registrar_jugador():
     }
     jugadores.append(jugador)
     print(f"Jugador {nombre} registrado con éxito con 20 puntos y rango '{rango}'.\n")
-
-def registrar_bot():
-    imprimir_titulo("Creación de un Bot")
-    puntos_iniciales = 20
-
-    # Nombres únicos para los bots (Bot 1, Bot 2, ...)
-    bot_id = len([jugador for jugador in jugadores if "Bot" in jugador['nombre']]) + 1
-    nombre_bot = f"Bot {bot_id}"
-
-    # Asignación de perfil aleatorio
-    perfiles = ["Atrevido", "Normal", "Prudente"]
-    rango = random.choice(perfiles)
-
-    # Añadir el bot a la lista de jugadores
-    bot = {
-        'nombre': nombre_bot,
-        'puntos': puntos_iniciales,
-        'rango': rango
-    }
-    jugadores.append(bot)
-    print(f"Se ha creado el {nombre_bot} con 20 puntos y perfil de riesgo '{rango}'.\n")
 
 
 def mostrar_jugadores():
@@ -179,7 +149,3 @@ def cabecera_game_over():
 
 
 
-# Aquí evitamos la ejecución automática del código cuando se importa el módulo
-if __name__ == "__main__":
-   
-    pass
