@@ -1,4 +1,14 @@
 from cartas import baraja_española, baraja_poker
+def mostrar_titulo_settings():
+    print("""
+     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
+     ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝
+     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗█████╗  
+     ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║██╔══╝  
+     ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████╗
+     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
+    """)
+
 
 def elegir_baraja():
     print("Elige una baraja, Española o de Poker")
@@ -14,6 +24,9 @@ def elegir_baraja():
         raise ValueError 
     
 
+
+    
+
     
 
 
@@ -23,5 +36,5 @@ def elegir_baraja():
 jugadores = { "11115555A":{"name":"Mario","human":True,"bank":False,"initialCard":"","priority":0,"type":40,"bet":4,"points":0,"cards":[],"roundPoints":0},
  "22225555A":{"name":"Pedro","human":True,"bank":False,"initialCard":"","priority":0,"type":40,"bet":4,"points":0,"cards":[],"roundPoints":0}
  }
-
+mostrar_titulo_settings()
 elegir_baraja()
