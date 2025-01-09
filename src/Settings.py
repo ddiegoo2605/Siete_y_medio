@@ -1,12 +1,12 @@
 from cartas import baraja_española, baraja_poker
 def mostrar_titulo_settings():
     print("""
-     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
-     ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝
-     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗█████╗  
-     ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║██╔══╝  
-     ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████╗
-     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
+     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗  ███████╗
+     ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝  ██╔════╝
+     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗ ███████╗  
+     ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║ ╚════██║  
+     ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝ ███████║
+     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚══════╝  
     """)
 
 
@@ -15,10 +15,10 @@ def elegir_baraja():
     eleccion = int(input("1 para Baraja Española \n2 para Baraja de Poker: "))
 
     if eleccion == 1:
-        print("Has elegido la Baraja Española.")
+        print("\nHas elegido la Baraja Española.")
         return baraja_española
     elif eleccion == 2:
-        print("Has elegido la Baraja de Poker.")
+        print("\nHas elegido la Baraja de Poker.")
         return baraja_poker
     else:
         raise ValueError 
