@@ -1,23 +1,6 @@
-import jugadores
+import Players
 import random
-def menu_principal():
-    print("""
-    ********************************************************************************************************************************************
-                                     _____                         ___              __   __  __      ______
-                                    / ___/___ _   _____  ____     /   |  ____  ____/ /  / / / /___ _/ / __/
-                                    \__ \/ _ \ | / / _ \/ __ \   / /| | / __ \/ __  /  / /_/ / __ `/ / /_
-                                   ___/ /  __/ |/ /  __/ / / /  / ___ |/ / / / /_/ /  / __  / /_/ / / __/
-                                  /____/\___/|___/\___/_/ /_/  /_/  |_/_/ /_/\__,_/  /_/ /_/\__,_/_/_/
-                     
-                       ____ ___
-                       \      /
-                        \    /
-                         /  / 
-                        /__/   
 
-
-     ********************************************************************************************************************************************
-    """)
 
 
 def menu_principal():
@@ -47,7 +30,7 @@ def menu_principal():
         seleccion = input("\n"+ espacio +"Selecciona una opción (1-6): ")
 
         if seleccion == '1':
-           jugadores.gestion_jugadores()
+           primera_opcion()
         elif seleccion == '2':
             print("Ajustes. Todavia falta por implementar")
         elif seleccion == '3':
@@ -63,36 +46,45 @@ def menu_principal():
         else:
             print("Error. Escoge una opción valida entre (1-6)")
 
+
 #PRIMER OPCIÓN
 def primera_opcion():
-    menu = "1)New Human Player\n2)New Boot\n3)Show/Remove Player\n4)Go Back"
-    while correcto == False:
-            option = input("Option:\n")
-            if option.isdigit():
-                num_opcion = int(option)
-                if 1 <= num_opcion <= 4:
-                    print(f"¡Número válido: {num_opcion}!")
-                    correcto = True 
+    flg00 = True
+    while flg00:
+        menu = "1)New Human Player\n2)New Boot\n3)Show/Remove Player\n4)Go Back"
+        print(menu)
+        correcto = False
+        while correcto == False:
+                option = input("Option:\n")
+                if option.isdigit():
+                    num_opcion = int(option)
+                    if 1 <= num_opcion <= 4:
+                        print(f"¡Número válido: {num_opcion}!")
+                        correcto = True 
+                    else:
+                        print("El número no está entre 1 y 3. Inténtalo de nuevo.")
                 else:
-                    print("El número no está entre 1 y 3. Inténtalo de nuevo.")
-            else:
-                print("Por favor, introduce un número válido (entero).")
-    if num_opcion == 1:
-        new_human_player()
-    elif num_opcion == 2:
-
-    elif num_opcion == 3:
-
-    elif num_opcion == 4:
-        menu_principal()
+                    print("Por favor, introduce un número válido (entero).")
+        if num_opcion == 1:
+            new_human_player()
+            
+        elif num_opcion == 2:
+            new_boot()
+        elif num_opcion == 3:
+            show_remove()
+        elif num_opcion == 4:
+            flg00 = False
+            menu_principal()
+            
 
 def new_human_player():
     name = input("Name:\n")
     print(f"Name: \t\t{name}")
     nif = input("NIF:\n")
-    print(f"NIF: \t\t\{nif}")
+    print(f"NIF: \t\t{nif}")
     menu_juego_persona = "Select your Profile:\n\n1)Cautious\n\n2)Moderated\n\n3)Bold"
     print(menu_juego_persona)
+    correcto = False
     while correcto == False:
             option = input("Option:\n")
             if option.isdigit():
@@ -106,18 +98,18 @@ def new_human_player():
                 print("Por favor, introduce un número válido (entero).")
 
     if num_opcion == 1:
-        jugador = {nif: {"name": name , "human": True,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}}
+        jugador = {"name": name , "human": True,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}
     elif num_opcion == 2:
-        jugador = {nif: {"name": name , "human": True,"bank":False,"initialCard":"","priority":0,"type":40,"bet":0,"points":0,"cards":[],"roundPoints":0}}
+        jugador = {"name": name , "human": True,"bank":False,"initialCard":"","priority":0,"type":40,"bet":0,"points":0,"cards":[],"roundPoints":0}
 
     elif num_opcion == 3:
-        jugador = {nif: {"name": name , "human": True,"bank":False,"initialCard":"","priority":0,"type":30,"bet":0,"points":0,"cards":[],"roundPoints":0}}
-
-
+        jugador = {"name": name , "human": True,"bank":False,"initialCard":"","priority":0,"type":30,"bet":0,"points":0,"cards":[],"roundPoints":0}
+    
+    correcto = False
     while correcto == False:    
         crear = input("Is ok ? Y/n:")
         if crear == 'Y':
-            jugadores.jugadores.append(jugador)
+            jugadores.jugadores[nif] = jugador
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
             primera_opcion()
             return
@@ -134,6 +126,7 @@ def new_boot():
     nif = nif_random()
     menu_juego_persona = "Select Profile For The New Boot:\n\n1)Cautious\n\n2)Moderated\n\n3)Bold"
     print(menu_juego_persona)
+    correcto = False
     while correcto == False:
             option = input("Option:\n")
             if option.isdigit():
@@ -147,18 +140,19 @@ def new_boot():
                 print("Por favor, introduce un número válido (entero).")
 
     if num_opcion == 1:
-        jugador = {nif: {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}}
+        jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}
     elif num_opcion == 2:
-        jugador = {nif: {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":40,"bet":0,"points":0,"cards":[],"roundPoints":0}}
+        jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":40,"bet":0,"points":0,"cards":[],"roundPoints":0}
 
     elif num_opcion == 3:
-        jugador = {nif: {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":30,"bet":0,"points":0,"cards":[],"roundPoints":0}}
-
+        jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":30,"bet":0,"points":0,"cards":[],"roundPoints":0}
+    correcto = False
     while correcto == False:    
         crear = input("Is ok ? Y/n:")
         if crear == 'Y':
-            jugadores.bots.append(jugador)
+            jugadores.bots[nif] = jugador
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
+            correcto = True
             primera_opcion()
             return
         elif crear == 'n':
@@ -170,21 +164,38 @@ def new_boot():
 
 def show_remove():
     jugadores.imprimir_titulo("SHOW REMOVE")
-    dnis = jugadores.bots.keys()
+    dnis_bots = list(jugadores.bots.keys())
+    dnis = list(jugadores.jugadores.keys())
     for i in range(len(jugadores.bots)):
-        if jugadores.bots[dnis[i]]["type"] == 50:
-            type = "Ambicious"
-        elif jugadores.bots[dnis[i]]["type"] == 40:
-            type = "Moderated"
-        elif jugadores.bots[dnis[i]]["type"] == 30:
-            type = "Bold"
+        print(i)
+        if jugadores.bots[dnis_bots[i]]["type"] == 50:
+            type_bot = "Ambicious"
+        elif jugadores.bots[dnis_bots[i]]["type"] == 40:
+            type_bot = "Moderated"
+        elif jugadores.bots[dnis_bots[i]]["type"] == 30:
+            type_bot = "Bold"
         if jugadores.jugadores[dnis[i]]["type"] == 50:
             type = "Ambicious"
         elif jugadores.jugadores[dnis[i]]["type"] == 40:
             type = "Moderated"
         elif jugadores.jugadores[dnis[i]]["type"] == 30:
             type = "Bold"
-        print(f"{dnis[i]} {jugadores.bots[dnis[i]]['name']} {type} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
+        if len(jugadores.bots) > len(jugadores.jugadores):
+            if i >= len(jugadores.jugadores) + 1:
+                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
+            else:
+                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
+
+        elif len(jugadores.bots) < len(jugadores.jugadores):
+            if i >= len(jugadores.bots) + 1:
+                print(f"{dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type}")
+            else:
+                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
+        else:
+            print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
+
+
+
 #    SEGUNDA OPCIÓN
 
 
@@ -198,4 +209,9 @@ def nif_random():
     num = num%23
     nif = str(dni_num) + letrasDni[num]
     return nif
+
+menu_principal()
+
+if __name__ == "__main__":
+    menu_principal()
 

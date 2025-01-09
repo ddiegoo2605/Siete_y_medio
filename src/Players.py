@@ -1,6 +1,6 @@
 #Registro de jugadores, creación de perfiles de juego
-jugadores = []
-bots = []
+jugadores = {}
+bots = {}
 def imprimir_titulo(titulo):
     largo_titulo = len(titulo)
     margen = 20
@@ -149,7 +149,3 @@ def cabecera_game_over():
 
 
 
-# Aquí evitamos la ejecución automática del código cuando se importa el módulo
-if __name__ == "__main__":
-   
-    pass
