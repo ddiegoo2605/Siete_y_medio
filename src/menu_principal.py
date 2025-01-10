@@ -1,6 +1,6 @@
 import jugadores
 import random
-
+#Imports
 
 
 def menu_principal():
@@ -78,11 +78,28 @@ def primera_opcion():
             
 
 def new_human_player():
-    name = input("Name:\n")
+    correcto = False
+    while correcto == False:
+        name = input("Name:\n")
+        correcto = verificar_nombre(name)
     print(f"Name: \t\t{name}")
-    nif = input("NIF:\n")
-    print(f"NIF: \t\t{nif}")
+    correcto = False
+    es_unico = False
+    while correcto == False or es_unico == False:
+        nif = input("NIF:\n")
+        correcto = verificar_nif(nif)
+        claves_nif = list(jugadores.jugadores.keys())
+        existentes = 0
+        for i in range(len(claves_nif)):
+            if nif == claves_nif[i]:
+                print(f"NIF:\t\t{nif} already exists")
+                existentes += 1
+        if existentes == 0:
+            es_unico = True
 
+        
+    nif = nif.upper()
+    print(f"NIF: \t\t{nif}")
     menu_juego_persona = "Select your Profile:\n\n1)Cautious\n\n2)Moderated\n\n3)Bold"
     print(menu_juego_persona)
     correcto = False
@@ -122,9 +139,21 @@ def new_human_player():
             print("Invalid option")
 
 def new_boot():
-    name = input("Name:\n")
+    correcto = False
+    while correcto == False:
+        name = input("Name:\n")
+        correcto = verificar_nombre(name)
     print(f"Name: \t\t{name}")
-    nif = nif_random()
+    es_unico = False
+    while es_unico == False:
+        nif = nif_random
+        claves_nif = list(jugadores.jugadores.keys())
+        existentes = 0
+        for i in range(len(claves_nif)):
+            if nif == claves_nif[i]:
+                existentes += 1
+        if existentes == 0:
+            es_unico = True
     menu_juego_persona = "Select Profile For The New Boot:\n\n1)Cautious\n\n2)Moderated\n\n3)Bold"
     print(menu_juego_persona)
     correcto = False
@@ -211,8 +240,30 @@ def nif_random():
     nif = str(dni_num) + letrasDni[num]
     return nif
 
+def verificar_nif(nif):
+    if len(nif) == 9:
+        if nif[:8].isdigit():
+            letrasDni = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E']
+            num = int(nif[:8])
+            num = num%23
+            if letrasDni[num] == nif[8].upper():
+                return True
+            else:
+                print("Wrong NIF")
+                return False
+
+        else:
+            print("Wrong NIF")
+            return False
+
+    else:
+        print("Wrong NIF")
+        return False
+def verificar_nombre(name):
+    if name.isalpha():
+        return True
+    else:
+        print("Wrong Name. please, enter a name no empty with only letters")
+        return False
+    
 menu_principal()
-
-if __name__ == "__main__":
-    menu_principal()
-
