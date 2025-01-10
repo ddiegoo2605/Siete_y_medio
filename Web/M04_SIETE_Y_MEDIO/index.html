@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siete y medio</title>
+    <link rel="stylesheet" href="css_index.css">
+    <link rel="scriptsheet" href="js_index.js">
+</head>
+<body>
+    
+
+    <header class="flex-container">
+            <div class="navbar">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="tutorial.html">Tutorial</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="programacion.html">Programacion</a></li>
+                    </ul>
+                </nav>
+            </div>
+    </header>
+    
+    <div class="portada">
+        <h1>SIETE Y MEDIO</h1>
+        <p>¿Como funciona?</p>
+    </div>
+
+        <div class="flex-container">
+            <div class="contenido">
+                <p>
+                    Jugadores y Baraja
+                    Máximo de 6 jugadores (humanos o máquinas).
+                    Cada jugador tiene un perfil de riesgo:
+                    Atrevido (50%), Normal (40%), Prudente (30%).
+                    El perfil determina cuánto apuestan y cuándo deciden pedir cartas.
+                    Inicio de la Partida
+                    Se establece prioridad repartiendo una carta a cada jugador:
+                    Prioridad por valor de carta; en empate: Oros > Copas > Espadas > Bastos.
+                    El jugador con mayor prioridad será la banca. Los turnos siguen el orden de menor a mayor prioridad.
+                    Cada jugador comienza con 20 puntos.
+                    Máximo de 30 rondas.
+                    Apuestas
+                    Antes de repartir cartas, los jugadores apuestan según su perfil de riesgo y puntos disponibles (sin superar los puntos de la banca).
+                    Desarrollo de Ronda
+                    Cada jugador recibe una carta.
+                    Según su perfil o decisión manual, los jugadores:
+                    Se plantan.
+                    Piden cartas (una por una), calculando el riesgo de pasarse de 7.5.
+                    La banca juega al final:
+                    Obligada a jugar si puede quedarse sin puntos.
+                    Las cartas de la banca son siempre visibles.
+                    Reglas de Juego
+                    Gana quien más se acerque a 7.5 sin pasarse.
+                    En caso de empate, la banca gana.
+                    Si un jugador obtiene 7.5:
+                    Gana el doble de lo apostado.
+                    Puede ser candidato a banca en la siguiente ronda (según prioridad).
+                    La banca:
+                    Paga apuestas a jugadores que ganen y cobra de quienes pierdan.
+                    Si se queda sin puntos, se elige nueva banca según las reglas de prioridad.
+                    Condiciones de Finalización
+                    La partida termina si:
+                    Queda un único jugador con puntos.
+                    Se completan las 30 rondas, y gana el jugador con más puntos.
+                    Decisiones de Pedir Cartas
+                    Los jugadores calculan la probabilidad de pasarse y se plantan si esta supera su perfil de riesgo.
+                    La banca sigue criterios específicos:
+                    Pide carta si no supera a ningún jugador o puede quedar eliminada.
+                    No pide carta si ya tiene 7.5 o gana a todos los jugadores. 
+                </p>
+            </div>
+        </div>
+
+        <div><div class = "column_espacio"></div></div>
+        <footer class = "footer"><center>&copy; Marc, Yeray, Diego y Gerard</center></footer>
+</body>
+</html>
