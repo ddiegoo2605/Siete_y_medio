@@ -38,6 +38,30 @@
     z-index: 2; 
 }
 
+.imagen_de_fondo{
+  width: 400px;
+  height: 300px;
+  background-size: cover; /* Hace que la imagen cubra todo el área */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center; /* Centra la imagen */
+  display: flex; /* Usa flexbox para centrar el contenido */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  flex-direction: column;
+  opacity: 5;
+}
+
+.imagen_de_fondo p { 
+    display: block; 
+    margin: 0; padding: 0; 
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 100; 
+    animation-delay: 0.5s;
+} 
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -104,7 +128,7 @@ section {
     margin: 10px;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.6);
-    opacity: 0; 
+    opacity: 100; 
     animation: slideInUp 1s forwards; 
     animation-delay: 0.5s;
 } 
@@ -124,7 +148,6 @@ section {
 .column_espacio {
   flex: 1;             /* Makes all columns flexible and equal in width */
   padding: 20px;       /* Adds some padding for spacing */
-  background-color: rgb(255, 255, 255); /* A background color to make columns visible */
   margin: 10px;        /* Adds space around each column */
   text-align: justify;
 } 
@@ -138,6 +161,8 @@ section {
   max-width: 600px;
   padding: 20px;
   text-align: center;
+  background-color: white;
+  color: black;
 }
 
 .flex-container {
@@ -187,7 +212,7 @@ header {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: black;
+  color: white;
   font-size: 16px;
 }
 
