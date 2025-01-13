@@ -1,0 +1,351 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General */
+.portada {
+    position: relative;
+    height: 100vh; /* Cubre toda la ventana */
+    background-image: url('imagenes/portada.webp'); /* Cambia la ruta por la imagen que desees */
+    background-size: cover; /* Hace que la imagen cubra todo el área */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    text-align: center;
+    color: white; /* Texto blanco para contraste */
+    padding: 20px;
+    flex-direction: column;
+  }
+  
+  .portada::after { 
+    content: ""; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%); 
+    z-index: 1; 
+}
+
+.portada h1, 
+.portada p { 
+    position: relative; 
+    z-index: 2; 
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Evita desplazamiento horizontal */
+  
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  padding: 50px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilo para la barra de navegación */
+.navbar {
+  position: sticky; /* Hace que la barra sea sticky */
+  top: 0; /* Define el punto de adherencia en la parte superior */
+  background-color: #333; /* Color de fondo */
+  color: white;
+  z-index: 1000; /* Mantiene la barra sobre otros elementos */
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  height: 60px;
+  display: flex;
+}
+
+.navbar nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around; /* Espacio uniforme entre los elementos */
+}
+
+.navbar nav ul li {
+  display: inline;
+}
+
+.navbar nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background 0.3s;
+}
+
+.navbar nav ul li a:hover {
+  background-color: #575757; /* Color al pasar el mouse */
+  border-radius: 5px; /* Bordes redondeados en hover */
+}
+
+.portada h1, 
+.portada p { 
+    display: block; 
+    margin: 0; padding: 0; 
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0; 
+    animation: slideInUp 1s forwards; 
+    animation-delay: 0.5s;
+} 
+.portada p { 
+    margin-top: 10px; /* Ajusta según la cantidad de espacio que quieras entre h1 y p */ 
+    animation-delay: 1s;
+}
+
+.contenido {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  background-color: white;
+  color: black;
+}
+
+.column_espacio {
+  flex: 1;             /* Makes all columns flexible and equal in width */
+  padding: 20px;       /* Adds some padding for spacing */
+  background-color: rgb(255, 255, 255); /* A background color to make columns visible */
+  margin: 10px;        /* Adds space around each column */
+  text-align: justify;
+} 
+
+.column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;       /* Makes the container a flexbox */
+  justify-content: space-between; /* Ensures equal spacing between columns */
+}
+
+.footer{
+  background-color: #333; /* Color de fondo */
+  color: white;
+  height: 5vh;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  text-align: center;
+  display: flex;
+}
+
+.float-image-left {
+	float: left; /* Aligns the image to the left side */
+	width: 5%; /* Sets the image to take up 40% of the container width */
+	margin: 10px; /* Adds space around the image */
+	max-width: 100%;  /*Ensures the image doesn't overflow its container */
+	height: auto; /* Keeps the image aspect ratio intact */
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 10px 10px;
+  color: white;
+  position: sticky; /* Hace que el encabezado sea sticky */
+  top: 0; /* Fija el encabezado en la parte superior */
+  z-index: 1000; /* Asegura que el encabezado quede al frente de otros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+}
+
+.left-dot{
+  position: relative;
+  padding-left: 20px;
+}
+
+.left-dot::before{
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+  font-size: 16px;
+}
+
+@keyframes slideInUp { 
+  from { 
+      opacity: 0; 
+      transform: translateY(100%); 
+  } to { 
+      opacity: 1; 
+      transform: translateY(0); 
+  } 
+} 
+
+@media (max-width: 600px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  .flex-container {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    .portada {
+      position: relative;
+      height: 100vh; /* Cubre toda la ventana */
+      background-image: url('imagenes/portada.webp'); /* Cambia la ruta por la imagen que desees */
+      background-size: cover; /* Hace que la imagen cubra todo el área */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
+      background-position: center; /* Centra la imagen */
+      display: flex; /* Usa flexbox para centrar el contenido */
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center; /* Centra verticalmente */
+      text-align: center;
+      color: white; /* Texto blanco para contraste */
+      padding: 20px;
+      flex-direction: column;
+    }
+    
+    .portada::after { 
+      content: ""; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%); 
+      z-index: 1; 
+  }
+  
+  .portada h1, 
+  .portada p { 
+      position: relative; 
+      z-index: 2; 
+  }
+  
+  body {
+    overflow-x: hidden;
+    
+  }
+
+  html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .main-content {
+    margin: 0;
+    padding: 0;
+  }
+  
+  section {
+    padding: 50px 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Estilo para la barra de navegación */
+  .navbar {
+    position: sticky; /* Hace que la barra sea sticky */
+    top: 0; /* Define el punto de adherencia en la parte superior */
+    background-color: #333; /* Color de fondo */
+    color: white;
+    z-index: 1000; /* Mantiene la barra sobre otros elementos */
+    padding: 5px 10px;
+    align-items: center;
+    height: 5vh;
+  }
+  
+  .navbar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around; /* Espacio uniforme entre los elementos */
+  }
+  
+  .navbar nav ul li {
+    display: inline;
+  }
+  
+  .navbar nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background 0.3s;
+  }
+  
+  .navbar nav ul li a:hover {
+    background-color: #575757; /* Color al pasar el mouse */
+    border-radius: 5px; /* Bordes redondeados en hover */
+  }
+  
+  .portada h1, 
+  .portada p { 
+      display: block; 
+      margin: 0; padding: 0; 
+      border-radius: 5px;
+      margin: 10px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      opacity: 0; 
+      animation: slideInUp 1s forwards; 
+      animation-delay: 0.5s;
+  } 
+  .portada p { 
+      margin-top: 10px; /* Ajusta según la cantidad de espacio que quieras entre h1 y p */ 
+      animation-delay: 1s;
+  }
+
+  .footer{
+    background-color: #333; /* Color de fondo */
+    color: white;
+    height: 5vh;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    text-align: center;
+    display: flex;
+  }
+  
+  .float-image-left {
+    float: left; /* Aligns the image to the left side */
+    width: 5%; /* Sets the image to take up 40% of the container width */
+    margin: 10px; /* Adds space around the image */
+    max-width: 100%;  /*Ensures the image doesn't overflow its container */
+    height: auto; /* Keeps the image aspect ratio intact */
+  }
+  
+
+
+  .sidebar {
+    display: none; /* Ajusta el nombre de la clase de la barra lateral si es diferente */
+  }
+  
+}
