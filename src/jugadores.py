@@ -1,6 +1,7 @@
 #Registro de jugadores, creación de perfiles de juego
 jugadores = {}
 bots = {}
+jugadores_rankings = {}
 def imprimir_titulo(titulo):
     largo_titulo = len(titulo)
     margen = 20
