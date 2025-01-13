@@ -59,16 +59,22 @@
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.6);
     opacity: 100; 
-    animation-delay: 0.5s;
+    color: white;
 } 
+
+.imagen_de_fondo p { 
+  position: relative; 
+  z-index: 2; 
+}
+
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
   box-sizing: border-box;
   overflow-x: hidden; /* Evita desplazamiento horizontal */
-  
 }
 
 main {
@@ -128,7 +134,7 @@ section {
     margin: 10px;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.6);
-    opacity: 100; 
+    opacity: 0; 
     animation: slideInUp 1s forwards; 
     animation-delay: 0.5s;
 } 
