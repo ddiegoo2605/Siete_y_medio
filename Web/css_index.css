@@ -165,7 +165,7 @@ section {
   align-items: center;
   margin: 0 auto;
   max-width: 600px;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   background-color: white;
   color: black;
@@ -218,7 +218,7 @@ header {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: white;
+  color: black;
   font-size: 16px;
 }
 
@@ -379,4 +379,23 @@ header {
     display: none; /* Ajusta el nombre de la clase de la barra lateral si es diferente */
   }
   
+  .column_espacio {
+    flex: 1;             /* Makes all columns flexible and equal in width */
+    padding: 20px;       /* Adds some padding for spacing */
+    margin: 10px;        /* Adds space around each column */
+    text-align: justify;
+  } 
+  
+  .column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    color: black;
+  }
 }
