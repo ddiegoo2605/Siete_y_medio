@@ -188,8 +188,8 @@ section {
 
 .float-image-left {
 	float: left; /* Aligns the image to the left side */
-	width: 5%; /* Sets the image to take up 40% of the container width */
-	margin: 10px; /* Adds space around the image */
+	width: 7.5%; /* Sets the image to take up 40% of the container width */
+	margin: 5px; /* Adds space around the image */
 	max-width: 100%;  /*Ensures the image doesn't overflow its container */
 	height: auto; /* Keeps the image aspect ratio intact */
 }
@@ -367,12 +367,24 @@ header {
   
   .float-image-left {
     float: left; /* Aligns the image to the left side */
-    width: 5%; /* Sets the image to take up 40% of the container width */
-    margin: 10px; /* Adds space around the image */
+    width: 10%; /* Sets the image to take up 40% of the container width */
+    margin: 5px; /* Adds space around the image */
     max-width: 100%;  /*Ensures the image doesn't overflow its container */
     height: auto; /* Keeps the image aspect ratio intact */
   }
   
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 10px;
+    color: white;
+    position: fixed; /* Hace que el encabezado sea sticky */
+    top: 0; /* Fija el encabezado en la parte superior */
+    z-index: 1000; /* Asegura que el encabezado quede al frente de otros elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  }
 
 
   .sidebar {
