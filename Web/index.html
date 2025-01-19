@@ -10,17 +10,17 @@
 <body>
     
 
-    <header class="flex-container">
-            <div class="navbar">
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="tutorial.html">Tutorial</a></li>
-                        <li><a href="nosotros.html">Nosotros</a></li>
-                        <li><a href="programacion.html">Programacion</a></li>
-                    </ul>
-                </nav>
-            </div>
+    <header class="flex-container"> <img src="imagenes/logo.webp" alt="Logo" class="float-image-left">
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="tutorial.html">Tutorial</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="programacion.html">Programacion</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
     <div class="portada">
@@ -33,12 +33,24 @@
             <div class="flex-container">
                 <h1>Jugadores y baraja</h1>
             </div>
-
             <div class="column_espacio"></div>
-            
             <p class="flex-container">
-               <p>Máximo de jugadores <b><i>6</i></b> y minimo de jugadores <b><i>2</i></b> (pueden ser <b><i>humanos</i></b> o <b><i>máquinas</i></b>). De barajas se pueden jugar de <b><i>POKER</i></b> o <b><i>ESPAÑOLA.</i></b></p>
+                <p>Máximo de jugadores <b><i>6</i></b> y minimo de jugadores <b><i>2</i></b> (pueden ser <b><i>humanos</i></b> o <b><i>máquinas</i></b>).</p>
             </p>
+
+            <p class="flex-container">
+                <p>De barajas se pueden jugar de <b><i>POKER</i></b> o <b><i>ESPAÑOLA.</i></b></p>
+            </p>            
+
+            <div class="carousel-container">
+            <input type="radio" name="slide" id="slide1" checked>
+            <input type="radio" name="slide" id="slide2" checked>
+            
+            <div class="carousel-images">
+                <img src="imagenes/baraja_poker.jpg" alt="imagen1">
+                <img src="imagenes/baraja_española.jpg" alt="imagen2">
+            </div>
+            </div>
 
             <div class="column_espacio"></div>
 
@@ -54,11 +66,10 @@
             <p class="flex-container">
                 <p class="left-dot"><b><i>Prudente: 30%</i></b></p>
             </p>
-            <div class="column_espacio"></div>
             <p class="flex-container">
                 <p>El perfil determina cuánto <b><i>apuestan</i></b> y cuándo deciden pedir <b><i>cartas.</i></b></p>
             </p>
-        </div> 
+        </div>
     </div>
 
     <!--Inicio de partida-->
@@ -72,29 +83,17 @@
             <p class="flex-container">
                <p>Se establece una prioridad repartiendo una carta a cada jugador.</p>
             </p>
-            
-            <div class="column_espacio"></div>
 
-            <div class="flex-container">
-                <p class="left-dot">Prioridad si hay empate en baraja <b><i>ESPAÑOLA:</i></b></p>
-            </div> 
-            <p class="flex-container">
-                <p><b><i>Oros</i></b> > <b><i>Copas</i></b> > <b><i>Espadas</i></b> > <b><i>Bastos</i></b></p>
-             </p>
-             <div class="flex-container">
-                <p class="left-dot">Prioridad si hay empate en baraja <b><i>POKER:</i></b></p>
-            </div> 
-            <p class="flex-container">
-                <p><b><i>Picas</i></b> > <b><i>Corazones</i></b> > <b><i>Treboles</i></b> > <b><i>Diamantes</i></b></p>
-             </p>
-            
-            <div class="column_espacio"></div>
+            <div class="imagen_de_fondo" style="background-image: url(imagenes/tipos_cartas.png);">
+                    <p class="left-dot">Prioridad si hay empate en baraja <b><i>ESPAÑOLA:</i></b></p>
+                    <p><b><i>Oros</i></b> > <b><i>Copas</i></b> > <b><i>Espadas</i></b> > <b><i>Bastos</i></b></p>
+                    <p class="left-dot">Prioridad si hay empate en baraja <b><i>POKER:</i></b></p>
+                    <p><b><i>Picas</i></b> > <b><i>Corazones</i></b> > <b><i>Treboles</i></b> > <b><i>Diamantes</i></b></p>
+            </div>
 
             <p class="flex-container">
                 <p>Cuando se sepa que jugador tiene mas prioridad entonces ese jugador será la <b><i>banca.</i></b> Los turnos siguen el orden de <b><i>menor</i></b> a <b><i>mayor</i></b> prioridad.</p>
             </p>
-
-            <div class="column_espacio"></div>
             
             <p class="flex-container">
                 <p class="left-dot">Cada jugador comienza con <b><i>20 puntos.</i></b></p>
@@ -104,6 +103,7 @@
             </p>
         </div> 
     </div>
+
     <!--Apuestas-->
     <div class="contenido">
         <div class="column">
@@ -111,12 +111,12 @@
                 <h1>Apuestas</h1>
             </p>
 
-            <div class="column_espacio"></div>
-
-            <p class="flex-container">
-                <p><b><i>Antes de repartir las cartas,</i></b> los jugadores <b><i>apuestan</i></b> según su <b><i>perfil de riesgo</i></b> y <b><i>puntos.</i></b></p>
-                <p>La apuesta no puede <b><i>superar los puntos que tiene la banca en esa ronda.</i></b></p>
-            </p>
+            <div class="imagen_de_fondo" style="background-image: url(imagenes/apuestas.jpg);">
+                <p class="flex-container">
+                    <p><b><i>Antes de repartir las cartas,</i></b> los jugadores <b><i>apuestan</i></b> según su <b><i>perfil de riesgo</i></b> y <b><i>puntos.</i></b></p>
+                    <p>La apuesta no puede <b><i>superar los puntos que tiene la banca en esa ronda.</i></b></p>
+                </p>
+            </div>
         </div>
     </div>
 
@@ -131,10 +131,13 @@
 
             <p class="flex-container">
                 <p>1. Cada jugador recibe una carta.</p>
-                <p>2. Según su perfil o decisión manual, los jugadores podran:</p>
             </p>
 
             <div class="column_espacio"></div>
+
+            <p class="flex-container">
+                <p>2. Según su perfil o decisión manual, los jugadores podran:</p>
+            </p>
 
             <p class="flex-container">
                 <p class="left-dot">Se plantan.</p>
@@ -148,8 +151,6 @@
             <p class="flex-container">
                 <p>3. La banca juega al final:</p>
             </p>
-
-            <div class="column_espacio"></div>
 
             <p class="flex-container">
                 <p><b><i><p class="left-dot"> Obligada </i></b> a jugar si puede quedarse <b><i>sin puntos.</i></b></p>
@@ -201,7 +202,50 @@
     </div>
 
     <!--Condiciones de finalizacion-->
+    <div class="contenido">
+        <div class="column">
+            <div class="flex-container">
+                <h1>Para finalizar la partida</h1>
+            </div>
+            
+            <div class="column_espacio"></div>
 
+            <p class="flex-container">
+                <p>La partida termina si:</p>
+            </p>
+            <p class="flex-container">
+                <p class="left-dot">Queda un <b><i>único</i></b> jugador con <b><i>puntos.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p class="left-dot">Se completan las <b><i>30 rondas,</i></b> y <b><i>gana</i></b> el jugador con <b><i>más puntos.</i></b></p>
+            </p>
+        </div>
+    </div>
+    <!--Decisiones de pedir cartas-->
+    <div class="contenido">
+        <div class="column">
+            <div class="flex-container">
+                <h1>Para pedir cartas</h1>
+            </div>
+
+            <div class="column_espacio"></div>
+
+            <p class="flex-container">
+                <p>Los jugadores <b><i>calculan</i></b> la probabilidad de <b><i>pasarse</i></b> y se plantan si esta supera su <b><i>perfil de riesgo.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p>La banca sigue <b><i>criterios específicos:</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p class="left-dot">Pide carta si no supera a <b><i>ningun jugador</i></b> o puede quedar <b><i>eliminada.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p class="left-dot">No pide carta si ya tiene <b><i>7.5</i></b> o gana a <b><i>todos</i></b> los jugadores.</p>
+            </p>
+        </div>
+    </div>
+
+    <div class="column_espacio"></div>
     <footer class = "footer"><center>&copy; Marc, Yeray, Diego y Gerard</center></footer>
 </body>
 </html>

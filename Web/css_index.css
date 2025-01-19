@@ -38,13 +38,43 @@
     z-index: 2; 
 }
 
+.imagen_de_fondo{
+  width: 400px;
+  height: 300px;
+  background-size: cover; /* Hace que la imagen cubra todo el área */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center; /* Centra la imagen */
+  display: flex; /* Usa flexbox para centrar el contenido */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  flex-direction: column;
+  opacity: 5;
+}
+
+.imagen_de_fondo p { 
+    display: block; 
+    margin: 0; padding: 0; 
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 100; 
+    color: white;
+} 
+
+.imagen_de_fondo p { 
+  position: relative; 
+  z-index: 2; 
+}
+
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
   box-sizing: border-box;
   overflow-x: hidden; /* Evita desplazamiento horizontal */
-  
 }
 
 main {
@@ -124,7 +154,6 @@ section {
 .column_espacio {
   flex: 1;             /* Makes all columns flexible and equal in width */
   padding: 20px;       /* Adds some padding for spacing */
-  background-color: rgb(255, 255, 255); /* A background color to make columns visible */
   margin: 10px;        /* Adds space around each column */
   text-align: justify;
 } 
@@ -136,8 +165,10 @@ section {
   align-items: center;
   margin: 0 auto;
   max-width: 600px;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
+  background-color: white;
+  color: black;
 }
 
 .flex-container {
@@ -157,8 +188,8 @@ section {
 
 .float-image-left {
 	float: left; /* Aligns the image to the left side */
-	width: 5%; /* Sets the image to take up 40% of the container width */
-	margin: 10px; /* Adds space around the image */
+	width: 7.5%; /* Sets the image to take up 40% of the container width */
+	margin: 5px; /* Adds space around the image */
 	max-width: 100%;  /*Ensures the image doesn't overflow its container */
 	height: auto; /* Keeps the image aspect ratio intact */
 }
@@ -191,6 +222,75 @@ header {
   font-size: 16px;
 }
 
+.container_foto{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.container_foto imagen{
+  max-width: 100%;
+  height: auto;
+}
+
+ /* Estilo del contenedor del carrusel */
+ .carousel-container {
+  position: relative;
+  max-width: 180px;
+  max-height: 400px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Contenedor de las imágenes */
+.carousel-slide {
+  display:flex;
+  width: 100%; /* Total del ancho de todas las imágenes juntas */
+  transition: transform 0.5s ease;
+}
+
+/* Ajuste de ancho para cada imagen */
+.carousel-slide img {
+  width: 1vw; /* Para ocupar el 100% del ancho de la ventana de visualización */
+  flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor del carrusel */
+  border-radius: 8px;
+}
+
+/* Ocultar los inputs de radio */
+input[type="radio"] {
+  display: none;
+}
+
+
+/* estilos.css */
+
+.carousel {
+width: 180%;
+max-width: 400px;
+overflow: hidden;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-images {
+display: flex;
+width: 100%; /* 100% por imagen si hay 4 imágenes */
+animation: slide 15s infinite;
+}
+
+.carousel-images img {
+width: 100%;
+height: auto;
+flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
+}
+
 @keyframes slideInUp { 
   from { 
       opacity: 0; 
@@ -199,7 +299,20 @@ header {
       opacity: 1; 
       transform: translateY(0); 
   } 
-} 
+}
+
+/* Animación del carrusel */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+  }
 
 @media (max-width: 600px) {
   * {
@@ -336,16 +449,72 @@ header {
   
   .float-image-left {
     float: left; /* Aligns the image to the left side */
-    width: 5%; /* Sets the image to take up 40% of the container width */
-    margin: 10px; /* Adds space around the image */
+    width: 10%; /* Sets the image to take up 40% of the container width */
+    margin: 5px; /* Adds space around the image */
     max-width: 100%;  /*Ensures the image doesn't overflow its container */
     height: auto; /* Keeps the image aspect ratio intact */
   }
   
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 10px;
+    color: white;
+    position: fixed; /* Hace que el encabezado sea sticky */
+    top: 0; /* Fija el encabezado en la parte superior */
+    z-index: 1000; /* Asegura que el encabezado quede al frente de otros elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  }
 
 
   .sidebar {
     display: none; /* Ajusta el nombre de la clase de la barra lateral si es diferente */
   }
   
+  .column_espacio {
+    flex: 1;             /* Makes all columns flexible and equal in width */
+    padding: 20px;       /* Adds some padding for spacing */
+    margin: 10px;        /* Adds space around each column */
+    text-align: justify;
+  } 
+  
+  .column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    color: black;
+  }
+
+  .container_foto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .container_foto imagen{
+    max-width: 100%;
+    height: auto;
+  }
+  .carousel-container {
+    position: relative;
+    max-width: 100px;
+    max-height: 300px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 8px;
+  }
 }

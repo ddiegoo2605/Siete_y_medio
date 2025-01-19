@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Siete y medio</title>
     <link rel="stylesheet" href="css_index.css">
     <link rel="scriptsheet" href="js_index.js">
 </head>
 <body>
     
 
-    <header class="flex-container">
+    <header class="flex-container"> <img src="imagenes/logo.webp" alt="Logo" class="float-image-left">
         <div class="navbar">
             <nav>
                 <ul>
@@ -28,8 +28,316 @@
         <p>¿Como se juega el programa?</p>
     </div>
 
-    <div><div class = "column_espacio"></div></div>
+    <!--Opcion 1-->
+    <div class="contenido">
+        <div class="column">
+            <div class="flex-container">
+                <h2>Opcion 0.1: Add/Remove/Show Players</h2>
+            </div>
 
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <img src="imagenes/jugador.png" alt="imagen_jugador">
+            </div>
+
+            <div class="flex-container">
+                <h3>Opcion 1.1: New Human Player</h3>
+            </div>
+            
+            <p class="flex-container">
+                <p>Lo primero de todo te pedira poner el <b><i>nombre,</i></b> pero no puede estar <b><i>vacio</i></b> o que tenga <b><i>letras</i></b> o <b><i>numeros.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p>Después te pedira de poner un <b><i>DNI,</i></b> pero tiene que ser uno <b><i>valido.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p>Y para acabar tienes que poner <b><i>obligatorio</i></b> que tipo de perfil de riesgo quieres que son:</p>
+                
+                <div class="column_espacio"></div>
+                
+                <p class="flex-container">
+                    <b><i>
+                    <p class="left-dot">Bold</p>
+                    <p class="left-dot">Moderated</p>
+                    <p class="left-dot">Cautious</p>
+                    </i></b>
+                </p>
+            <div class="column_espacio"></div>
+            </p>
+            <p class="flex-container">
+                <p>Entonces después de todo esto te mostrara toda la informacion que has puesto y te dira si esta bien para <b><i>guardarlo</i></b> o si no lo quieres <b><i>guardar.</i></b></p>
+            </p>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <img src="imagenes/robot_cartas.png" alt="imagen_ bot" width="300" height="300">
+            </div>
+            <div class="flex-container">
+                <h3>Opcion 1.2: New Boot</h3>
+            </div>
+            <p class="flex-container">
+                <p>Para empezar sera como en la <b><i>opcion 1.1</i></b> pero después de ponerlo te <b><i>generara el dni</i></b> y para acabar sera lo mismo que en la <b><i>opcion 1.1,</i></b> decir que perfil quieres y si esta lo quieres guardar.</p>
+            </p>
+           
+            <div class="column_espacio"></div>
+            
+            <div class="flex-container">
+                <h3>Opcion 1.3: Show/Remove Players</h3>
+            </div>
+            <p class="flex-container">
+                <p>Se mostraran en una tabla todos los <b><i>jugadores y bots disponibles.</i></b> Entonces en esa opcion podras <b><i>eliminarlos.</i></b></p>
+            </p>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <h3>Opcion 1.4: Go back</h3>
+            </div>
+            <p class="flex-container">
+                <p>Y la ultima opcion es para <b><i>volver</i></b> al <b><i>menú principal.</i></b></p>
+            </p>
+        </div>
+    </div>
+
+    <div class="column_espacio"></div>
+    <!--Opcion 2-->
+    <div class="contenido">
+        <div class="column">
+            <div class="flex-container">
+                <h2>Opcion 0.2: Settings</h2>
+            </div>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <img src="imagenes/settings_jugador.png" alt="imagen_bot">
+            </div>
+            <div class="flex-container">
+                <h3>Opcion 2.1: Set Game Players</h3>
+            </div>
+            <p class="flex-container">
+                <p>Lo primero de todo que te saldra es que <b><i>jugadores/bots</i></b> estan actualmente en el juego. Y saldra de cada uno el <b><i>dni,</i></b> su <b><i>nombre,</i></b> si es un <b><i>bot</i></b> o <b><i>humano</i></b> y que tipo de <b><i>perfil de riesgo</i></b> tiene.</p>
+            </p>
+            <p class="flex-container">
+                <p>Luego para continuar le tendras que dar a la tecla <b><i>"intro",</i></b> entonces se te mostrara una <b><i>tabla de bots</i></b> y otra de <b><i>jugadores.</i></b> Cuando se te muestra tambien te saldran opciones, que són las siguientes:</p>
+            </p>
+            <div class="column"></div>
+            <p class="flex-container">
+                <p class="left-dot">Poner algun <b><i>id</i></b> de los bots o jugadores: <b><i>Lo añade a la partida.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p class="left-dot"> <b><i>-id</i></b> de algun bot o jugador: <b><i>Elimina</i></b> ese jugador o ese bot.</p>
+            </p>
+            <p class="flex-container">
+                <p class="left-dot"><b><i>sh:</i></b> Esta opcion es para <b><i>ver</i></b> que bots/jugadores hay actualmente en la partida.</p>
+            </p>
+            <p class="flex-container">
+                <p class="left-dot"><b><i>-1:</i></b> Y esta ultima opcion es para <b><i>volver</i></b> al menú de <b><i>Settings.</i></b></p>
+            </p>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <img src="imagenes/settings_carta.png" alt="imagen_ bot" width="300" height="300">
+            </div>
+
+            <div class="flex-container">
+                <h3>Opcion 2.2: Set Card's Game</h3>
+            </div>
+            <p class="flex-container">
+                <p>Aqui en esta opcion te permite con que <b><i>baraja</i></b> quieres <b><i>jugar,</i></b> las <b><i>opciones</i></b> son la siguientes: <b><i>1 (Español), 2 (Poker)</i></b> y <b><i>0 (Que es para volver).</i></b></p>
+            </p>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <h3>Opcion 2.3: Set Max Rounds</h3>
+            </div>
+            <p class="flex-container">
+                <p>Lo primero que todo por <b><i>defecto</i></b> seran <b><i>5 rondas.</i></b> Pero una vez que ya estas dentro tienes que poner un numero entre el <b><i>5</i></b> y <b><i>30.</i></b></p>
+            </p>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <h3>Opcion 2.4: Go back</h3>
+            </div>
+            <p class="flex-container">
+                <p>Aqui seria como en los demas menús de <b><i>volver</i></b> al <b><i>menú anterior.</i></b></p>
+            </p>
+        </div>
+    </div>
+
+    <div class="column_espacio"></div>
+    <!--Opcion 3-->
+    <div class="contenido">
+        <div class="column">
+            <div class="flex-container">
+                <h2>Opcion 0.3: Play Game</h2>
+            </div>
+            <p class="flex-container">
+                <p>Cuando entres te aparecera que <b><i>ronda</i></b> es, el <b><i>turno</i></b> del <b><i>jugador/bot</i></b> ,los <b><i>nombres</i></b> del los <b><i>jugadores/bots</i></b> que estan <b><i>jugando, si es humano o no,</i></b> el <b><i>orden</i></b> de <b><i>prioridad,</i></b> el <b><i>tipo</i></b> de <b><i>perfil de riesgo, si es la banca o no,</i></b>  de cuanto es la <b><i>apuesta,</i></b> el total de <b><i>puntos</i></b> que tiene ese jugador actualmente, las <b><i>cartas</i></b> que tiene actualmente y la <b><i>puntucacion</i></b> que tiene actualmente por el valor de las cartas.</p>
+            </p>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <h3>Tu turno</h3>
+            </div>
+            <p class="flex-container">
+                <p>En <b><i>tu turno</i></b> te saldra un menú que te pondra lo siguiente:</p>
+            </p>
+            
+            <div class="column_espacio"></div>
+            <p class="flex-container">
+                <b><i>
+                <p class="left-dot">View Stats</p>
+                <p class="left-dot">View Game Stats</p>
+                <p class="left-dot">Set Bet</p>
+                <p class="left-dot">Order Card</p>
+                <p class="left-dot">Automatic Play</p>
+                <p class="left-dot">Stand</p>
+                </i></b>
+            </p>
+            <div class="column_espacio"></div>
+
+            <p class="flex-container">
+                <p>En la <b><i>primera</i></b> opcion te salen tus <b><i>características</i></b> que són:</p>
+            </p>
+
+            <div class="column_espacio"></div>
+            <p class="flex-container">
+                <b><i>
+                <p class="left-dot">Nombre del jugador/bot</p>
+                <p class="left-dot">El perfil de riesgo</p>
+                <p class="left-dot">Si es humano</p>
+                <p class="left-dot">Si es la banca</p>
+                <p class="left-dot">La carta inicial que te salio para decidir la prioridad, banca, etc...</p>
+                <p class="left-dot">Que prioridad tienes</p>
+                <p class="left-dot">La apuesta que ha hecho la banca</p>
+                <p class="left-dot">Los puntos totales que tienes</p>
+                <p class="left-dot">Que cartas tienes</p>
+                <p class="left-dot">El total de puntos que tienes por las cartas</p>
+                </i></b>
+            </p>
+            <div class="column_espacio"></div>
+
+            <p class="flex-container">
+                <p>En la <b><i>segunda</i></b> opcion veras lo mismo que cuando entras a jugar pero con los <b><i>cambios</i></b> que han hecho los <b><i>jugadores/bots.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p>En la <b><i>tercera</i></b> opcion <b><i>estableces la apuesta</i></b> que quieras pero <b><i>solo</i></b> lo puede hacer los jugadores/bots que <b><i>no</i></b> són <b><i>bancas.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p>En la <b><i>cuarta</i></b> opcion es para <b><i>pedir</i></b> que te den <b><i>carta,</i></b> cuando te dan una carta <b><i>luego</i></b> puedes <b><i>pedir otra</i></b> pero te <b><i>saldra</i></b> un <b><i>porcentaje</i></b> de cual es la <b><i>probabilidad de pasarse de 7.5</i></b> y <b><i>dependiendo</i></b> del <b><i>tipo de perfil</i></b> que seas te <b><i>pedira</i></b> una <b><i>confirmacion</i></b> de si estas <b><i>seguro</i></b> de <b><i>pedir otra carta.</i></b> Y cuando te <b><i>pasas</i></b> de <b><i>7.5 no </i></b> te deja pedir otra <b><i>carta.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p>En la <b><i>quinta</i></b> opcion es para <b><i>jugar ese turno</i></b> de forma <b><i>automatica.</i></b></p>
+            </p>
+            <p class="flex-container">
+                <p>En la <b><i>sexta</i></b> opcion te <b><i>plantas.</i></b></p>
+            </p>
+
+            <div class="column_espacio"></div>
+            
+            <p class="flex-container">
+                <p>Y este seria en <b><i>tu turno</i></b> pero si eres de los <b><i>ultimos</i></b> irias viendo como en que momento se plantan</p>
+            </p>
+        </div>
+    </div>
+
+    <div class="column_espacio"></div>
+
+    <!--Opcion 4-->
+    <div class="contenido">
+        <div class="column">
+            <div class="flex-container">
+                <h2>Opcion 0.4: Ranking</h2>
+            </div>
+            <div class="flex-container">
+                <img src="imagenes/ranking.png" alt="imagen_ranking">
+            </div>
+            <p class="flex-container">
+                <p>Aqui se mostrara un <b><i>ranking unico</i></b> pero <b><i>ordenado</i></b> de <b><i>diferentes maneras,</i></b> que los explicare en los siguientes puntos. Y todos los rankings tienen <b><i>dos opciones</i></b> que son las siguientes:</p>
+            </p>
+            <div class="flex-container">
+                <div class="column">
+                    <p class="left-dot">Los rankings pueden llegar a ser bastante grandes y no caven en la pantalla. Entonces existe esta opcion para ello, si le das a <b><i>"+"</i></b> te saldra la <b><i>parte</i></b> que <b><i>no</i></b> puedes <b><i>ver</i></b>. Y si quieres volver a la <b><i>parte</i></b> del <b><i>ranking anterior</i></b> entonces en  lugar de "+" le tendras que dar <b><i>"-".</i></b></p>
+                    <p class="left-dot">Si le das a <b><i>"exit"</i></b> te saldras del ranking y volveras al menú de <b><i>0.4: Ranking.</i></b></p>
+                </div>  
+            </div>
+
+            <div class="column_espacio"></div>
+            
+            <div class="flex-container">
+                <h3>Opcion 4.1: Players with more earnings</h3>
+            </div>
+            <p class="flex-container">
+                <p>Aqui se mostrara un ranking que estara <b><i>ordenado</i></b> por <b><i>puntos</i></b> de <b><i>mayor a menor.</i></b></p>
+            </p>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <h3>Opcion 4.2: Players With More Games Played</h3>
+            </div>
+            <P class="flex-container">
+                <p>Aqui se mostrara por <b><i>partidas jugadas.</i></b></p>
+            </P>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <h3>Opcion 4.3: Players With More Minutes Played</h3>
+            </div>
+            <p class="flex-container">
+                <p>Y en este ultimo se vera ordenado por los <b><i>minutos</i></b> que han <b><i>jugado.</i></b></p>
+            </p>
+
+            <div class="column_espacio"></div>
+            
+            <div class="flex-container">
+                <h3>Opcion 4.4: Go back</h3>
+            </div>
+            <p class="flex-container">
+                <P>Aqui sera como en todos los menús, en esta opcion <b><i>vuelves</i></b> al <b><i>menú principal.</i></b></P>
+            </p>
+        </div>
+    </div>
+
+    <div class="column_espacio"></div>
+    <!--Opcion 5-->
+    <div class="contenido">
+        <div class="column">
+            <div class="flex-container">
+                <h2>Opcion 0.5: Reports</h2>
+            </div>
+            <div class="flex-container">
+                <img src="imagenes/reportes.png" alt="imagen_ reportes">
+            </div>
+        </div>
+    </div>
+
+    <div class="column_espacio"></div>
+    <!--Opcion 6-->
+    <div class="contenido">
+        <div class="column">
+            <div class="flex-container">
+                <h2>Opcion 0.6: Exit</h2>
+            </div>
+
+            <div class="flex-container">
+                <img src="imagenes/exit.png" alt="imagen_ exit">
+            </div>
+            <p class="flex-container">
+                <p>Y esta seria la ultima opcion que te permite <b><i>salir</i></b> del juego.</p>
+            </p>
+        </div>
+    </div>
+
+    <div class="column_espacio"></div>
     <footer class = "footer"><center>&copy; Marc, Yeray, Diego y Gerard</center></footer>
 
 </body>
