@@ -14,23 +14,24 @@ def mostrar_titulo_settings():
     """)
 
 def elegir_baraja():
-    print("\nElige una baraja:")
-    print("1) Baraja Española")
-    print("2) Baraja de Poker")
-    try:
-        eleccion = int(input("\nOpción: "))
-        if eleccion == 1:
-            print("\nHas elegido la Baraja Española.")
-            return baraja_española
-        elif eleccion == 2:
-            print("\nHas elegido la Baraja de Poker.")
-            return baraja_poker
+    print("\nElige una baraja:\n1) Baraja Española\n2) Baraja de Poker\n3) Go back")
+    correcto = False
+    while correcto == False:    
+        eleccion = input("\nOpción: ")
+        if eleccion.isdigit():
+            eleccion = int(eleccion)
+            if 1 >= eleccion <= 3:
+                correcto = True
         else:
-            print("Opción inválida. Inténtalo de nuevo.")
-            return elegir_baraja()
-    except ValueError:
-        print("Por favor, introduce un número válido.")
-        return elegir_baraja()
+            print("Por favor, introduce un número.")
+    if eleccion == 1:
+        
+    elif eleccion == 2:
+        
+    
+    
+
+def elegir_dificultad():
 
 def crear_set_jugadores():
     perfiles = ['Cautious', 'Moderated', 'Bold']

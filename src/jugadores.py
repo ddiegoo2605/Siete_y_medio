@@ -2,6 +2,11 @@
 jugadores = {}
 bots = {}
 jugadores_rankings = {}
+cardgame = {}
+player_game = {}
+player_game_round = {}
+id_game = 0
+seted_player = []
 def imprimir_titulo(titulo):
     largo_titulo = len(titulo)
     margen = 20
