@@ -5,9 +5,19 @@ from Utilidades import menu_settings
 import random
 import os
 import cartas
+
 from juego import jugar_partida
 
 #Funciones
+
+import conexion
+#Imports
+
+
+
+
+
+
 def menu_principal():
     while True:
         print(titulo_menu_principal())      
@@ -53,6 +63,20 @@ def primera_opcion():
     flg00 = True
     while flg00:
         print(titulo_players()) 
+
+        opciones = [
+            "\n",
+            "\n",
+            "1) New Human Player",
+            "2) New Boot",
+            "3) Show/Remove Player",
+            "4) Go back",
+        ]
+        
+        for opcion in opciones:
+            print(opcion.center(calcular_ancho_terminal()))
+
+
         menu = [
         "\n",
         "\n",
@@ -66,7 +90,11 @@ def primera_opcion():
         
         correcto = False
         while correcto == False:
+
                 option = input("Option:\n".center(calcular_ancho_terminal()))
+
+                option = input("\n"+"Selecciona una opción (1-4): ".center(calcular_ancho_terminal()))
+
                 if option.isdigit():
                     num_opcion = int(option)
                     if 1 <= num_opcion <= 4:
@@ -78,7 +106,6 @@ def primera_opcion():
                     print("Por favor, introduce un número válido (entero).")
         if num_opcion == 1:
             new_human_player()
-            
         elif num_opcion == 2:
             new_boot()
         elif num_opcion == 3:
@@ -137,15 +164,21 @@ def new_human_player():
     correcto = False
     while correcto == False:    
         crear = input("Is ok ? Y/n:")
-        if crear == 'Y':
+        if crear == 'Y' or crear == 'y':
             jugadores.jugadores[nif] = jugador
+            agregar_jugador_bdd(jugador,nif,quien = "jugadores")
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
+
             primera_opcion()
             return
+        elif crear == 'n' or crear == 'N':
+            primera_opcion()
+
+            return primera_opcion()
         elif crear == 'n':
-            primera_opcion()
+
             correcto = True
-            return
+            return primera_opcion()
         else:
             print("Invalid option")
 
@@ -178,6 +211,7 @@ def new_boot():
                 print(f"¡Número válido: {num_opcion}!")
                 break
             else:
+
                 print("El número no está entre 1 y 3. Inténtalo de nuevo.")
         else:
             print("Por favor, introduce un número válido (entero).")
@@ -207,13 +241,50 @@ def new_boot():
             print("Creación de Bot cancelada.")
             primera_opcion()
             return
+
+                print("Por favor, introduce un número válido (entero).")
+
+    if num_opcion == 1:
+        jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}
+        jugadores.jugadores_rankings[nif] = {"earnings": 0 , "games": 0, "minutes":0 }
+    elif num_opcion == 2:
+        jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":40,"bet":0,"points":0,"cards":[],"roundPoints":0}
+        jugadores.jugadores_rankings[nif] = {"earnings": 0 , "games": 0, "minutes":0 }
+    elif num_opcion == 3:
+        jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":30,"bet":0,"points":0,"cards":[],"roundPoints":0}
+        jugadores.jugadores_rankings[nif] = {"earnings": 0 , "games": 0, "minutes":0 }
+    correcto = False
+    while correcto == False:    
+        crear = input("Is ok ? Y/n:")
+        if crear == 'Y' or crear == 'y':
+            jugadores.bots[nif] = jugador
+            agregar_jugador_bdd(jugador, nif, quien="bots")
+            #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
+            correcto = True
+
+            primera_opcion()
+            return
+        elif crear == 'n' or crear == 'N':
+            primera_opcion()
+
+            return primera_opcion()
+        elif crear == 'n':
+
+            correcto = True
+            return primera_opcion()
+            
         else:
             print("opción no válida. Introduce 'y' o 'n'.")
 
 def show_players():
-    dnis_bots = list(jugadores.bots.keys())
-    dnis = list(jugadores.jugadores.keys())
-    i = -1
+    dnis_bots = []
+    dnis = []
+    cursor = conexion.conexion.cursor()
+    cursor.execute("SELECT id, nombre, tipo FROM jugadores")
+    usuarios = cursor.fetchall()
+    for id in usuarios:
+        dnis_bots += [id,]
+    print(dnis_bots)
     
     if len(jugadores.jugadores) < len(jugadores.bots):
        tamano = len(jugadores.bots)
@@ -231,7 +302,7 @@ def show_players():
                     type_bot = "Moderated"
                 elif jugadores.bots[dnis_bots[i]]["type"] == 30:
                     type_bot = "Bold"
-                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
+                print(f"{dnis_bots[i]}" +f" {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
             else:
                 if jugadores.bots[dnis_bots[i]]["type"] == 50:
                     type_bot = "Ambicious"
@@ -255,7 +326,7 @@ def show_players():
                     type = "Moderated"
                 elif jugadores.jugadores[dnis[i]]["type"] == 30:
                     type = "Bold"
-                print(f"{dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type}")
+                print(f"{dnis[i]}" +f"{jugadores.jugadores[dnis[i]]['name']} {type}")
             else:
                 if jugadores.bots[dnis_bots[i]]["type"] == 50:
                     type_bot = "Ambicious"
@@ -592,5 +663,27 @@ def ordenar_diccionario(diccionario,criterio ="",orden="asc",):
                             claves[i + 1] = aux
                 if not cambios:
                     return claves
+
+                
+def agregar_jugador_bdd(jugador,nif,quien = ""):
+    lista_valores = list(jugador.values())
+    cursor = conexion.conexion.cursor()
+    consulta_instert = f"""
+        INSERT INTO {quien} (id, nombre, human, bank, initialCard, priority, tipo, bet, points, card, roundPoints)
+        VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+""" 
+    valores = (nif,)
+    for i in range(len(lista_valores)):
+        if type(lista_valores[i]) == list:
+            valores += (str(lista_valores[i]),)            
+        else:
+            valores += (lista_valores[i],)
+    cursor.execute(consulta_instert, valores)
+    conexion.conexion.commit()
+    cursor.close()
+
+
+
     
 menu_principal()
+
