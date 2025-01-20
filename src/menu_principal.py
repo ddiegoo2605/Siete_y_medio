@@ -133,7 +133,7 @@ def new_human_player():
         crear = input("Is ok ? Y/n:")
         if crear == 'Y':
             jugadores.jugadores[nif] = jugador
-            agregar_jugador_bdd(jugador,nif)
+            agregar_jugador_bdd(jugador,nif,quien = "jugadores")
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
             return primera_opcion()
         elif crear == 'n':
@@ -187,6 +187,7 @@ def new_boot():
         crear = input("Is ok ? Y/n:")
         if crear == 'Y':
             jugadores.bots[nif] = jugador
+            agregar_jugador_bdd(jugador, nif, quien="bots")
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
             correcto = True
             return primera_opcion()
@@ -198,9 +199,14 @@ def new_boot():
             print("Invalid option")
 
 def show_players():
-    dnis_bots = list(jugadores.bots.keys())
-    dnis = list(jugadores.jugadores.keys())
-    i = -1
+    dnis_bots = []
+    dnis = []
+    cursor = conexion.conexion.cursor()
+    cursor.execute("SELECT id, nombre, tipo FROM jugadores")
+    usuarios = cursor.fetchall()
+    for id in usuarios:
+        dnis_bots += [id,]
+    print(dnis_bots)
     
     if len(jugadores.jugadores) < len(jugadores.bots):
        tamano = len(jugadores.bots)
@@ -242,7 +248,7 @@ def show_players():
                     type = "Moderated"
                 elif jugadores.jugadores[dnis[i]]["type"] == 30:
                     type = "Bold"
-                print(f"{dnis[i]}".ljust(75) +f"{jugadores.jugadores[dnis[i]]['name']} {type}")
+                print(f"{dnis[i]}" +f"{jugadores.jugadores[dnis[i]]['name']} {type}")
             else:
                 if jugadores.bots[dnis_bots[i]]["type"] == 50:
                     type_bot = "Ambicious"
@@ -561,11 +567,11 @@ def ordenar_diccionario(diccionario,criterio ="",orden="asc",):
                 if not cambios:
                     return claves
                 
-def agregar_jugador_bdd(jugador,nif):
+def agregar_jugador_bdd(jugador,nif,quien = ""):
     lista_valores = list(jugador.values())
     cursor = conexion.conexion.cursor()
-    consulta_instert = """
-        INSERT INTO jugadores (id, nombre, human, bank, initialCard, priority, tipo, bet, points, card, roundPoints)
+    consulta_instert = f"""
+        INSERT INTO {quien} (id, nombre, human, bank, initialCard, priority, tipo, bet, points, card, roundPoints)
         VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
 """ 
     valores = (nif,)
@@ -577,5 +583,7 @@ def agregar_jugador_bdd(jugador,nif):
     cursor.execute(consulta_instert, valores)
     conexion.conexion.commit()
     cursor.close()
-    
+
+
+
 menu_principal()
