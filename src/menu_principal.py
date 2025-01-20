@@ -1,6 +1,6 @@
 from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
 import jugadores
-import Utilidades
+from Utilidades import menu_settings
 import random
 
 import os
@@ -8,7 +8,7 @@ import os
 #Imports
 #Funciones
 import cartas
-
+import conexion
 #Imports
 
 
@@ -40,13 +40,12 @@ def menu_principal():
         if seleccion == '1':
             return primera_opcion()
         elif seleccion == '2':
-            Utilidades.menu_settings()
-            return menu_settings()
-            print("Jugar. Todavia falta por implementar")
+            menu_settings()
+            
         elif seleccion == '3':
             print("Jugar. Todavia falta por implementar")
         elif seleccion == '4':
-            print("Estadísticas. Todavia falta por implementar")
+            cuarta_opcion()
         elif seleccion == '5':
             print("Reportes. Todavia falta por implementar")
         elif seleccion == '6':
@@ -61,6 +60,7 @@ def primera_opcion():
     flg00 = True
     while flg00:
         print(titulo_players()) 
+
         opciones = [
             "\n",
             "\n",
@@ -73,6 +73,18 @@ def primera_opcion():
         for opcion in opciones:
             print(opcion.center(calcular_ancho_terminal()))
 
+
+        menu = [
+        "\n",
+        "\n",
+        "1)New Human Player",
+        "2)New Boot",
+        "3)Show/Remove Player",
+        "4)Go Back",
+        ]
+        for opcion in menu:
+            print(opcion.center(calcular_ancho_terminal())) 
+        
         correcto = False
         while correcto == False:
                 option = input("\n"+"Selecciona una opción (1-4): ".center(calcular_ancho_terminal()))
@@ -87,7 +99,6 @@ def primera_opcion():
                     print("Por favor, introduce un número válido (entero).")
         if num_opcion == 1:
             new_human_player()
-            
         elif num_opcion == 2:
             new_boot()
         elif num_opcion == 3:
@@ -148,13 +159,19 @@ def new_human_player():
         crear = input("Is ok ? Y/n:")
         if crear == 'Y' or crear == 'y':
             jugadores.jugadores[nif] = jugador
+            agregar_jugador_bdd(jugador,nif,quien = "jugadores")
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
+
             primera_opcion()
             return
         elif crear == 'n' or crear == 'N':
             primera_opcion()
+
+            return primera_opcion()
+        elif crear == 'n':
+
             correcto = True
-            return
+            return primera_opcion()
         else:
             print("Invalid option")
 
@@ -203,21 +220,33 @@ def new_boot():
         crear = input("Is ok ? Y/n:")
         if crear == 'Y' or crear == 'y':
             jugadores.bots[nif] = jugador
+            agregar_jugador_bdd(jugador, nif, quien="bots")
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
             correcto = True
+
             primera_opcion()
             return
         elif crear == 'n' or crear == 'N':
             primera_opcion()
+
+            return primera_opcion()
+        elif crear == 'n':
+
             correcto = True
-            return
+            return primera_opcion()
+            
         else:
             print("Invalid option")
 
 def show_players():
-    dnis_bots = list(jugadores.bots.keys())
-    dnis = list(jugadores.jugadores.keys())
-    i = -1
+    dnis_bots = []
+    dnis = []
+    cursor = conexion.conexion.cursor()
+    cursor.execute("SELECT id, nombre, tipo FROM jugadores")
+    usuarios = cursor.fetchall()
+    for id in usuarios:
+        dnis_bots += [id,]
+    print(dnis_bots)
     
     if len(jugadores.jugadores) < len(jugadores.bots):
        tamano = len(jugadores.bots)
@@ -235,7 +264,7 @@ def show_players():
                     type_bot = "Moderated"
                 elif jugadores.bots[dnis_bots[i]]["type"] == 30:
                     type_bot = "Bold"
-                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
+                print(f"{dnis_bots[i]}" +f" {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
             else:
                 if jugadores.bots[dnis_bots[i]]["type"] == 50:
                     type_bot = "Ambicious"
@@ -259,7 +288,7 @@ def show_players():
                     type = "Moderated"
                 elif jugadores.jugadores[dnis[i]]["type"] == 30:
                     type = "Bold"
-                print(f"{dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type}")
+                print(f"{dnis[i]}" +f"{jugadores.jugadores[dnis[i]]['name']} {type}")
             else:
                 if jugadores.bots[dnis_bots[i]]["type"] == 50:
                     type_bot = "Ambicious"
@@ -292,39 +321,6 @@ def show_players():
 #FALTA IMPLEMENTAR UNA FUNCION QUE ELIMINE LOS JUGADORES
 
 #    SEGUNDA OPCIÓN
-
-def mostrar_titulo_settings():
-    print("""
-     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗  ███████╗
-     ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝  ██╔════╝
-     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗ ███████╗  
-     ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║ ╚════██║  
-     ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝ ███████║
-     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚══════╝  
-    """)
-
-def menu_settings():
-    mostrar_titulo_settings()
-    print("1) Set Game Players\n2) Set Card's Deck\n3) Set Max Rounds (Default 5 Rounds)\n4) Go back")
-    correcto = False
-    while correcto == False:
-        eleccion = input("\nOption: ")
-        if eleccion.isdigit():
-            eleccion = int(eleccion)
-            if 1 <= eleccion <= 4:
-                correcto = True
-            else:
-                print("Opción no válida. Intentalo de nuevo.")
-        else:
-            print("Por favor, introduce un número.")
-    if eleccion == 1:
-        return set_game_players()
-    elif eleccion == 2:
-        return
-    elif eleccion == 3:
-        return
-    elif eleccion == 4:
-        return menu_principal()
 
 def set_game_players():
     show_seted_players()
@@ -438,20 +434,29 @@ def playGame():
 #   CUARTA OPCIÓN
 
 def cuarta_opcion():
-    menu = "1)Players With More Earnings\n2)Players With More Gmes Played\n3)Players With More Minutes Played\4)Go back"
-    print(menu)
+    print(titulo_ranking()) 
+    menu =[ 
+        "\n",
+        "\n",
+        "1)Players With More Earnings",
+        "2)Players With More Gmes Played",
+        "3)Players With More Minutes Played",
+        "4)Go back",
+    ]
+    for opcion in menu:
+        print(opcion.center(calcular_ancho_terminal()))
     correcto = False
     while correcto == False:
-        option = input("Option:\n")
+        option = input("Option:\n".center(calcular_ancho_terminal()))
         if option.isdigit():
             num_opcion = int(option)
             if 1 <= num_opcion <= 4:
                 print(f"Número válido: {num_opcion}!")
                 correcto = True 
             else:
-                print("El número no está entre 1 y 4. Inténtalo de nuevo.")
+                print("El número no está entre 1 y 4. Inténtalo de nuevo.".center(calcular_ancho_terminal()))
         else:
-            print("Por favor, introduce un número válido (entero).")
+            print("Por favor, introduce un número válido (entero).").center(calcular_ancho_terminal())  
     if num_opcion == 1:
        return players_with_more_earnigns()
     elif num_opcion == 2:
@@ -620,5 +625,27 @@ def ordenar_diccionario(diccionario,criterio ="",orden="asc",):
                             claves[i + 1] = aux
                 if not cambios:
                     return claves
+
+                
+def agregar_jugador_bdd(jugador,nif,quien = ""):
+    lista_valores = list(jugador.values())
+    cursor = conexion.conexion.cursor()
+    consulta_instert = f"""
+        INSERT INTO {quien} (id, nombre, human, bank, initialCard, priority, tipo, bet, points, card, roundPoints)
+        VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+""" 
+    valores = (nif,)
+    for i in range(len(lista_valores)):
+        if type(lista_valores[i]) == list:
+            valores += (str(lista_valores[i]),)            
+        else:
+            valores += (lista_valores[i],)
+    cursor.execute(consulta_instert, valores)
+    conexion.conexion.commit()
+    cursor.close()
+
+
+
     
 menu_principal()
+
