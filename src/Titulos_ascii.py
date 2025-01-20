@@ -73,3 +73,22 @@ def titulo_ranking():
     lineas = titulo_ranking.splitlines()
     titulo_centrado = "\n".join([Linea.center(ancho_terminal) for Linea in lineas])
     return titulo_centrado
+
+def titulo_goodbye():
+    titulo_goodbye = r"""
+
+  ______    ______    ______   _______           _______   __      __  ________ 
+ /      \  /      \  /      \ |       \         |       \ |  \    /  \|        \
+|  $$$$$$\|  $$$$$$\|  $$$$$$\| $$$$$$$\        | $$$$$$$\ \$$\  /  $$| $$$$$$$$
+| $$ __\$$| $$  | $$| $$  | $$| $$  | $$ ______ | $$__/ $$  \$$\/  $$ | $$__    
+| $$|    \| $$  | $$| $$  | $$| $$  | $$|      \| $$    $$   \$$  $$  | $$  \   
+| $$ \$$$$| $$  | $$| $$  | $$| $$  | $$ \$$$$$$| $$$$$$$\    \$$$$   | $$$$$   
+| $$__| $$| $$__/ $$| $$__/ $$| $$__/ $$        | $$__/ $$    | $$    | $$_____ 
+ \$$    $$ \$$    $$ \$$    $$| $$    $$        | $$    $$    | $$    | $$     \
+  \$$$$$$   \$$$$$$   \$$$$$$  \$$$$$$$          \$$$$$$$      \$$     \$$$$$$$$
+                                                                                                                                                                                                                                              
+"""
+    ancho_terminal = calcular_ancho_terminal()
+    lineas = titulo_goodbye.splitlines()
+    titulo_centrado = "\n".join([Linea.center(ancho_terminal) for Linea in lineas])
+    return titulo_centrado
