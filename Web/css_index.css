@@ -191,7 +191,8 @@ section {
 	width: 7.5%; /* Sets the image to take up 40% of the container width */
 	margin: 5px; /* Adds space around the image */
 	max-width: 100%;  /*Ensures the image doesn't overflow its container */
-	height: auto; /* Keeps the image aspect ratio intact */
+  width: 100px;
+  height: 100px;
 }
 
 header {
@@ -229,7 +230,7 @@ header {
   border: 2px solid black;
   width: 300px;
   height: 300px;
-  border-radius: 50%;
+  border-radius: 100%;
   overflow: hidden;
   margin: 0 auto;
 }
