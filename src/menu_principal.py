@@ -60,6 +60,20 @@ def primera_opcion():
     flg00 = True
     while flg00:
         print(titulo_players()) 
+
+        opciones = [
+            "\n",
+            "\n",
+            "1) New Human Player",
+            "2) New Boot",
+            "3) Show/Remove Player",
+            "4) Go back",
+        ]
+        
+        for opcion in opciones:
+            print(opcion.center(calcular_ancho_terminal()))
+
+
         menu = [
         "\n",
         "\n",
@@ -73,7 +87,7 @@ def primera_opcion():
         
         correcto = False
         while correcto == False:
-                option = input("Option:\n")
+                option = input("\n"+"Selecciona una opción (1-4): ".center(calcular_ancho_terminal()))
                 if option.isdigit():
                     num_opcion = int(option)
                     if 1 <= num_opcion <= 4:
@@ -143,12 +157,19 @@ def new_human_player():
     correcto = False
     while correcto == False:    
         crear = input("Is ok ? Y/n:")
-        if crear == 'Y':
+        if crear == 'Y' or crear == 'y':
             jugadores.jugadores[nif] = jugador
             agregar_jugador_bdd(jugador,nif,quien = "jugadores")
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
+
+            primera_opcion()
+            return
+        elif crear == 'n' or crear == 'N':
+            primera_opcion()
+
             return primera_opcion()
         elif crear == 'n':
+
             correcto = True
             return primera_opcion()
         else:
@@ -197,13 +218,20 @@ def new_boot():
     correcto = False
     while correcto == False:    
         crear = input("Is ok ? Y/n:")
-        if crear == 'Y':
+        if crear == 'Y' or crear == 'y':
             jugadores.bots[nif] = jugador
             agregar_jugador_bdd(jugador, nif, quien="bots")
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
             correcto = True
+
+            primera_opcion()
+            return
+        elif crear == 'n' or crear == 'N':
+            primera_opcion()
+
             return primera_opcion()
         elif crear == 'n':
+
             correcto = True
             return primera_opcion()
             
