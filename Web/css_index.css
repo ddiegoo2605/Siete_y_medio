@@ -201,13 +201,12 @@ section {
 
 .float-image-left {
 	float: left; /* Aligns the image to the left side */
-	width: 7.5%; /* Sets the image to take up 40% of the container width */
+	width: 15%; /* Sets the image to take up 40% of the container width */
 	margin: 5px; /* Adds space around the image */
-	max-width: 100%;  /*Ensures the image doesn't overflow its container */
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
+	max-width: 5%;  /*Ensures the image doesn't overflow its container */
+  height: auto;
 }
+
 
 header {
   display: flex;
@@ -241,17 +240,11 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
   width: 300px;
   height: 300px;
-  border-radius: 100%;
+  border-radius: 20px;
   overflow: hidden;
-  margin: 0 auto;
-}
-
-.container_foto imagen{
-  max-width: 100%;
-  height: auto;
+  margin: auto;
 }
 
  /* Estilo del contenedor del carrusel */
@@ -592,11 +585,11 @@ flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
     display: none; /* Oculta el menú por defecto */
     position: absolute;
     top: 60px;
-    left: 0;
+    align-items: center;
     background-color: #333;
-    width: 100%;
+    width: auto;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    padding: 10px;
+    padding: auto;
     flex-direction: column;
 }
 
@@ -607,4 +600,5 @@ flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
 .menu li {
     margin: 10px 0;
 }
+
 }
