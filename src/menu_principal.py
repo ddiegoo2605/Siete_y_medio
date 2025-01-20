@@ -1,6 +1,6 @@
 from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
 import jugadores
-import Utilidades
+from Utilidades import menu_settings
 import random
 
 import os
@@ -40,13 +40,12 @@ def menu_principal():
         if seleccion == '1':
             return primera_opcion()
         elif seleccion == '2':
-            Utilidades.menu_settings()
-            return menu_settings()
-            print("Jugar. Todavia falta por implementar")
+            menu_settings()
+            
         elif seleccion == '3':
             print("Jugar. Todavia falta por implementar")
         elif seleccion == '4':
-            print("Estadísticas. Todavia falta por implementar")
+            cuarta_opcion()
         elif seleccion == '5':
             print("Reportes. Todavia falta por implementar")
         elif seleccion == '6':
@@ -60,12 +59,18 @@ def menu_principal():
 def primera_opcion():
     flg00 = True
     while flg00:
-        menu = """
-        1)New Human Player
-        2)New Boot
-        3)Show/Remove Player
-        4)Go Back"""
-        print(menu)
+        print(titulo_players()) 
+        menu = [
+        "\n",
+        "\n",
+        "1)New Human Player",
+        "2)New Boot",
+        "3)Show/Remove Player",
+        "4)Go Back",
+        ]
+        for opcion in menu:
+            print(opcion.center(calcular_ancho_terminal())) 
+        
         correcto = False
         while correcto == False:
                 option = input("Option:\n")
@@ -286,39 +291,6 @@ def show_players():
 
 #    SEGUNDA OPCIÓN
 
-def mostrar_titulo_settings():
-    print("""
-     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗  ███████╗
-     ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝  ██╔════╝
-     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗ ███████╗  
-     ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║ ╚════██║  
-     ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝ ███████║
-     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚══════╝  
-    """)
-
-def menu_settings():
-    mostrar_titulo_settings()
-    print("1) Set Game Players\n2) Set Card's Deck\n3) Set Max Rounds (Default 5 Rounds)\n4) Go back")
-    correcto = False
-    while correcto == False:
-        eleccion = input("\nOption: ")
-        if eleccion.isdigit():
-            eleccion = int(eleccion)
-            if 1 <= eleccion <= 4:
-                correcto = True
-            else:
-                print("Opción no válida. Intentalo de nuevo.")
-        else:
-            print("Por favor, introduce un número.")
-    if eleccion == 1:
-        return set_game_players()
-    elif eleccion == 2:
-        return
-    elif eleccion == 3:
-        return
-    elif eleccion == 4:
-        return menu_principal()
-
 def set_game_players():
     show_seted_players()
     jugadores.imprimir_titulo("SET PLAYERS")
@@ -431,20 +403,29 @@ def playGame():
 #   CUARTA OPCIÓN
 
 def cuarta_opcion():
-    menu = "1)Players With More Earnings\n2)Players With More Gmes Played\n3)Players With More Minutes Played\4)Go back"
-    print(menu)
+    print(titulo_ranking()) 
+    menu =[ 
+        "\n",
+        "\n",
+        "1)Players With More Earnings",
+        "2)Players With More Gmes Played",
+        "3)Players With More Minutes Played",
+        "4)Go back",
+    ]
+    for opcion in menu:
+        print(opcion.center(calcular_ancho_terminal()))
     correcto = False
     while correcto == False:
-        option = input("Option:\n")
+        option = input("Option:\n".center(calcular_ancho_terminal()))
         if option.isdigit():
             num_opcion = int(option)
             if 1 <= num_opcion <= 4:
                 print(f"Número válido: {num_opcion}!")
                 correcto = True 
             else:
-                print("El número no está entre 1 y 4. Inténtalo de nuevo.")
+                print("El número no está entre 1 y 4. Inténtalo de nuevo.".center(calcular_ancho_terminal()))
         else:
-            print("Por favor, introduce un número válido (entero).")
+            print("Por favor, introduce un número válido (entero).").center(calcular_ancho_terminal())  
     if num_opcion == 1:
        return players_with_more_earnigns()
     elif num_opcion == 2:
