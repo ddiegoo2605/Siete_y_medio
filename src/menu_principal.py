@@ -1,6 +1,11 @@
 import jugadores
 import random
+import cartas
+
 #Imports
+
+
+
 
 
 def menu_principal():
@@ -30,8 +35,9 @@ def menu_principal():
         seleccion = input("\n"+ espacio +"Selecciona una opción (1-6): ")
 
         if seleccion == '1':
-           primera_opcion()
+            return primera_opcion()
         elif seleccion == '2':
+            return menu_settings()
             print("Jugar. Todavia falta por implementar")
         elif seleccion == '3':
             print("Jugar. Todavia falta por implementar")
@@ -71,7 +77,7 @@ def primera_opcion():
         elif num_opcion == 2:
             new_boot()
         elif num_opcion == 3:
-            show_remove()
+            show_players()
         elif num_opcion == 4:
             flg00 = False
             return menu_principal()
@@ -146,7 +152,7 @@ def new_boot():
     print(f"Name: \t\t{name}")
     es_unico = False
     while es_unico == False:
-        nif = nif_random
+        nif = nif_random()
         claves_nif = list(jugadores.jugadores.keys())
         existentes = 0
         for i in range(len(claves_nif)):
@@ -194,81 +200,183 @@ def new_boot():
         else:
             print("Invalid option")
 
-def show_remove():
-    jugadores.imprimir_titulo("SHOW REMOVE")
+def show_players():
     dnis_bots = list(jugadores.bots.keys())
     dnis = list(jugadores.jugadores.keys())
-    for i in range(len(jugadores.bots)):
-        print(i)
-        if jugadores.bots[dnis_bots[i]]["type"] == 50:
-            type_bot = "Ambicious"
-        elif jugadores.bots[dnis_bots[i]]["type"] == 40:
-            type_bot = "Moderated"
-        elif jugadores.bots[dnis_bots[i]]["type"] == 30:
-            type_bot = "Bold"
-        if jugadores.jugadores[dnis[i]]["type"] == 50:
-            type = "Ambicious"
-        elif jugadores.jugadores[dnis[i]]["type"] == 40:
-            type = "Moderated"
-        elif jugadores.jugadores[dnis[i]]["type"] == 30:
-            type = "Bold"
+    i = -1
+    
+    if len(jugadores.jugadores) < len(jugadores.bots):
+       tamano = len(jugadores.bots)
+    elif len(jugadores.jugadores) > len(jugadores.bots):
+        tamano = len(jugadores.jugadores)
+    else:
+        tamano = len(jugadores.jugadores) 
+    for i in range(tamano):
         if len(jugadores.bots) > len(jugadores.jugadores):
-            if i >= len(jugadores.jugadores) + 1:
+            
+            if i >= len(jugadores.jugadores):
+                if jugadores.bots[dnis_bots[i]]["type"] == 50:
+                    type_bot = "Ambicious"
+                elif jugadores.bots[dnis_bots[i]]["type"] == 40:
+                    type_bot = "Moderated"
+                elif jugadores.bots[dnis_bots[i]]["type"] == 30:
+                    type_bot = "Bold"
                 print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
             else:
+                if jugadores.bots[dnis_bots[i]]["type"] == 50:
+                    type_bot = "Ambicious"
+                elif jugadores.bots[dnis_bots[i]]["type"] == 40:
+                    type_bot = "Moderated"
+                elif jugadores.bots[dnis_bots[i]]["type"] == 30:
+                    type_bot = "Bold"
+                if jugadores.jugadores[dnis[i]]["type"] == 50:
+                    type = "Ambicious"
+                elif jugadores.jugadores[dnis[i]]["type"] == 40:
+                    type = "Moderated"
+                elif jugadores.jugadores[dnis[i]]["type"] == 30:
+                    type = "Bold"
                 print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
 
         elif len(jugadores.bots) < len(jugadores.jugadores):
-            if i >= len(jugadores.bots) + 1:
+            if i >= len(jugadores.bots):
+                if jugadores.jugadores[dnis[i]]["type"] == 50:
+                    type = "Ambicious"
+                elif jugadores.jugadores[dnis[i]]["type"] == 40:
+                    type = "Moderated"
+                elif jugadores.jugadores[dnis[i]]["type"] == 30:
+                    type = "Bold"
                 print(f"{dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type}")
             else:
+                if jugadores.bots[dnis_bots[i]]["type"] == 50:
+                    type_bot = "Ambicious"
+                elif jugadores.bots[dnis_bots[i]]["type"] == 40:
+                    type_bot = "Moderated"
+                elif jugadores.bots[dnis_bots[i]]["type"] == 30:
+                    type_bot = "Bold"
+                if jugadores.jugadores[dnis[i]]["type"] == 50:
+                    type = "Ambicious"
+                elif jugadores.jugadores[dnis[i]]["type"] == 40:
+                    type = "Moderated"
+                elif jugadores.jugadores[dnis[i]]["type"] == 30:
+                    type = "Bold"
                 print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
         else:
+            if jugadores.bots[dnis_bots[i]]["type"] == 50:
+                type_bot = "Ambicious"
+            elif jugadores.bots[dnis_bots[i]]["type"] == 40:
+                type_bot = "Moderated"
+            elif jugadores.bots[dnis_bots[i]]["type"] == 30:
+                type_bot = "Bold"
+            if jugadores.jugadores[dnis[i]]["type"] == 50:
+                type = "Ambicious"
+            elif jugadores.jugadores[dnis[i]]["type"] == 40:
+                type = "Moderated"
+            elif jugadores.jugadores[dnis[i]]["type"] == 30:
+                type = "Bold"
             print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
 
-
+#FALTA IMPLEMENTAR UNA FUNCION QUE ELIMINE LOS JUGADORES
 
 #    SEGUNDA OPCIÓN
 
+def mostrar_titulo_settings():
+    print("""
+     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗  ███████╗
+     ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝  ██╔════╝
+     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗ ███████╗  
+     ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║ ╚════██║  
+     ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝ ███████║
+     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚══════╝  
+    """)
 
+def menu_settings():
+    mostrar_titulo_settings()
+    print("1) Set Game Players\n2) Set Card's Deck\n3) Set Max Rounds (Default 5 Rounds)\n4) Go back")
+    correcto = False
+    while correcto == False:
+        eleccion = input("\nOption: ")
+        if eleccion.isdigit():
+            eleccion = int(eleccion)
+            if 1 <= eleccion <= 4:
+                correcto = True
+            else:
+                print("Opción no válida. Intentalo de nuevo.")
+        else:
+            print("Por favor, introduce un número.")
+    if eleccion == 1:
+        return set_game_players()
+    elif eleccion == 2:
+        return
+    elif eleccion == 3:
+        return
+    elif eleccion == 4:
+        return menu_principal()
+
+def set_game_players():
+    show_seted_players()
+    jugadores.imprimir_titulo("SET PLAYERS")
+    show_players()
+    option = input("Option (id to add to game, -id to remove player, sh to show actual players in game, -1 to go back:")
+    if option == "-1":
+        return menu_settings()
+    elif verificar_nif(option) == True or verificar_nif(option[1:]) == True:
+        lista_dnis = list(jugadores.jugadores.keys())
+        for i in range(len(list(lista_dnis))):
+            if lista_dnis[i] == option or lista_dnis[i] == option[1:]:
+                if option[0] == "-":
+                    del jugadores.player_game[option[1:]]
+                    print(f"Player {jugadores.jugadores[lista_dnis[i]]['name']} has been removed from the game")
+                else:
+                    name = jugadores.jugadores[option]["name"]
+                    human = jugadores.jugadores[option]["human"]
+                    type = jugadores.jugadores[option]["type"]
+                    jugador = {"name":name , "human":human , "type":type }
+                    jugadores.player_game[option] = jugador
+                    print(f"Player {name} has been added to the game")
+                    show_seted_players()
+                break
+        
+
+            
 
 #   TERCERA OPCIÓN
 
-def playGame():
-    set_cards = False
-    if set_cards == False:
-        print("Set cards first")
-        return menu_principal
-    else:
-        jugadores.imprimir_titulo("PLAY GAME")
-        menu = ("1)View Stats\n2)View Game Stats\n3)Set Bet\n4)Order Card\n5)Automatic Play\n6)Stand")
-        correcto = False
-        while correcto == False:
-            option = input("Option:\n")
-            if option.isdigit():
-                num_opcion = int(option)
-                if 1 <= num_opcion <= 6:
-                    print(f"Número válido: {num_opcion}!")
-                    correcto = True 
-                else:
-                    print("El número no está entre 1 y 6. Inténtalo de nuevo.")
-            else:
-                print("Por favor, introduce un número válido (entero).")
-        if num_opcion == 1:
-        
-        elif num_opcion == 2:
+#def playGame():
 
-        elif num_opcion == 3:
+    #set_cards = False
+   # if set_cards == False:
+  #      print("Set cards first")
+ #       return menu_principal
+#    else:
+      #  jugadores.imprimir_titulo("PLAY GAME")
+     #   menu = ("1)View Stats\n2)View Game Stats\n3)Set Bet\n4)Order Card\n5)Automatic Play\n6)Stand")
+    #    correcto = False
+   #     while correcto == False:
+          #  option = input("Option:\n")
+         #   if option.isdigit():
+        #        num_opcion = int(option)
+       #         if 1 <= num_opcion <= 6:
+      #              print(f"Número válido: {num_opcion}!")
+     #               correcto = True 
+    #            else:
+   #                 print("El número no está entre 1 y 6. Inténtalo de nuevo.")
+  #          else:
+ #               print("Por favor, introduce un número válido (entero).")
+        #if num_opcion == 1:
         
-        elif num_opcion == 4:
-        
-        elif num_opcion == 5:
-        
-        elif num_opcion == 6:
-            return menu_principal()
+        #elif num_opcion == 2:
 
-def humanRound(id, mazo):
-    
+        #elif num_opcion == 3:
+        
+        #elif num_opcion == 4:
+        
+        #elif num_opcion == 5:
+        
+        #elif num_opcion == 6:
+#            return menu_principal()
+
+#def humanRound(id, mazo):
+   
 
 #   CUARTA OPCIÓN
 
@@ -354,6 +462,29 @@ def verificar_nombre(name):
     else:
         print("Wrong Name. please, enter a name no empty with only letters")
         return False
+
+def show_seted_players():
+    if len(jugadores.player_game) == 0:
+        print("There is no players in game")
+        input("Enter to continue")
+    else:
+        for i in range(len(jugadores.player_game)):
+            nif = list(jugadores.player_game.keys())[i]
+            nif_jugadoresInGame = list(jugadores.player_game.keys())
+            name = jugadores.jugadores[nif_jugadoresInGame[i]]["name"]
+            if jugadores.jugadores[nif_jugadoresInGame[i]]["human"] == True:
+                human_boot = "Human"
+            else:
+                human_boot = "Boot"
+            if jugadores.jugadores[nif_jugadoresInGame[i]]["type"] == 50:
+                type = "Ambicious"
+            elif jugadores.jugadores[nif_jugadoresInGame[i]]["type"] == 40:
+                type = "Moderated"
+            elif jugadores.jugadores[nif_jugadoresInGame[i]]["type"] == 30:
+                type = "Bold"
+            print(f"{nif}     {name}    {human_boot}    {type}  ")
+        input("Enter to continue")
+    return 
 
 def ordenar_diccionario(diccionario,criterio ="",orden="asc",):
     claves = list(jugadores.jugadores_rankings.keys())
