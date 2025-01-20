@@ -6,13 +6,16 @@
     <title>Siete y medio</title>
     <link rel="stylesheet" href="css_index.css">
     <link rel="scriptsheet" href="js_index.js">
+    <script src="js_global.js"></script>
 </head>
 <body>
     
 
-    <header class="flex-container"> <img src="imagenes/logo.webp" alt="Logo" class="float-image-left">
+    <header> 
+        <img src="imagenes/logo.webp" alt="float-image-left" class="float-image-left">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
         <div class="navbar">
-            <nav>
+            <nav id="menu" class="menu">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="tutorial.html">Tutorial</a></li>
