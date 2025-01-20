@@ -8,7 +8,7 @@ import os
 #Imports
 #Funciones
 import cartas
-
+import conexion
 #Imports
 
 
@@ -85,7 +85,6 @@ def primera_opcion():
                     print("Por favor, introduce un número válido (entero).")
         if num_opcion == 1:
             new_human_player()
-            
         elif num_opcion == 2:
             new_boot()
         elif num_opcion == 3:
@@ -146,13 +145,12 @@ def new_human_player():
         crear = input("Is ok ? Y/n:")
         if crear == 'Y':
             jugadores.jugadores[nif] = jugador
+            agregar_jugador_bdd(jugador,nif,quien = "jugadores")
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
-            primera_opcion()
-            return
+            return primera_opcion()
         elif crear == 'n':
-            primera_opcion()
             correcto = True
-            return
+            return primera_opcion()
         else:
             print("Invalid option")
 
@@ -201,21 +199,26 @@ def new_boot():
         crear = input("Is ok ? Y/n:")
         if crear == 'Y':
             jugadores.bots[nif] = jugador
+            agregar_jugador_bdd(jugador, nif, quien="bots")
             #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
             correcto = True
-            primera_opcion()
-            return
+            return primera_opcion()
         elif crear == 'n':
-            primera_opcion()
             correcto = True
-            return
+            return primera_opcion()
+            
         else:
             print("Invalid option")
 
 def show_players():
-    dnis_bots = list(jugadores.bots.keys())
-    dnis = list(jugadores.jugadores.keys())
-    i = -1
+    dnis_bots = []
+    dnis = []
+    cursor = conexion.conexion.cursor()
+    cursor.execute("SELECT id, nombre, tipo FROM jugadores")
+    usuarios = cursor.fetchall()
+    for id in usuarios:
+        dnis_bots += [id,]
+    print(dnis_bots)
     
     if len(jugadores.jugadores) < len(jugadores.bots):
        tamano = len(jugadores.bots)
@@ -233,7 +236,7 @@ def show_players():
                     type_bot = "Moderated"
                 elif jugadores.bots[dnis_bots[i]]["type"] == 30:
                     type_bot = "Bold"
-                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
+                print(f"{dnis_bots[i]}" +f" {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
             else:
                 if jugadores.bots[dnis_bots[i]]["type"] == 50:
                     type_bot = "Ambicious"
@@ -257,7 +260,7 @@ def show_players():
                     type = "Moderated"
                 elif jugadores.jugadores[dnis[i]]["type"] == 30:
                     type = "Bold"
-                print(f"{dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type}")
+                print(f"{dnis[i]}" +f"{jugadores.jugadores[dnis[i]]['name']} {type}")
             else:
                 if jugadores.bots[dnis_bots[i]]["type"] == 50:
                     type_bot = "Ambicious"
@@ -594,5 +597,27 @@ def ordenar_diccionario(diccionario,criterio ="",orden="asc",):
                             claves[i + 1] = aux
                 if not cambios:
                     return claves
+
+                
+def agregar_jugador_bdd(jugador,nif,quien = ""):
+    lista_valores = list(jugador.values())
+    cursor = conexion.conexion.cursor()
+    consulta_instert = f"""
+        INSERT INTO {quien} (id, nombre, human, bank, initialCard, priority, tipo, bet, points, card, roundPoints)
+        VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+""" 
+    valores = (nif,)
+    for i in range(len(lista_valores)):
+        if type(lista_valores[i]) == list:
+            valores += (str(lista_valores[i]),)            
+        else:
+            valores += (lista_valores[i],)
+    cursor.execute(consulta_instert, valores)
+    conexion.conexion.commit()
+    cursor.close()
+
+
+
     
 menu_principal()
+
