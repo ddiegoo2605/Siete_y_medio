@@ -25,13 +25,20 @@ def elegir_baraja():
         else:
             print("Por favor, introduce un número.")
     if eleccion == 1:
-        
+        print("\nHas elegido la Baraja Española.")
+        input("Pulsa para continuar: ")
+        return baraja_española
     elif eleccion == 2:
+        print("\nHas elegido la Baraja de Poker.")
+        input()
+        return baraja_poker
+    else:
+        raise ValueError 
         
     
     
 
-def elegir_dificultad():
+#def elegir_dificultad():
 
 def crear_set_jugadores():
     perfiles = ['Cautious', 'Moderated', 'Bold']
