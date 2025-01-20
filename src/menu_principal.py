@@ -1,21 +1,13 @@
-from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
+#Imports
+from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
 import jugadores
 from Utilidades import menu_settings
 import random
-
 import os
-
-#Imports
-#Funciones
 import cartas
+from juego import jugar_partida
 
-#Imports
-
-
-
-
-
-
+#Funciones
 def menu_principal():
     while True:
         print(titulo_menu_principal())      
@@ -43,12 +35,13 @@ def menu_principal():
             menu_settings()
             
         elif seleccion == '3':
-            print("Jugar. Todavia falta por implementar")
+            jugar_partida()
         elif seleccion == '4':
             cuarta_opcion()
         elif seleccion == '5':
             print("Reportes. Todavia falta por implementar")
         elif seleccion == '6':
+            print(titulo_goodbye())
             print("\n"+"Gracias por jugar, hasta la próxima".center(calcular_ancho_terminal()))
             break
         else:
@@ -73,7 +66,7 @@ def primera_opcion():
         
         correcto = False
         while correcto == False:
-                option = input("Option:\n")
+                option = input("Option:\n".center(calcular_ancho_terminal()))
                 if option.isdigit():
                     num_opcion = int(option)
                     if 1 <= num_opcion <= 4:
@@ -92,7 +85,7 @@ def primera_opcion():
             show_players()
         elif num_opcion == 4:
             flg00 = False
-            return menu_principal()
+            menu_principal()
             
 
 def new_human_player():
@@ -163,8 +156,11 @@ def new_boot():
         correcto = verificar_nombre(name)
     print(f"Name: \t\t{name}")
     es_unico = False
-    while es_unico == False:
+    while not es_unico:
         nif = nif_random()
+        if nif not in jugadores.jugadores.keys() and nif not in jugadores.bots.keys():
+            es_unico = True
+        menu_juego_persona = "Select Profile For The New Boot:\n\n1)Cautious\n\n2)Moderated\n\n3)Bold"
         claves_nif = list(jugadores.jugadores.keys())
         existentes = 0
         for i in range(len(claves_nif)):
@@ -174,43 +170,45 @@ def new_boot():
             es_unico = True
     menu_juego_persona = "Select Profile For The New Boot:\n\n1)Cautious\n\n2)Moderated\n\n3)Bold"
     print(menu_juego_persona)
-    correcto = False
-    while correcto == False:
-            option = input("Option:\n")
-            if option.isdigit():
-                num_opcion = int(option)
-                if 1 <= num_opcion <= 3:
-                    print(f"¡Número válido: {num_opcion}!")
-                    correcto = True 
-                else:
-                    print("El número no está entre 1 y 3. Inténtalo de nuevo.")
+    while True:
+        option = input("Option:\n")
+        if option.isdigit():
+            num_opcion = int(option)
+            if 1 <= num_opcion <= 3:
+                print(f"¡Número válido: {num_opcion}!")
+                break
             else:
-                print("Por favor, introduce un número válido (entero).")
-
-    if num_opcion == 1:
-        jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}
-        jugadores.jugadores_rankings[nif] = {"earnings": 0 , "games": 0, "minutes":0 }
-    elif num_opcion == 2:
-        jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":40,"bet":0,"points":0,"cards":[],"roundPoints":0}
-        jugadores.jugadores_rankings[nif] = {"earnings": 0 , "games": 0, "minutes":0 }
-    elif num_opcion == 3:
-        jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":30,"bet":0,"points":0,"cards":[],"roundPoints":0}
-        jugadores.jugadores_rankings[nif] = {"earnings": 0 , "games": 0, "minutes":0 }
-    correcto = False
-    while correcto == False:    
-        crear = input("Is ok ? Y/n:")
-        if crear == 'Y':
-            jugadores.bots[nif] = jugador
-            #HAY QUE HACER QUE SE GUARDE EN EL DICCIONARIO
-            correcto = True
+                print("El número no está entre 1 y 3. Inténtalo de nuevo.")
+        else:
+            print("Por favor, introduce un número válido (entero).")
+    tipo_perfil = {1:50,2:40,3:30}
+    jugador = {
+        "name": name,
+        "human": False,
+        "bank": False,
+        "initialCard": "",
+        "priority": 0,
+        "type": tipo_perfil[num_opcion],
+        "bet": 0,
+        "points": 0,
+        "cards": [],
+        "roundPoints": 0,
+    }
+    jugadores.bots[nif] = jugador
+    jugadores.jugadores_rankings[nif] = {"earnings": 0, "games": 0, "minutes": 0}   
+    print(f"\nBot '{name}' creado correctamente y registrado con NIF: {nif}")
+    while True:
+        crear =input("Is ok ? Y/n:").strip().lower()
+        if crear == 'y':
+            print(f"Bot '{name}' guardado.")
             primera_opcion()
             return
         elif crear == 'n':
+            print("Creación de Bot cancelada.")
             primera_opcion()
-            correcto = True
             return
         else:
-            print("Invalid option")
+            print("opción no válida. Introduce 'y' o 'n'.")
 
 def show_players():
     dnis_bots = list(jugadores.bots.keys())
