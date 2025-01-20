@@ -1,5 +1,12 @@
+from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
 import jugadores
+from Utilidades import menu_settings
 import random
+
+import os
+
+#Imports
+#Funciones
 import cartas
 import conexion
 #Imports
@@ -8,19 +15,15 @@ import conexion
 
 
 
+
 def menu_principal():
     while True:
-        titulo = "JUEGO SIETE Y MEDIO"
-        largo_titulo = len(titulo)
-        margen = 20 
-        largo_linea = largo_titulo + margen * 2 
-        espacio = " " * margen
-
-        menu ="\n" + "-" * largo_linea+ "\n"+ "-" * margen + titulo.center(largo_linea - margen * 2) + "-" * margen + "\n" + "-" * largo_linea + "\n"+ espacio + "MENÚ PRINCIPAL" + "\n"
-
-        print(menu)
+        print(titulo_menu_principal())      
+        
         opciones = [
-            "1. Add/Remove/Show Players",
+            "\n",
+            "\n",
+            "1. Players",
             "2. Settings",
             "3. Play Game",
             "4. Ranking",
@@ -29,25 +32,24 @@ def menu_principal():
         ]
         
         for opcion in opciones:
-            print(f"{espacio}{opcion}")
+            print(opcion.center(calcular_ancho_terminal()))
         
 
-        seleccion = input("\n"+ espacio +"Selecciona una opción (1-6): ")
+        seleccion = input("\n"+"Selecciona una opción (1-6): ".center(calcular_ancho_terminal()))
 
         if seleccion == '1':
             return primera_opcion()
         elif seleccion == '2':
-            return menu_settings()
-            print("Jugar. Todavia falta por implementar")
+            menu_settings()
+            
         elif seleccion == '3':
             print("Jugar. Todavia falta por implementar")
         elif seleccion == '4':
-            print("Estadísticas. Todavia falta por implementar")
+            cuarta_opcion()
         elif seleccion == '5':
             print("Reportes. Todavia falta por implementar")
         elif seleccion == '6':
-            print("\n"+"Gracias por jugar, hasta la próxima")
-            print("\n"+ "#" * largo_linea)
+            print("\n"+"Gracias por jugar, hasta la próxima".center(calcular_ancho_terminal()))
             break
         else:
             print("Error. Escoge una opción valida entre (1-6)")
@@ -57,8 +59,18 @@ def menu_principal():
 def primera_opcion():
     flg00 = True
     while flg00:
-        menu = "1)New Human Player\n2)New Boot\n3)Show/Remove Player\n4)Go Back"
-        print(menu)
+        print(titulo_players()) 
+        menu = [
+        "\n",
+        "\n",
+        "1)New Human Player",
+        "2)New Boot",
+        "3)Show/Remove Player",
+        "4)Go Back",
+        ]
+        for opcion in menu:
+            print(opcion.center(calcular_ancho_terminal())) 
+        
         correcto = False
         while correcto == False:
                 option = input("Option:\n")
@@ -282,39 +294,6 @@ def show_players():
 
 #    SEGUNDA OPCIÓN
 
-def mostrar_titulo_settings():
-    print("""
-     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗  ███████╗
-     ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝  ██╔════╝
-     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗ ███████╗  
-     ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║ ╚════██║  
-     ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝ ███████║
-     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚══════╝  
-    """)
-
-def menu_settings():
-    mostrar_titulo_settings()
-    print("1) Set Game Players\n2) Set Card's Deck\n3) Set Max Rounds (Default 5 Rounds)\n4) Go back")
-    correcto = False
-    while correcto == False:
-        eleccion = input("\nOption: ")
-        if eleccion.isdigit():
-            eleccion = int(eleccion)
-            if 1 <= eleccion <= 4:
-                correcto = True
-            else:
-                print("Opción no válida. Intentalo de nuevo.")
-        else:
-            print("Por favor, introduce un número.")
-    if eleccion == 1:
-        return set_game_players()
-    elif eleccion == 2:
-        return
-    elif eleccion == 3:
-        return
-    elif eleccion == 4:
-        return menu_principal()
-
 def set_game_players():
     show_seted_players()
     jugadores.imprimir_titulo("SET PLAYERS")
@@ -344,8 +323,43 @@ def set_game_players():
 
 #   TERCERA OPCIÓN
 
-#def playGame():
+def playGame():
+    set_cards = False
+    if set_cards == False:
+        print("Set cards first")
+        return menu_principal
+    else:
+        jugadores.imprimir_titulo("PLAY GAME")
+        menu = ("1)View Stats\n2)View Game Stats\n3)Set Bet\n4)Order Card\n5)Automatic Play\n6)Stand")
+        correcto = False
+        while correcto == False:
+            option = input("Option:\n")
+            if option.isdigit():
+                num_opcion = int(option)
+                if 1 <= num_opcion <= 6:
+                    print(f"Número válido: {num_opcion}!")
+                    correcto = True 
+                else:
+                    print("El número no está entre 1 y 6. Inténtalo de nuevo.")
+            else:
+                print("Por favor, introduce un número válido (entero).")
+        if num_opcion == 1:
+            print("Aún no implementado")
+        elif num_opcion == 2:
+            print("Aún no implementado")
+        elif num_opcion == 3:
+            print("Aún no implementado")
+        elif num_opcion == 4:
+            print("Aún no implementado")
+        elif num_opcion == 5:
+            print("Aún no implementado")
+        elif num_opcion == 6:
+            return menu_principal()
 
+#def humanRound(id, mazo):
+    
+#def playGame():
+    #ask_card = False
     #set_cards = False
    # if set_cards == False:
   #      print("Set cards first")
@@ -369,10 +383,18 @@ def set_game_players():
         
         #elif num_opcion == 2:
 
-        #elif num_opcion == 3:
-        
+        #if ask_card:
+                #print("You're not allowed to change the bet if you have ordered some card.")
+                #input("Enter to continue")
+            #else:
+             #   apuesta_personalizada = int(input("Set the new Bet: "))
+              #  if 1 <= apuesta_personalizada <= jugador["puntos"]:
+               #     jugador["apuesta"] = apuesta_personalizada
+                #    input("Enter to continue")
+                #else:
+                 #   print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
         #elif num_opcion == 4:
-        
+         #   ask_card = True
         #elif num_opcion == 5:
         
         #elif num_opcion == 6:
@@ -384,20 +406,29 @@ def set_game_players():
 #   CUARTA OPCIÓN
 
 def cuarta_opcion():
-    menu = "1)Players With More Earnings\n2)Players With More Gmes Played\n3)Players With More Minutes Played\4)Go back"
-    print(menu)
+    print(titulo_ranking()) 
+    menu =[ 
+        "\n",
+        "\n",
+        "1)Players With More Earnings",
+        "2)Players With More Gmes Played",
+        "3)Players With More Minutes Played",
+        "4)Go back",
+    ]
+    for opcion in menu:
+        print(opcion.center(calcular_ancho_terminal()))
     correcto = False
     while correcto == False:
-        option = input("Option:\n")
+        option = input("Option:\n".center(calcular_ancho_terminal()))
         if option.isdigit():
             num_opcion = int(option)
             if 1 <= num_opcion <= 4:
                 print(f"Número válido: {num_opcion}!")
                 correcto = True 
             else:
-                print("El número no está entre 1 y 4. Inténtalo de nuevo.")
+                print("El número no está entre 1 y 4. Inténtalo de nuevo.".center(calcular_ancho_terminal()))
         else:
-            print("Por favor, introduce un número válido (entero).")
+            print("Por favor, introduce un número válido (entero).").center(calcular_ancho_terminal())  
     if num_opcion == 1:
        return players_with_more_earnigns()
     elif num_opcion == 2:
@@ -566,6 +597,7 @@ def ordenar_diccionario(diccionario,criterio ="",orden="asc",):
                             claves[i + 1] = aux
                 if not cambios:
                     return claves
+
                 
 def agregar_jugador_bdd(jugador,nif,quien = ""):
     lista_valores = list(jugador.values())
@@ -586,4 +618,6 @@ def agregar_jugador_bdd(jugador,nif,quien = ""):
 
 
 
+    
 menu_principal()
+
