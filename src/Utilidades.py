@@ -2,16 +2,7 @@
 from random import choice, randint
 from cartas import baraja_española, baraja_poker
 from jugadores import mostrar_jugadores  # Importamos mostrar_jugadores() del archivo jugadores.py
-
-def mostrar_titulo_settings():
-    print("""
-     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗  ███████╗
-     ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝  ██╔════╝
-     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗ ███████╗  
-     ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║ ╚════██║  
-     ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝ ███████║
-     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚══════╝  
-    """)
+from Titulos_ascii import calcular_ancho_terminal, titulo_settings
 
 def elegir_baraja():
     print("\nElige una baraja:")
@@ -67,17 +58,27 @@ def set_max_rondas():
 
 def menu_settings():
     while True:
-        mostrar_titulo_settings()
-        print("1) Set Game Players")
-        print("2) Set Card's Deck")
-        print("3) Set Max Rounds (Default 5 Rounds)")
-        print("4) Go back")
+        ancho_terminal = calcular_ancho_terminal()
+        print(titulo_settings())
+        
+        opciones = [
+            "\n",
+            "\n",
+            "1) Set Game Players",
+            "2) Set Card's Deck",
+            "3) Set Max Rounds (Default 5 Rounds)",
+            "4) Go back"
+        ]
+
+        for opcion in opciones:
+            print(opcion.center(ancho_terminal))
+        
         
         try:
-            eleccion = int(input("\nOption: "))
+            eleccion = int(input("\n"+"Option: ".center(ancho_terminal)))
             if eleccion == 1:
                 jugadores = crear_set_jugadores()
-                print("\nJugadores creados para la partida:")
+                print("\nJugadores creados para la partida:".center(ancho_terminal))
                 for jugador_id, jugador in jugadores.items():
                     tipo = "Humano" if jugador["human"] else "Bot"
                     print(f"{jugador_id}: {jugador['name']} ({tipo}, {jugador['perfil']})")
@@ -86,12 +87,12 @@ def menu_settings():
             elif eleccion == 3:
                 max_rondas = set_max_rondas()
             elif eleccion == 4:
-                print("Volviendo al menú principal...\n")
+                print("Volviendo al menú principal...\n".center(ancho_terminal))
                 break
             else:
-                print("Opción inválida. Inténtalo de nuevo.")
+                print("Opción inválida. Inténtalo de nuevo.".center(ancho_terminal))
         except ValueError:
-            print("Por favor, introduce un número válido.")
+            print("Por favor, introduce un número válido.".center(ancho_terminal))
 
 if __name__ == "__main__":
     menu_settings()

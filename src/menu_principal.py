@@ -1,21 +1,19 @@
+from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
 import jugadores
+import Utilidades
 import random
+import os
+
 #Imports
-
-
+#Funciones
 def menu_principal():
     while True:
-        titulo = "JUEGO SIETE Y MEDIO"
-        largo_titulo = len(titulo)
-        margen = 20 
-        largo_linea = largo_titulo + margen * 2 
-        espacio = " " * margen
-
-        menu ="\n" + "-" * largo_linea+ "\n"+ "-" * margen + titulo.center(largo_linea - margen * 2) + "-" * margen + "\n" + "-" * largo_linea + "\n"+ espacio + "MENÚ PRINCIPAL" + "\n"
-
-        print(menu)
+        print(titulo_menu_principal())      
+        
         opciones = [
-            "1. Add/Remove/Show Players",
+            "\n",
+            "\n",
+            "1. Players",
             "2. Settings",
             "3. Play Game",
             "4. Ranking",
@@ -24,15 +22,15 @@ def menu_principal():
         ]
         
         for opcion in opciones:
-            print(f"{espacio}{opcion}")
+            print(opcion.center(calcular_ancho_terminal()))
         
 
-        seleccion = input("\n"+ espacio +"Selecciona una opción (1-6): ")
+        seleccion = input("\n"+"Selecciona una opción (1-6): ".center(calcular_ancho_terminal()))
 
         if seleccion == '1':
            primera_opcion()
         elif seleccion == '2':
-            print("Jugar. Todavia falta por implementar")
+            Utilidades.menu_settings()
         elif seleccion == '3':
             print("Jugar. Todavia falta por implementar")
         elif seleccion == '4':
@@ -40,8 +38,7 @@ def menu_principal():
         elif seleccion == '5':
             print("Reportes. Todavia falta por implementar")
         elif seleccion == '6':
-            print("\n"+"Gracias por jugar, hasta la próxima")
-            print("\n"+ "#" * largo_linea)
+            print("\n"+"Gracias por jugar, hasta la próxima".center(calcular_ancho_terminal()))
             break
         else:
             print("Error. Escoge una opción valida entre (1-6)")
@@ -51,7 +48,11 @@ def menu_principal():
 def primera_opcion():
     flg00 = True
     while flg00:
-        menu = "1)New Human Player\n2)New Boot\n3)Show/Remove Player\n4)Go Back"
+        menu = """
+        1)New Human Player
+        2)New Boot
+        3)Show/Remove Player
+        4)Go Back"""
         print(menu)
         correcto = False
         while correcto == False:
@@ -255,19 +256,19 @@ def playGame():
             else:
                 print("Por favor, introduce un número válido (entero).")
         if num_opcion == 1:
-        
+            print("Aún no implementado")
         elif num_opcion == 2:
-
+            print("Aún no implementado")
         elif num_opcion == 3:
-        
+            print("Aún no implementado")
         elif num_opcion == 4:
-        
+            print("Aún no implementado")
         elif num_opcion == 5:
-        
+            print("Aún no implementado")
         elif num_opcion == 6:
             return menu_principal()
 
-def humanRound(id, mazo):
+#def humanRound(id, mazo):
     
 
 #   CUARTA OPCIÓN
