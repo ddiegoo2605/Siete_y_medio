@@ -342,7 +342,7 @@ def set_game_players():
 #   TERCERA OPCIÓN
 
 #def playGame():
-
+    #ask_card = False
     #set_cards = False
    # if set_cards == False:
   #      print("Set cards first")
@@ -366,10 +366,18 @@ def set_game_players():
         
         #elif num_opcion == 2:
 
-        #elif num_opcion == 3:
-        
+        #if ask_card:
+                #print("You're not allowed to change the bet if you have ordered some card.")
+                #input("Enter to continue")
+            #else:
+             #   apuesta_personalizada = int(input("Set the new Bet: "))
+              #  if 1 <= apuesta_personalizada <= jugador["puntos"]:
+               #     jugador["apuesta"] = apuesta_personalizada
+                #    input("Enter to continue")
+                #else:
+                 #   print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
         #elif num_opcion == 4:
-        
+         #   ask_card = True
         #elif num_opcion == 5:
         
         #elif num_opcion == 6:
