@@ -1,12 +1,9 @@
-<<<<<<< Updated upstream
-=======
 import jugadores
 import random
 from titulos_ascii import centrar_titulo, titulo_menu
 centrar_titulo()
->>>>>>> Stashed changes
 #Imports
-from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
+from titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
 import jugadores
 from Utilidades import menu_settings
 import random
@@ -354,7 +351,6 @@ def playGame():
             else:
                 print("Por favor, introduce un número válido (entero).")
         if num_opcion == 1:
-<<<<<<< Updated upstream
             print("Aún no implementado")
         elif num_opcion == 2:
             print("Aún no implementado")
@@ -379,17 +375,6 @@ def playGame():
 >>>>>>> main
         elif num_opcion == 5:
             print("Aún no implementado")
-=======
-                print("TODAVÍA NO")
-        elif num_opcion == 2:
-                print("TODAVÍA NO")
-        elif num_opcion == 3:
-                print("TODAVÍA NO")       
-        elif num_opcion == 4:
-                print("TODAVÍA NO")
-        elif num_opcion == 5:
-                print("TODAVÍA NO")
->>>>>>> Stashed changes
         elif num_opcion == 6:
             return menu_principal()
 
