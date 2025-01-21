@@ -1,3 +1,10 @@
+<<<<<<< Updated upstream
+=======
+import jugadores
+import random
+from titulos_ascii import centrar_titulo, titulo_menu
+centrar_titulo()
+>>>>>>> Stashed changes
 #Imports
 from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
 import jugadores
@@ -12,7 +19,6 @@ from juego import jugar_partida
 
 import conexion
 #Imports
-
 
 
 
@@ -64,18 +70,6 @@ def primera_opcion():
     while flg00:
         print(titulo_players()) 
 
-        opciones = [
-            "\n",
-            "\n",
-            "1) New Human Player",
-            "2) New Boot",
-            "3) Show/Remove Player",
-            "4) Go back",
-        ]
-        
-        for opcion in opciones:
-            print(opcion.center(calcular_ancho_terminal()))
-
 
         menu = [
         "\n",
@@ -92,8 +86,6 @@ def primera_opcion():
         while correcto == False:
 
                 option = input("Option:\n".center(calcular_ancho_terminal()))
-
-                option = input("\n"+"Selecciona una opción (1-4): ".center(calcular_ancho_terminal()))
 
                 if option.isdigit():
                     num_opcion = int(option)
@@ -242,7 +234,7 @@ def new_boot():
             primera_opcion()
             return
 
-                print("Por favor, introduce un número válido (entero).")
+            print("Por favor, introduce un número válido (entero).")
 
     if num_opcion == 1:
         jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}
@@ -410,6 +402,7 @@ def playGame():
             else:
                 print("Por favor, introduce un número válido (entero).")
         if num_opcion == 1:
+<<<<<<< Updated upstream
             print("Aún no implementado")
         elif num_opcion == 2:
             print("Aún no implementado")
@@ -419,6 +412,17 @@ def playGame():
             print("Aún no implementado")
         elif num_opcion == 5:
             print("Aún no implementado")
+=======
+                print("TODAVÍA NO")
+        elif num_opcion == 2:
+                print("TODAVÍA NO")
+        elif num_opcion == 3:
+                print("TODAVÍA NO")       
+        elif num_opcion == 4:
+                print("TODAVÍA NO")
+        elif num_opcion == 5:
+                print("TODAVÍA NO")
+>>>>>>> Stashed changes
         elif num_opcion == 6:
             return menu_principal()
 

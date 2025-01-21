@@ -6,6 +6,7 @@ from Titulos_ascii import calcular_ancho_terminal, titulo_settings
 
 
 
+
 def elegir_baraja():
     print("\nElige una baraja:\n1) Baraja Española\n2) Baraja de Poker\n3) Go back")
     correcto = False
@@ -33,17 +34,19 @@ def elegir_baraja():
 
 #def elegir_dificultad():
 
-def crear_set_jugadores():
-    perfiles = ['Cautious', 'Moderated', 'Bold']
-    jugadores_partida = {}
+#def crear_set_jugadores():
+    if jugadores.seted_player == 0:
+        
+    #perfiles = ['Cautious', 'Moderated', 'Bold']
+    #jugadores_partida = {}
 
     # Mostrar jugadores existentes y seleccionar uno
-    print("\nSelecciona un jugador humano para la partida:")
-    jugador_humano = mostrar_jugadores()  # Debe devolver un diccionario con los datos del jugador seleccionado
-    jugadores_partida[jugador_humano["id"]] = jugador_humano
+    #print("\nSelecciona un jugador humano para la partida:")
+    #jugador_humano = mostrar_jugadores()  # Debe devolver un diccionario con los datos del jugador seleccionado
+    #jugadores_partida[jugador_humano["id"]] = jugador_humano
 
     # Crear dos bots
-    for i in range(1, 3):
+    #for i in range(1, 3):
         bot = {
             "id": f"BOT{randint(1000, 9999)}",  # ID único
             "name": f"Bot {i}",
@@ -93,20 +96,15 @@ def menu_settings():
                     print(f"¡Número válido: {eleccion}!")
                 else:
                     print("El número no está entre 1 y 4. Inténtalo de nuevo.")
-                jugadores = crear_set_jugadores()
-                print("\nJugadores creados para la partida:".center(ancho_terminal))
-                for jugador_id, jugador in jugadores.items():
-                    tipo = "Humano" if jugador["human"] else "Bot"
-                    print(f"{jugador_id}: {jugador['name']} ({tipo}, {jugador['perfil']})")
-            elif eleccion == 2:
-                elegir_baraja()
-            elif eleccion == 3:
-                max_rondas = set_max_rondas()
-            elif eleccion == 4:
-                print("Volviendo al menú principal...\n".center(ancho_terminal))
-            return
+             
+        if eleccion == 1:
+            print("crear_set_jugadores")
+        elif eleccion == 2:
+            elegir_baraja()
+        elif eleccion == 3:
+            set_max_rondas()
+        elif eleccion == 4:
+            print("Volviendo al menú principal...\n".center(ancho_terminal))
+        return 
                 
             
-if __name__ == "__main__":
-    menu_settings()
-
