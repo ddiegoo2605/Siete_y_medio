@@ -67,6 +67,18 @@ def primera_opcion():
     while flg00:
         print(titulo_players()) 
 
+        opciones = [
+            "\n",
+            "\n",
+            "1) New Human Player",
+            "2) New Boot",
+            "3) Show/Remove Player",
+            "4) Go back",
+        ]
+        
+        for opcion in opciones:
+            print(opcion.center(calcular_ancho_terminal()))
+
 
         menu = [
         "\n",
@@ -83,6 +95,8 @@ def primera_opcion():
         while correcto == False:
 
                 option = input("Option:\n".center(calcular_ancho_terminal()))
+
+                option = input("\n"+"Selecciona una opción (1-4): ".center(calcular_ancho_terminal()))
 
                 if option.isdigit():
                     num_opcion = int(option)
@@ -231,7 +245,7 @@ def new_boot():
             primera_opcion()
             return
 
-            print("Por favor, introduce un número válido (entero).")
+                print("Por favor, introduce un número válido (entero).")
 
     if num_opcion == 1:
         jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}
