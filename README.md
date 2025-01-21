@@ -1,4 +1,4 @@
-# Siete_y_medio
+# S00iete_y_medio
 Juego de barajas siete y medio, con su respectiva base de datos y su pagina web 
 
 DEFINICIÓN
@@ -14,8 +14,8 @@ INFROMACION DE CONTACTO DE INTEGRANTES
 
 Marc: marclosada2004@gmail.com
 
-Diego:
+Diego: diego.e.aguilar.ojeda@gmail.com
 
-Yeray:
+Yeray: yeray2812@gmail.com
 
-Gerard:
+Gerard: gerard.cl11122004@gmail.com

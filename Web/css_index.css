@@ -100,6 +100,18 @@ section {
   width: 100%; /* Asegura que ocupe todo el ancho */
   height: 60px;
   display: flex;
+  gap: 20px; 
+  list-style: none; 
+  padding: 0;
+  gap: 20px;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20PX;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .navbar nav ul {
@@ -174,6 +186,7 @@ section {
 .flex-container {
   display: flex;       /* Makes the container a flexbox */
   justify-content: space-between; /* Ensures equal spacing between columns */
+  align-items: center;
 }
 
 .footer{
@@ -188,17 +201,17 @@ section {
 
 .float-image-left {
 	float: left; /* Aligns the image to the left side */
-	width: 7.5%; /* Sets the image to take up 40% of the container width */
+	width: 15%; /* Sets the image to take up 40% of the container width */
 	margin: 5px; /* Adds space around the image */
-	max-width: 100%;  /*Ensures the image doesn't overflow its container */
-  width: 100px;
-  height: 100px;
+	max-width: 5%;  /*Ensures the image doesn't overflow its container */
+  height: auto;
 }
+
 
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #333;
   padding: 10px 10px;
   color: white;
@@ -227,17 +240,11 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
   width: 300px;
   height: 300px;
-  border-radius: 100%;
+  border-radius: 20px;
   overflow: hidden;
-  margin: 0 auto;
-}
-
-.container_foto imagen{
-  max-width: 100%;
-  height: auto;
+  margin: auto;
 }
 
  /* Estilo del contenedor del carrusel */
@@ -292,6 +299,41 @@ height: auto;
 flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
 }
 
+/*Boton del menu*/
+.menu-btn{
+  background-color: #333;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    display: block;
+}
+
+.menu {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul {
+  padding-left: 0;
+}
+
+.menu li {
+  margin: 0 10px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
 @keyframes slideInUp { 
   from { 
       opacity: 0; 
@@ -315,7 +357,29 @@ flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
   }
   }
 
-@media (max-width: 600px) {
+/*Para otras pantallas*/
+
+@media screen and (min-width: 769px) {
+  .menu-btn {
+      display: none; /* Oculta el botón hamburguesa en pantallas grandes */
+  }
+
+  .menu {
+      display: flex; /* El menú es visible de manera horizontal */
+  }
+
+  .float-image-left {
+    float: left; /* Aligns the image to the left side */
+    width: 10%; /* Sets the image to take up 40% of the container width */
+    margin: 5px; /* Adds space around the image */
+    max-width: 100%;  /*Ensures the image doesn't overflow its container */
+    height: auto; /* Keeps the image aspect ratio intact */
+  }
+}
+
+
+/*Para moviles*/
+@media screen and (max-width: 600px) {
   * {
     margin: 0;
     padding: 0;
@@ -387,14 +451,12 @@ flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
   
   /* Estilo para la barra de navegación */
   .navbar {
-    position: sticky; /* Hace que la barra sea sticky */
-    top: 0; /* Define el punto de adherencia en la parte superior */
+    display: flex;
     background-color: #333; /* Color de fondo */
     color: white;
     z-index: 1000; /* Mantiene la barra sobre otros elementos */
-    padding: 5px 10px;
-    align-items: center;
-    height: 5vh;
+    left: 0;
+    justify-content: right;
   }
   
   .navbar nav ul {
@@ -450,7 +512,7 @@ flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
   
   .float-image-left {
     float: left; /* Aligns the image to the left side */
-    width: 10%; /* Sets the image to take up 40% of the container width */
+    width: 15%; /* Sets the image to take up 40% of the container width */
     margin: 5px; /* Adds space around the image */
     max-width: 100%;  /*Ensures the image doesn't overflow its container */
     height: auto; /* Keeps the image aspect ratio intact */
@@ -458,10 +520,10 @@ flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
   
   header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     background-color: #333;
-    padding: 10px 10px;
+    padding: 10px;
     color: white;
     position: fixed; /* Hace que el encabezado sea sticky */
     top: 0; /* Fija el encabezado en la parte superior */
@@ -518,4 +580,25 @@ flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
     overflow: hidden;
     border-radius: 8px;
   }
+
+  .menu {
+    display: none; /* Oculta el menú por defecto */
+    position: absolute;
+    top: 60px;
+    align-items: center;
+    background-color: #333;
+    width: auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    padding: auto;
+    flex-direction: column;
+}
+
+.menu.show {
+    display: block; /* Muestra el menú cuando se hace clic en el botón */
+}
+
+.menu li {
+    margin: 10px 0;
+}
+
 }
