@@ -333,6 +333,7 @@ def set_game_players():
 #   TERCERA OPCIÓN
 
 def playGame():
+    ask_card = False
     set_cards = False
     if set_cards == False:
         print("Set cards first")
@@ -358,9 +359,24 @@ def playGame():
         elif num_opcion == 2:
             print("Aún no implementado")
         elif num_opcion == 3:
+<<<<<<< HEAD
             print("Aún no implementado")
         elif num_opcion == 4:
             print("Aún no implementado")
+=======
+            if ask_card:
+                print("You're not allowed to change the bet if you have ordered some card.")
+                input("Enter to continue")
+            else:
+                apuesta_personalizada = int(input("Set the new Bet: "))
+                if 1 <= apuesta_personalizada <= jugador["puntos"]:
+                    jugador["apuesta"] = apuesta_personalizada
+                    input("Enter to continue")
+                else:
+                    print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
+        elif num_opcion == 4:
+            ask_card = True
+>>>>>>> main
         elif num_opcion == 5:
             print("Aún no implementado")
 =======
@@ -641,4 +657,7 @@ def agregar_jugador_bdd(jugador,nif,quien = ""):
 
     
 menu_principal()
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
