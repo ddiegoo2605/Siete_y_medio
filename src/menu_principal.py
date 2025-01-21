@@ -199,84 +199,35 @@ def new_boot():
             print("Invalid option")
 
 def show_players():
-    dnis_bots = []
-    dnis = []
+    botardo = {}
+    jugadorazos = {}
     cursor = conexion.conexion.cursor()
-    cursor.execute("SELECT id, nombre, tipo FROM jugadores")
+    cursor.execute("SELECT id, nombre,tipo FROM bots")
     usuarios = cursor.fetchall()
-    for id in usuarios:
-        dnis_bots += [id,]
-    print(dnis_bots)
+    for id, nombre, tipo in usuarios:
+        if tipo == 50:
+            tipo = "Ambicious"
+        elif tipo == 40:
+            tipo = "Moderated"
+        elif tipo == 30:
+            tipo = "Bold"
+        botardo += {id:{"nombre":nombre , "tipo": tipo}}
+    cursor.execute("SELECT id, nombre, nif, tipo FROM jugadores")
+    usuarios = cursor.fetchall()
+    for id, nombre, nif, tipo in usuarios:
+        if tipo == 50:
+            tipo = "Ambicious"
+        elif tipo == 40:
+            tipo = "Moderated"
+        elif tipo == 30:
+            tipo = "Bold"
+        
+        jugadorazos += {nif:{"nombre":nombre , "tipo": tipo}}
+    if len(jugadorazos) > len(botardo):
+        for i in range(len(jugadorazos)):
+            if i <= len(botardo):
+                print(f"{}. {botardo[i]['nombre']} - {botardo[i]['tipo']}")
     
-    if len(jugadores.jugadores) < len(jugadores.bots):
-       tamano = len(jugadores.bots)
-    elif len(jugadores.jugadores) > len(jugadores.bots):
-        tamano = len(jugadores.jugadores)
-    else:
-        tamano = len(jugadores.jugadores) 
-    for i in range(tamano):
-        if len(jugadores.bots) > len(jugadores.jugadores):
-            
-            if i >= len(jugadores.jugadores):
-                if jugadores.bots[dnis_bots[i]]["type"] == 50:
-                    type_bot = "Ambicious"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 40:
-                    type_bot = "Moderated"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 30:
-                    type_bot = "Bold"
-                print(f"{dnis_bots[i]}" +f" {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
-            else:
-                if jugadores.bots[dnis_bots[i]]["type"] == 50:
-                    type_bot = "Ambicious"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 40:
-                    type_bot = "Moderated"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 30:
-                    type_bot = "Bold"
-                if jugadores.jugadores[dnis[i]]["type"] == 50:
-                    type = "Ambicious"
-                elif jugadores.jugadores[dnis[i]]["type"] == 40:
-                    type = "Moderated"
-                elif jugadores.jugadores[dnis[i]]["type"] == 30:
-                    type = "Bold"
-                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
-
-        elif len(jugadores.bots) < len(jugadores.jugadores):
-            if i >= len(jugadores.bots):
-                if jugadores.jugadores[dnis[i]]["type"] == 50:
-                    type = "Ambicious"
-                elif jugadores.jugadores[dnis[i]]["type"] == 40:
-                    type = "Moderated"
-                elif jugadores.jugadores[dnis[i]]["type"] == 30:
-                    type = "Bold"
-                print(f"{dnis[i]}" +f"{jugadores.jugadores[dnis[i]]['name']} {type}")
-            else:
-                if jugadores.bots[dnis_bots[i]]["type"] == 50:
-                    type_bot = "Ambicious"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 40:
-                    type_bot = "Moderated"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 30:
-                    type_bot = "Bold"
-                if jugadores.jugadores[dnis[i]]["type"] == 50:
-                    type = "Ambicious"
-                elif jugadores.jugadores[dnis[i]]["type"] == 40:
-                    type = "Moderated"
-                elif jugadores.jugadores[dnis[i]]["type"] == 30:
-                    type = "Bold"
-                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
-        else:
-            if jugadores.bots[dnis_bots[i]]["type"] == 50:
-                type_bot = "Ambicious"
-            elif jugadores.bots[dnis_bots[i]]["type"] == 40:
-                type_bot = "Moderated"
-            elif jugadores.bots[dnis_bots[i]]["type"] == 30:
-                type_bot = "Bold"
-            if jugadores.jugadores[dnis[i]]["type"] == 50:
-                type = "Ambicious"
-            elif jugadores.jugadores[dnis[i]]["type"] == 40:
-                type = "Moderated"
-            elif jugadores.jugadores[dnis[i]]["type"] == 30:
-                type = "Bold"
-            print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
 
 #FALTA IMPLEMENTAR UNA FUNCION QUE ELIMINE LOS JUGADORES
 
