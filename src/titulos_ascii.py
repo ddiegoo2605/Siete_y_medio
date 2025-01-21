@@ -51,6 +51,25 @@ def titulo_jugadores():
 """
     print(centrar_titulo(titulo))
 
+<<<<<<< HEAD
 titulo_jugadores()
 titulo_ajustes()
 titulo_menu()
+=======
+def titulo_ranking():
+    titulo_ranking = r"""
+ _______    ______   __    __  __    __  ______  __    __   ______  
+|       \  /      \ |  \  |  \|  \  /  \|      \|  \  |  \ /      \ 
+| $$$$$$$\|  $$$$$$\| $$\ | $$| $$ /  $$ \$$$$$$| $$\ | $$|  $$$$$$\
+| $$__| $$| $$__| $$| $$$\| $$| $$/  $$   | $$  | $$$\| $$| $$ __\$$
+| $$    $$| $$    $$| $$$$\ $$| $$  $$    | $$  | $$$$\ $$| $$|    \
+| $$$$$$$\| $$$$$$$$| $$\$$ $$| $$$$$\    | $$  | $$\$$ $$| $$ \$$$$
+| $$  | $$| $$  | $$| $$ \$$$$| $$ \$$\  _| $$_ | $$ \$$$$| $$__| $$
+| $$  | $$| $$  | $$| $$  \$$$| $$  \$$\|   $$ \| $$  \$$$ \$$    $$
+ \$$   \$$ \$$   \$$ \$$   \$$ \$$   \$$ \$$$$$$ \$$   \$$  \$$$$$$ 
+"""
+    ancho_terminal = calcular_ancho_terminal()
+    lineas = titulo_ranking.splitlines()
+    titulo_centrado = "\n".join([Linea.center(ancho_terminal) for Linea in lineas])
+    return titulo_centrado
+>>>>>>> parent of fee0b66 (Merge pull request #54 from ddiegoo2605/Diego)
