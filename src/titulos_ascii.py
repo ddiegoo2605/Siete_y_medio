@@ -1,6 +1,6 @@
 import shutil
 
-def cenrtrar_titulo(titulo):
+def centrar_titulo(titulo):
     ancho_terminal = shutil.get_terminal_size().columns
     lineas = titulo.splitlines()
     return "\n".join(line.center(ancho_terminal) for line in lineas)
@@ -19,7 +19,7 @@ def titulo_menu():
   \$$$$$$  \$$$$$$ \$$$$$$$$    \$$    \$$$$$$$$           \$$           \$$      \$$ \$$$$$$$$ \$$$$$$$  \$$$$$$  \$$$$$$ 
                                                                                                                            
 """
-    print(cenrtrar_titulo(titulo))
+    print(centrar_titulo(titulo))
 def titulo_ajustes():
     titulo = r"""
   ______      _____  __    __   ______   ________  ________   ______  
@@ -33,7 +33,7 @@ def titulo_ajustes():
  \$$   \$$  \$$$$$$   \$$$$$$   \$$$$$$     \$$    \$$$$$$$$  \$$$$$$ 
                                                                               
 """
-    print(cenrtrar_titulo(titulo))
+    print(centrar_titulo(titulo))
     
 def titulo_jugadores():
     titulo = r"""
@@ -49,7 +49,7 @@ def titulo_jugadores():
   \$$$$$$   \$$$$$$   \$$$$$$  \$$   \$$ \$$$$$$$   \$$$$$$  \$$   \$$ \$$$$$$$$  \$$$$$$ 
                                                                                                                                                                                     
 """
-    print(cenrtrar_titulo(titulo))
+    print(centrar_titulo(titulo))
 
 titulo_jugadores()
 titulo_ajustes()
