@@ -370,11 +370,12 @@ flex: 1 0 100%; /* Cada imagen ocupa el 100% del contenedor */
 
   .float-image-left {
     float: left; /* Aligns the image to the left side */
-    width: 10%; /* Sets the image to take up 40% of the container width */
+    width: 15%; /* Sets the image to take up 40% of the container width */
     margin: 5px; /* Adds space around the image */
-    max-width: 100%;  /*Ensures the image doesn't overflow its container */
-    height: auto; /* Keeps the image aspect ratio intact */
+    max-width: 5%;  /*Ensures the image doesn't overflow its container */
+    height: auto;
   }
+  
 }
 
 
