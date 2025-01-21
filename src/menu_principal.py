@@ -81,6 +81,18 @@ def primera_opcion():
         for opcion in opciones:
             print(opcion.center(calcular_ancho_terminal()))
 
+        opciones = [
+            "\n",
+            "\n",
+            "1) New Human Player",
+            "2) New Boot",
+            "3) Show/Remove Player",
+            "4) Go back",
+        ]
+        
+        for opcion in opciones:
+            print(opcion.center(calcular_ancho_terminal()))
+
 
         menu = [
         "\n",
