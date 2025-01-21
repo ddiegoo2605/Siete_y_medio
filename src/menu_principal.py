@@ -1,19 +1,22 @@
+
 import jugadores
 import random
 from titulos_ascii import centrar_titulo, titulo_menu
 centrar_titulo()
 #Imports
 from titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
+
+from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
+
 import jugadores
 from Utilidades import menu_settings
 import random
+
 import os
-import cartas
 
-from juego import jugar_partida
-
+#Imports
 #Funciones
-
+import cartas
 import conexion
 #Imports
 
@@ -48,13 +51,12 @@ def menu_principal():
             menu_settings()
             
         elif seleccion == '3':
-            jugar_partida()
+            print("Jugar. Todavia falta por implementar")
         elif seleccion == '4':
             cuarta_opcion()
         elif seleccion == '5':
             print("Reportes. Todavia falta por implementar")
         elif seleccion == '6':
-            print(titulo_goodbye())
             print("\n"+"Gracias por jugar, hasta la próxima".center(calcular_ancho_terminal()))
             break
         else:
@@ -66,6 +68,18 @@ def primera_opcion():
     flg00 = True
     while flg00:
         print(titulo_players()) 
+
+        opciones = [
+            "\n",
+            "\n",
+            "1) New Human Player",
+            "2) New Boot",
+            "3) Show/Remove Player",
+            "4) Go back",
+        ]
+        
+        for opcion in opciones:
+            print(opcion.center(calcular_ancho_terminal()))
 
         opciones = [
             "\n",
@@ -93,11 +107,7 @@ def primera_opcion():
         
         correcto = False
         while correcto == False:
-
-                option = input("Option:\n".center(calcular_ancho_terminal()))
-
                 option = input("\n"+"Selecciona una opción (1-4): ".center(calcular_ancho_terminal()))
-
                 if option.isdigit():
                     num_opcion = int(option)
                     if 1 <= num_opcion <= 4:
@@ -115,7 +125,7 @@ def primera_opcion():
             show_players()
         elif num_opcion == 4:
             flg00 = False
-            menu_principal()
+            return menu_principal()
             
 
 def new_human_player():
@@ -192,11 +202,8 @@ def new_boot():
         correcto = verificar_nombre(name)
     print(f"Name: \t\t{name}")
     es_unico = False
-    while not es_unico:
+    while es_unico == False:
         nif = nif_random()
-        if nif not in jugadores.jugadores.keys() and nif not in jugadores.bots.keys():
-            es_unico = True
-        menu_juego_persona = "Select Profile For The New Boot:\n\n1)Cautious\n\n2)Moderated\n\n3)Bold"
         claves_nif = list(jugadores.jugadores.keys())
         existentes = 0
         for i in range(len(claves_nif)):
@@ -206,45 +213,17 @@ def new_boot():
             es_unico = True
     menu_juego_persona = "Select Profile For The New Boot:\n\n1)Cautious\n\n2)Moderated\n\n3)Bold"
     print(menu_juego_persona)
-    while True:
-        option = input("Option:\n")
-        if option.isdigit():
-            num_opcion = int(option)
-            if 1 <= num_opcion <= 3:
-                print(f"¡Número válido: {num_opcion}!")
-                break
+    correcto = False
+    while correcto == False:
+            option = input("Option:\n")
+            if option.isdigit():
+                num_opcion = int(option)
+                if 1 <= num_opcion <= 3:
+                    print(f"¡Número válido: {num_opcion}!")
+                    correcto = True 
+                else:
+                    print("El número no está entre 1 y 3. Inténtalo de nuevo.")
             else:
-
-                print("El número no está entre 1 y 3. Inténtalo de nuevo.")
-        else:
-            print("Por favor, introduce un número válido (entero).")
-    tipo_perfil = {1:50,2:40,3:30}
-    jugador = {
-        "name": name,
-        "human": False,
-        "bank": False,
-        "initialCard": "",
-        "priority": 0,
-        "type": tipo_perfil[num_opcion],
-        "bet": 0,
-        "points": 0,
-        "cards": [],
-        "roundPoints": 0,
-    }
-    jugadores.bots[nif] = jugador
-    jugadores.jugadores_rankings[nif] = {"earnings": 0, "games": 0, "minutes": 0}   
-    print(f"\nBot '{name}' creado correctamente y registrado con NIF: {nif}")
-    while True:
-        crear =input("Is ok ? Y/n:").strip().lower()
-        if crear == 'y':
-            print(f"Bot '{name}' guardado.")
-            primera_opcion()
-            return
-        elif crear == 'n':
-            print("Creación de Bot cancelada.")
-            primera_opcion()
-            return
-
                 print("Por favor, introduce un número válido (entero).")
 
     if num_opcion == 1:
@@ -277,7 +256,7 @@ def new_boot():
             return primera_opcion()
             
         else:
-            print("opción no válida. Introduce 'y' o 'n'.")
+            print("Invalid option")
 
 def show_players():
     botardo = {}
@@ -369,11 +348,11 @@ def playGame():
         elif num_opcion == 2:
             print("Aún no implementado")
         elif num_opcion == 3:
-<<<<<<< HEAD
+
             print("Aún no implementado")
         elif num_opcion == 4:
             print("Aún no implementado")
-=======
+
             if ask_card:
                 print("You're not allowed to change the bet if you have ordered some card.")
                 input("Enter to continue")
@@ -386,7 +365,7 @@ def playGame():
                     print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
         elif num_opcion == 4:
             ask_card = True
->>>>>>> main
+
         elif num_opcion == 5:
             print("Aún no implementado")
         elif num_opcion == 6:
@@ -656,7 +635,3 @@ def agregar_jugador_bdd(jugador,nif,quien = ""):
 
     
 menu_principal()
-<<<<<<< HEAD
-
-=======
->>>>>>> main
