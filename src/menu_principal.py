@@ -1,12 +1,9 @@
-<<<<<<< Updated upstream
-=======
 import jugadores
 import random
 from titulos_ascii import centrar_titulo, titulo_menu
 centrar_titulo()
->>>>>>> Stashed changes
 #Imports
-from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
+from titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
 import jugadores
 from Utilidades import menu_settings
 import random
@@ -269,84 +266,35 @@ def new_boot():
             print("opción no válida. Introduce 'y' o 'n'.")
 
 def show_players():
-    dnis_bots = []
-    dnis = []
+    botardo = {}
+    jugadorazos = {}
     cursor = conexion.conexion.cursor()
-    cursor.execute("SELECT id, nombre, tipo FROM jugadores")
+    cursor.execute("SELECT id, nombre,tipo FROM bots")
     usuarios = cursor.fetchall()
-    for id in usuarios:
-        dnis_bots += [id,]
-    print(dnis_bots)
+    for id, nombre, tipo in usuarios:
+        if tipo == 50:
+            tipo = "Ambicious"
+        elif tipo == 40:
+            tipo = "Moderated"
+        elif tipo == 30:
+            tipo = "Bold"
+        botardo += {id:{"nombre":nombre , "tipo": tipo}}
+    cursor.execute("SELECT id, nombre, nif, tipo FROM jugadores")
+    usuarios = cursor.fetchall()
+    for id, nombre, nif, tipo in usuarios:
+        if tipo == 50:
+            tipo = "Ambicious"
+        elif tipo == 40:
+            tipo = "Moderated"
+        elif tipo == 30:
+            tipo = "Bold"
+        
+        jugadorazos += {nif:{"nombre":nombre , "tipo": tipo}}
+    if len(jugadorazos) > len(botardo):
+        for i in range(len(jugadorazos)):
+            if i <= len(botardo):
+                print(f"{}. {botardo[i]['nombre']} - {botardo[i]['tipo']}")
     
-    if len(jugadores.jugadores) < len(jugadores.bots):
-       tamano = len(jugadores.bots)
-    elif len(jugadores.jugadores) > len(jugadores.bots):
-        tamano = len(jugadores.jugadores)
-    else:
-        tamano = len(jugadores.jugadores) 
-    for i in range(tamano):
-        if len(jugadores.bots) > len(jugadores.jugadores):
-            
-            if i >= len(jugadores.jugadores):
-                if jugadores.bots[dnis_bots[i]]["type"] == 50:
-                    type_bot = "Ambicious"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 40:
-                    type_bot = "Moderated"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 30:
-                    type_bot = "Bold"
-                print(f"{dnis_bots[i]}" +f" {jugadores.bots[dnis_bots[i]]['name']} {type_bot} ||")
-            else:
-                if jugadores.bots[dnis_bots[i]]["type"] == 50:
-                    type_bot = "Ambicious"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 40:
-                    type_bot = "Moderated"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 30:
-                    type_bot = "Bold"
-                if jugadores.jugadores[dnis[i]]["type"] == 50:
-                    type = "Ambicious"
-                elif jugadores.jugadores[dnis[i]]["type"] == 40:
-                    type = "Moderated"
-                elif jugadores.jugadores[dnis[i]]["type"] == 30:
-                    type = "Bold"
-                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
-
-        elif len(jugadores.bots) < len(jugadores.jugadores):
-            if i >= len(jugadores.bots):
-                if jugadores.jugadores[dnis[i]]["type"] == 50:
-                    type = "Ambicious"
-                elif jugadores.jugadores[dnis[i]]["type"] == 40:
-                    type = "Moderated"
-                elif jugadores.jugadores[dnis[i]]["type"] == 30:
-                    type = "Bold"
-                print(f"{dnis[i]}" +f"{jugadores.jugadores[dnis[i]]['name']} {type}")
-            else:
-                if jugadores.bots[dnis_bots[i]]["type"] == 50:
-                    type_bot = "Ambicious"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 40:
-                    type_bot = "Moderated"
-                elif jugadores.bots[dnis_bots[i]]["type"] == 30:
-                    type_bot = "Bold"
-                if jugadores.jugadores[dnis[i]]["type"] == 50:
-                    type = "Ambicious"
-                elif jugadores.jugadores[dnis[i]]["type"] == 40:
-                    type = "Moderated"
-                elif jugadores.jugadores[dnis[i]]["type"] == 30:
-                    type = "Bold"
-                print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
-        else:
-            if jugadores.bots[dnis_bots[i]]["type"] == 50:
-                type_bot = "Ambicious"
-            elif jugadores.bots[dnis_bots[i]]["type"] == 40:
-                type_bot = "Moderated"
-            elif jugadores.bots[dnis_bots[i]]["type"] == 30:
-                type_bot = "Bold"
-            if jugadores.jugadores[dnis[i]]["type"] == 50:
-                type = "Ambicious"
-            elif jugadores.jugadores[dnis[i]]["type"] == 40:
-                type = "Moderated"
-            elif jugadores.jugadores[dnis[i]]["type"] == 30:
-                type = "Bold"
-            print(f"{dnis_bots[i]} {jugadores.bots[dnis_bots[i]]['name']} {type_bot} || {dnis[i]} {jugadores.jugadores[dnis[i]]['name']} {type} ")
 
 #FALTA IMPLEMENTAR UNA FUNCION QUE ELIMINE LOS JUGADORES
 
@@ -382,6 +330,7 @@ def set_game_players():
 #   TERCERA OPCIÓN
 
 def playGame():
+    ask_card = False
     set_cards = False
     if set_cards == False:
         print("Set cards first")
@@ -402,27 +351,30 @@ def playGame():
             else:
                 print("Por favor, introduce un número válido (entero).")
         if num_opcion == 1:
-<<<<<<< Updated upstream
             print("Aún no implementado")
         elif num_opcion == 2:
             print("Aún no implementado")
         elif num_opcion == 3:
+<<<<<<< HEAD
             print("Aún no implementado")
         elif num_opcion == 4:
-            print("Aún no implementado")
-        elif num_opcion == 5:
             print("Aún no implementado")
 =======
-                print("TODAVÍA NO")
-        elif num_opcion == 2:
-                print("TODAVÍA NO")
-        elif num_opcion == 3:
-                print("TODAVÍA NO")       
+            if ask_card:
+                print("You're not allowed to change the bet if you have ordered some card.")
+                input("Enter to continue")
+            else:
+                apuesta_personalizada = int(input("Set the new Bet: "))
+                if 1 <= apuesta_personalizada <= jugador["puntos"]:
+                    jugador["apuesta"] = apuesta_personalizada
+                    input("Enter to continue")
+                else:
+                    print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
         elif num_opcion == 4:
-                print("TODAVÍA NO")
+            ask_card = True
+>>>>>>> main
         elif num_opcion == 5:
-                print("TODAVÍA NO")
->>>>>>> Stashed changes
+            print("Aún no implementado")
         elif num_opcion == 6:
             return menu_principal()
 
@@ -690,4 +642,7 @@ def agregar_jugador_bdd(jugador,nif,quien = ""):
 
     
 menu_principal()
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
