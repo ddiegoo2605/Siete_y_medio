@@ -2,35 +2,36 @@
 from random import choice, randint
 from cartas import baraja_española, baraja_poker
 from jugadores import mostrar_jugadores  # Importamos mostrar_jugadores() del archivo jugadores.py
+from titulos_ascii import calcular_ancho_terminal, titulo_settings
 
-def mostrar_titulo_settings():
-    print("""
-     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗  ███████╗
-     ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝  ██╔════╝
-     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗ ███████╗  
-     ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║ ╚════██║  
-     ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝ ███████║
-     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚══════╝  
-    """)
+
 
 def elegir_baraja():
-    print("\nElige una baraja:")
-    print("1) Baraja Española")
-    print("2) Baraja de Poker")
-    try:
-        eleccion = int(input("\nOpción: "))
-        if eleccion == 1:
-            print("\nHas elegido la Baraja Española.")
-            return baraja_española
-        elif eleccion == 2:
-            print("\nHas elegido la Baraja de Poker.")
-            return baraja_poker
+    print("\nElige una baraja:\n1) Baraja Española\n2) Baraja de Poker\n3) Go back")
+    correcto = False
+    while correcto == False:    
+        eleccion = input("\nOpción: ")
+        if eleccion.isdigit():
+            eleccion = int(eleccion)
+            if 1 >= eleccion <= 3:
+                correcto = True
         else:
-            print("Opción inválida. Inténtalo de nuevo.")
-            return elegir_baraja()
-    except ValueError:
-        print("Por favor, introduce un número válido.")
-        return elegir_baraja()
+            print("Por favor, introduce un número.")
+    if eleccion == 1:
+        print("\nHas elegido la Baraja Española.")
+        input("Pulsa para continuar: ")
+        return baraja_española
+    elif eleccion == 2:
+        print("\nHas elegido la Baraja de Poker.")
+        input()
+        return baraja_poker
+    else:
+        raise ValueError 
+        
+    
+    
+
+#def elegir_dificultad():
 
 def crear_set_jugadores():
     perfiles = ['Cautious', 'Moderated', 'Bold']
@@ -67,17 +68,33 @@ def set_max_rondas():
 
 def menu_settings():
     while True:
-        mostrar_titulo_settings()
-        print("1) Set Game Players")
-        print("2) Set Card's Deck")
-        print("3) Set Max Rounds (Default 5 Rounds)")
-        print("4) Go back")
+        ancho_terminal = calcular_ancho_terminal()
+        print(titulo_settings())
         
-        try:
-            eleccion = int(input("\nOption: "))
-            if eleccion == 1:
+        opciones = [
+            "\n",
+            "\n",
+            "1) Set Game Players",
+            "2) Set Card's Deck",
+            "3) Set Max Rounds (Default 5 Rounds)",
+            "4) Go back"
+        ]
+
+        for opcion in opciones:
+            print(opcion.center(ancho_terminal))
+        
+        correcto = False
+        while not correcto:
+            eleccion = input("\n"+"Option: ".center(ancho_terminal))
+            if eleccion.isdigit():
+                eleccion = int(eleccion)
+                if 1 <= eleccion <= 4:
+                    correcto = True
+                    print(f"¡Número válido: {eleccion}!")
+                else:
+                    print("El número no está entre 1 y 4. Inténtalo de nuevo.")
                 jugadores = crear_set_jugadores()
-                print("\nJugadores creados para la partida:")
+                print("\nJugadores creados para la partida:".center(ancho_terminal))
                 for jugador_id, jugador in jugadores.items():
                     tipo = "Humano" if jugador["human"] else "Bot"
                     print(f"{jugador_id}: {jugador['name']} ({tipo}, {jugador['perfil']})")
@@ -86,13 +103,10 @@ def menu_settings():
             elif eleccion == 3:
                 max_rondas = set_max_rondas()
             elif eleccion == 4:
-                print("Volviendo al menú principal...\n")
-                break
-            else:
-                print("Opción inválida. Inténtalo de nuevo.")
-        except ValueError:
-            print("Por favor, introduce un número válido.")
-
+                print("Volviendo al menú principal...\n".center(ancho_terminal))
+            return
+                
+            
 if __name__ == "__main__":
     menu_settings()
 
