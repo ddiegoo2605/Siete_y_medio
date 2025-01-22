@@ -1,5 +1,5 @@
 import shutil
-
+ 
 def centrar_titulo(titulo):
     ancho_terminal = shutil.get_terminal_size().columns
     lineas = titulo.splitlines()
