@@ -1,13 +1,10 @@
 import jugadores
 import random
-from titulos_ascii import centrar_titulo, titulo_menu
-centrar_titulo()
-#Imports
-from titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
+import titulos_ascii
 import jugadores
 from Utilidades import menu_settings
 import random
-import os
+
 import cartas
 
 from juego import jugar_partida
@@ -23,7 +20,7 @@ import conexion
 
 def menu_principal():
     while True:
-        print(titulo_menu_principal())      
+      
         
         opciones = [
             "\n",
@@ -37,10 +34,10 @@ def menu_principal():
         ]
         
         for opcion in opciones:
-            print(opcion.center(calcular_ancho_terminal()))
+            print(opcion)
         
 
-        seleccion = input("\n"+"Selecciona una opción (1-6): ".center(calcular_ancho_terminal()))
+        seleccion = input("\n"+"Selecciona una opción (1-6): ")
 
         if seleccion == '1':
             return primera_opcion()
@@ -54,8 +51,8 @@ def menu_principal():
         elif seleccion == '5':
             print("Reportes. Todavia falta por implementar")
         elif seleccion == '6':
-            print(titulo_goodbye())
-            print("\n"+"Gracias por jugar, hasta la próxima".center(calcular_ancho_terminal()))
+            
+            print("\n"+"Gracias por jugar, hasta la próxima")
             break
         else:
             print("Error. Escoge una opción valida entre (1-6)")
@@ -65,7 +62,7 @@ def menu_principal():
 def primera_opcion():
     flg00 = True
     while flg00:
-        print(titulo_players()) 
+        
 
 
         menu = [
@@ -77,12 +74,12 @@ def primera_opcion():
         "4)Go Back",
         ]
         for opcion in menu:
-            print(opcion.center(calcular_ancho_terminal())) 
+            print(opcion) 
         
         correcto = False
         while correcto == False:
 
-                option = input("Option:\n".center(calcular_ancho_terminal()))
+                option = input("Option:\n")
 
                 if option.isdigit():
                     num_opcion = int(option)
@@ -98,7 +95,12 @@ def primera_opcion():
         elif num_opcion == 2:
             new_boot()
         elif num_opcion == 3:
-            show_players()
+            id = ""
+            while not id == "-1":    
+                show_players()
+                id = input(" Introduce -id para eliminar, -1 para retroceder:\n")
+                eliminar_jugador(id)
+                
         elif num_opcion == 4:
             flg00 = False
             menu_principal()
@@ -204,34 +206,6 @@ def new_boot():
                 print("El número no está entre 1 y 3. Inténtalo de nuevo.")
         else:
             print("Por favor, introduce un número válido (entero).")
-    tipo_perfil = {1:50,2:40,3:30}
-    jugador = {
-        "name": name,
-        "human": False,
-        "bank": False,
-        "initialCard": "",
-        "priority": 0,
-        "type": tipo_perfil[num_opcion],
-        "bet": 0,
-        "points": 0,
-        "cards": [],
-        "roundPoints": 0,
-    }
-    jugadores.bots[nif] = jugador
-    jugadores.jugadores_rankings[nif] = {"earnings": 0, "games": 0, "minutes": 0}   
-    print(f"\nBot '{name}' creado correctamente y registrado con NIF: {nif}")
-    while True:
-        crear =input("Is ok ? Y/n:").strip().lower()
-        if crear == 'y':
-            print(f"Bot '{name}' guardado.")
-            primera_opcion()
-            return
-        elif crear == 'n':
-            print("Creación de Bot cancelada.")
-            primera_opcion()
-            return
-
-            print("Por favor, introduce un número válido (entero).")
 
     if num_opcion == 1:
         jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}
@@ -278,10 +252,10 @@ def show_players():
             tipo = "Moderated"
         elif tipo == 30:
             tipo = "Bold"
-        botardo += {id:{"nombre":nombre , "tipo": tipo}}
-    cursor.execute("SELECT id, nombre, nif, tipo FROM jugadores")
+        botardo[id] = {"nombre":nombre , "tipo": tipo}
+    cursor.execute("SELECT id, nombre, tipo FROM jugadores")
     usuarios = cursor.fetchall()
-    for id, nombre, nif, tipo in usuarios:
+    for id, nombre, tipo in usuarios:
         if tipo == 50:
             tipo = "Ambicious"
         elif tipo == 40:
@@ -289,12 +263,24 @@ def show_players():
         elif tipo == 30:
             tipo = "Bold"
         
-        jugadorazos += {nif:{"nombre":nombre , "tipo": tipo}}
+        jugadorazos[id] = {"nombre":nombre , "tipo": tipo}
+    lista_nif_jugadores = list(jugadorazos.keys())
+    lista_nif_botardo = list(botardo.keys())
     if len(jugadorazos) > len(botardo):
         for i in range(len(jugadorazos)):
-            if i <= len(botardo):
-                print(f"{}. {botardo[i]['nombre']} - {botardo[i]['tipo']}")
-    
+            if i <= len(botardo) - 1:
+                print(f"{lista_nif_botardo[i]}".ljust(10) + f"{botardo[lista_nif_botardo[i]]['nombre']}".ljust(10) + f"{botardo[lista_nif_botardo[i]]['tipo']}".ljust(10) + " || " +f"{lista_nif_jugadores[i]}".ljust(10) + f"{jugadorazos[lista_nif_jugadores[i]]['nombre']}".ljust(10) + f"{jugadorazos[lista_nif_jugadores[i]]['tipo']}".ljust(10))
+            else:
+                print(f"|| {lista_nif_jugadores[i]}".rjust(43) + f"{jugadorazos[lista_nif_jugadores[i]]['nombre']}".ljust(10) + f"{jugadorazos[lista_nif_jugadores[i]]['tipo']}".ljust(10))
+    elif len(jugadorazos) < len(botardo):
+        for i in range(len(botardo)):
+            if i <= len(jugadorazos) - 1:
+                print(f"{lista_nif_botardo[i]}".ljust(10) + f"{botardo[lista_nif_botardo[i]]['nombre']}".ljust(10) + f"{botardo[lista_nif_botardo[i]]['tipo']}".ljust(10) + " || " +f"{lista_nif_jugadores[i]}".ljust(10) + f"{jugadorazos[lista_nif_jugadores[i]]['nombre']}".ljust(10) + f"{jugadorazos[lista_nif_jugadores[i]]['tipo']}".ljust(10))
+            else:
+                print(f"{lista_nif_botardo[i]} {botardo[lista_nif_botardo[i]]['nombre']}  {botardo[lista_nif_botardo[i]]['tipo']}  ||")
+    elif len(jugadorazos) == len(botardo):
+        for i in range(len(botardo)):
+            print(f"{lista_nif_botardo[i]}".ljust(10) + f"{botardo[lista_nif_botardo[i]]['nombre']}".ljust(10) + f"{botardo[lista_nif_botardo[i]]['tipo']}".ljust(10) + " || " +f"{lista_nif_jugadores[i]}".ljust(10) + f"{jugadorazos[lista_nif_jugadores[i]]['nombre']}".ljust(10) + f"{jugadorazos[lista_nif_jugadores[i]]['tipo']}".ljust(10))
 
 #FALTA IMPLEMENTAR UNA FUNCION QUE ELIMINE LOS JUGADORES
 
@@ -324,7 +310,63 @@ def set_game_players():
                     show_seted_players()
                 break
         
+def eliminar_jugador(nif):
+    if verificar_nif(nif[1:]) == True:
+        cursor = conexion.conexion.cursor() 
 
+        cursor.execute("SELECT id FROM jugadores")
+        usuarios = cursor.fetchall()
+        dni_humano = []
+        dni_bots = [] 
+        for id, in usuarios:
+            dni_humano.append(id)
+        cursor.execute("SELECT id FROM bots")
+        usuarios = cursor.fetchall()
+        eliminar_humano = False
+        eliminar_bot = False
+        for id, in usuarios:
+            dni_bots.append(id)
+        if len(dni_humano) > len(dni_bots):
+            for i in range(len(dni_humano)):
+                if dni_humano[i] == nif[1:]:
+                    eliminar_humano = True
+                if i <= len(dni_bots) - 1:
+                    if dni_bots[i] == nif[1:]:
+                        eliminar_bot = True
+        elif len(dni_humano) < len(dni_bots):
+            for i in range(len(dni_bots)):
+                if dni_bots[i] == nif[1:]:
+                    eliminar_bot = True
+                if i <= len(dni_humano) - 1:
+                    if dni_humano[i] == nif[1:]:
+                        eliminar_humano = True
+        elif len(dni_humano) == len(dni_bots):
+            for i in range(len(dni_bots)):
+                if dni_bots[i] == nif[1:]:
+                    eliminar_bot = True
+                elif dni_humano[i] == nif[1:]:
+                    eliminar_humano = True
+        if eliminar_humano == True:
+            nif = nif[1:]
+            consulta = "DELETE FROM jugadores WHERE id= %s"
+            valor = (nif,)
+            cursor.execute(consulta, valor)
+            conexion.conexion.commit()
+            return
+        elif eliminar_bot == True:
+            nif = nif[1:]
+            consulta = "DELETE FROM bots WHERE id= %s"
+            valor = (nif,)
+            cursor.execute(consulta, valor)
+            conexion.conexion.commit()
+            return
+        else:
+            print("No se ha encontrado el jugador")
+            return
+            
+    else:
+        print("NIF incorrecto")
+        return
             
 
 #   TERCERA OPCIÓN
@@ -355,24 +397,19 @@ def playGame():
         elif num_opcion == 2:
             print("Aún no implementado")
         elif num_opcion == 3:
-<<<<<<< HEAD
             print("Aún no implementado")
         elif num_opcion == 4:
-            print("Aún no implementado")
-=======
+            ask_card = True
             if ask_card:
                 print("You're not allowed to change the bet if you have ordered some card.")
                 input("Enter to continue")
             else:
                 apuesta_personalizada = int(input("Set the new Bet: "))
-                if 1 <= apuesta_personalizada <= jugador["puntos"]:
-                    jugador["apuesta"] = apuesta_personalizada
+                if 1 <= apuesta_personalizada <= jugadores.jugadores["puntos"]:
+                    jugadores.jugadores["apuesta"] = apuesta_personalizada
                     input("Enter to continue")
                 else:
-                    print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
-        elif num_opcion == 4:
-            ask_card = True
->>>>>>> main
+                    print(f"The New Bet has to be a number between 1 and {jugadores.jugadores['puntos']}.")
         elif num_opcion == 5:
             print("Aún no implementado")
         elif num_opcion == 6:
@@ -428,7 +465,7 @@ def playGame():
 #   CUARTA OPCIÓN
 
 def cuarta_opcion():
-    print(titulo_ranking()) 
+
     menu =[ 
         "\n",
         "\n",
@@ -438,19 +475,19 @@ def cuarta_opcion():
         "4)Go back",
     ]
     for opcion in menu:
-        print(opcion.center(calcular_ancho_terminal()))
+        print(opcion)
     correcto = False
     while correcto == False:
-        option = input("Option:\n".center(calcular_ancho_terminal()))
+        option = input("Option:\n")
         if option.isdigit():
             num_opcion = int(option)
             if 1 <= num_opcion <= 4:
                 print(f"Número válido: {num_opcion}!")
                 correcto = True 
             else:
-                print("El número no está entre 1 y 4. Inténtalo de nuevo.".center(calcular_ancho_terminal()))
+                print("El número no está entre 1 y 4. Inténtalo de nuevo.")
         else:
-            print("Por favor, introduce un número válido (entero).").center(calcular_ancho_terminal())  
+            print("Por favor, introduce un número válido (entero).")
     if num_opcion == 1:
        return players_with_more_earnigns()
     elif num_opcion == 2:
@@ -642,7 +679,4 @@ def agregar_jugador_bdd(jugador,nif,quien = ""):
 
     
 menu_principal()
-<<<<<<< HEAD
 
-=======
->>>>>>> main
