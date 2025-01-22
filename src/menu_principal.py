@@ -1,7 +1,3 @@
-import jugadores
-import random
-from titulos_ascii import centrar_titulo, titulo_menu
-centrar_titulo()
 #Imports
 from titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
 import jugadores
@@ -16,6 +12,7 @@ from juego import jugar_partida
 
 import conexion
 #Imports
+
 
 
 
@@ -79,22 +76,8 @@ def primera_opcion():
         for opcion in opciones:
             print(opcion.center(calcular_ancho_terminal()))
 
-
-        menu = [
-        "\n",
-        "\n",
-        "1)New Human Player",
-        "2)New Boot",
-        "3)Show/Remove Player",
-        "4)Go Back",
-        ]
-        for opcion in menu:
-            print(opcion.center(calcular_ancho_terminal())) 
-        
         correcto = False
         while correcto == False:
-
-                option = input("Option:\n".center(calcular_ancho_terminal()))
 
                 option = input("\n"+"Selecciona una opción (1-4): ".center(calcular_ancho_terminal()))
 
@@ -244,8 +227,7 @@ def new_boot():
             print("Creación de Bot cancelada.")
             primera_opcion()
             return
-
-                print("Por favor, introduce un número válido (entero).")
+            print("h")
 
     if num_opcion == 1:
         jugador = {"name": name , "human": False,"bank":False,"initialCard":"","priority":0,"type":50,"bet":0,"points":0,"cards":[],"roundPoints":0}
@@ -307,7 +289,7 @@ def show_players():
     if len(jugadorazos) > len(botardo):
         for i in range(len(jugadorazos)):
             if i <= len(botardo):
-                print(f"{}. {botardo[i]['nombre']} - {botardo[i]['tipo']}")
+                print(f"{i}. {botardo[i]['nombre']} - {botardo[i]['tipo']}")
     
 
 #FALTA IMPLEMENTAR UNA FUNCION QUE ELIMINE LOS JUGADORES
@@ -369,24 +351,10 @@ def playGame():
         elif num_opcion == 2:
             print("Aún no implementado")
         elif num_opcion == 3:
-<<<<<<< HEAD
+
             print("Aún no implementado")
         elif num_opcion == 4:
             print("Aún no implementado")
-=======
-            if ask_card:
-                print("You're not allowed to change the bet if you have ordered some card.")
-                input("Enter to continue")
-            else:
-                apuesta_personalizada = int(input("Set the new Bet: "))
-                if 1 <= apuesta_personalizada <= jugador["puntos"]:
-                    jugador["apuesta"] = apuesta_personalizada
-                    input("Enter to continue")
-                else:
-                    print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
-        elif num_opcion == 4:
-            ask_card = True
->>>>>>> main
         elif num_opcion == 5:
             print("Aún no implementado")
         elif num_opcion == 6:
@@ -656,7 +624,3 @@ def agregar_jugador_bdd(jugador,nif,quien = ""):
 
     
 menu_principal()
-<<<<<<< HEAD
-
-=======
->>>>>>> main
