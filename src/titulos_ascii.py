@@ -1,11 +1,11 @@
 import shutil
- 
+
 def centrar_titulo(titulo):
     ancho_terminal = shutil.get_terminal_size().columns
     lineas = titulo.splitlines()
     return "\n".join(line.center(ancho_terminal) for line in lineas)
 
-def titulo_menu():
+def titulo_menu_principal():
     titulo = r"""
 
   ______   ______  ________  ________  ________        __      __        __       __  ________  _______   ______   ______  
@@ -20,7 +20,7 @@ def titulo_menu():
                                                                                                                            
 """
     print(centrar_titulo(titulo))
-def titulo_ajustes():
+def titulo_settings():
     titulo = r"""
   ______      _____  __    __   ______   ________  ________   ______  
  /      \    |     \|  \  |  \ /      \ |        \|        \ /      \ 
@@ -35,7 +35,7 @@ def titulo_ajustes():
 """
     print(centrar_titulo(titulo))
     
-def titulo_jugadores():
+def titulo_players():
     titulo = r"""
 
     _____  __    __   ______    ______   _______    ______   _______   ________   ______  
@@ -51,6 +51,24 @@ def titulo_jugadores():
 """
     print(centrar_titulo(titulo))
 
-titulo_jugadores()
-titulo_ajustes()
-titulo_menu()
+
+titulo_players()
+titulo_settings()
+titulo_menu_principal()
+
+def titulo_ranking():
+    titulo_ranking = r"""
+ _______    ______   __    __  __    __  ______  __    __   ______  
+|       \  /      \ |  \  |  \|  \  /  \|      \|  \  |  \ /      \ 
+| $$$$$$$\|  $$$$$$\| $$\ | $$| $$ /  $$ \$$$$$$| $$\ | $$|  $$$$$$\
+| $$__| $$| $$__| $$| $$$\| $$| $$/  $$   | $$  | $$$\| $$| $$ __\$$
+| $$    $$| $$    $$| $$$$\ $$| $$  $$    | $$  | $$$$\ $$| $$|    \
+| $$$$$$$\| $$$$$$$$| $$\$$ $$| $$$$$\    | $$  | $$\$$ $$| $$ \$$$$
+| $$  | $$| $$  | $$| $$ \$$$$| $$ \$$\  _| $$_ | $$ \$$$$| $$__| $$
+| $$  | $$| $$  | $$| $$  \$$$| $$  \$$\|   $$ \| $$  \$$$ \$$    $$
+ \$$   \$$ \$$   \$$ \$$   \$$ \$$   \$$ \$$$$$$ \$$   \$$  \$$$$$$ 
+"""
+    ancho_terminal = calcular_ancho_terminal()
+    lineas = titulo_ranking.splitlines()
+    titulo_centrado = "\n".join([Linea.center(ancho_terminal) for Linea in lineas])
+    return titulo_centrado

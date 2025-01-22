@@ -1,12 +1,9 @@
 
 import jugadores
 import random
-from titulos_ascii import centrar_titulo, titulo_menu
-centrar_titulo()
-#Imports
-from titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
 
-from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
+#Imports
+from Titulos_ascii import centrar_titulo, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
 
 import jugadores
 from Utilidades import menu_settings
@@ -286,7 +283,7 @@ def show_players():
     if len(jugadorazos) > len(botardo):
         for i in range(len(jugadorazos)):
             if i <= len(botardo):
-                print(f"{}. {botardo[i]['nombre']} - {botardo[i]['tipo']}")
+                print(f"{botardo[i]['nombre']} - {botardo[i]['tipo']}")
     
 
 #FALTA IMPLEMENTAR UNA FUNCION QUE ELIMINE LOS JUGADORES
