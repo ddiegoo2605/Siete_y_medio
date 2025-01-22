@@ -355,11 +355,11 @@ def playGame():
                 input("Enter to continue")
             else:
                 apuesta_personalizada = int(input("Set the new Bet: "))
-                if 1 <= apuesta_personalizada <= jugador["puntos"]:
-                    jugador["apuesta"] = apuesta_personalizada
-                    input("Enter to continue")
-                else:
-                    print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
+#                if 1 <= apuesta_personalizada <= jugador["puntos"]:
+#                    jugador["apuesta"] = apuesta_personalizada
+#                    input("Enter to continue")
+#                else:
+#                    print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
         elif num_opcion == 4:
             ask_card = True
 
