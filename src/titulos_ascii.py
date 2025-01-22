@@ -68,7 +68,4 @@ def titulo_ranking():
 | $$  | $$| $$  | $$| $$  \$$$| $$  \$$\|   $$ \| $$  \$$$ \$$    $$
  \$$   \$$ \$$   \$$ \$$   \$$ \$$   \$$ \$$$$$$ \$$   \$$  \$$$$$$ 
 """
-    ancho_terminal = calcular_ancho_terminal()
-    lineas = titulo_ranking.splitlines()
-    titulo_centrado = "\n".join([Linea.center(ancho_terminal) for Linea in lineas])
-    return titulo_centrado
+    print(centrar_titulo(titulo_ranking))

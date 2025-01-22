@@ -32,6 +32,62 @@
         <p>¿Como lo hemos hecho?</p>
     </div>
 
+    <div class="contenido">
+        <div class="column">
+            <div class="flex-container">
+                <h1>Logica banca</h1>
+            </div>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <img src="imagenes/banca.jpg" alt="imagen_banca">
+            </div>
+
+            <p class="flex-container">
+                <p>La banca sigue una estrategia específica para decidir cuándo pedir cartas y cuándo plantarse. Esta lógica se implementa en la función. La banca pedirá cartas hasta que su puntuación alcance o supere 7.5 puntos.</p>
+            </p>
+            
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <h1>Logica bot</h1>
+            </div>
+
+            <div class="column_espacio"></div>
+
+            <div class="flex-container">
+                <img src="imagenes/robot_cartas.png" alt="imagen_bot" width="300" height="300">
+            </div>
+            <p class="flex-container">
+                <p>El bot sigue una estrategia predeterminada basada en la probabilidad. La función decide las acciones del boot basándose en su puntuación actual y las cartas visibles de la banca.</p>
+            </p>
+
+            <div class="column_espacio"></div>
+            <div class="flex-container">
+                <h1>Prioridad</h1>
+            </div>
+
+            <div class="column_espacio"></div>
+
+            <p class="flex-container">
+                <p>La prioridad inicial de los jugadores se determina al azar al comienzo de cada partida. La función asigna una carta aleatoria a cada jugador, y luego los ordena en función de estas cartas  (numero/tipo) para establecer el orden de juego. Esta prioridad se mantiene durante toda la partida.</p>
+            </p>
+            
+            <div class="column_espacio"></div>
+            <div class="flex-container">
+                <h1>Insercion BBDD</h1>
+            </div>
+
+            <div class="column_espacio"></div>
+
+            <p class="flex-container">
+                </h2>
+                <p>Para registrar los datos del juego en la base de datos (BBDD), se utiliza la función. Esta función se conecta a la base de datos y ejecuta una consulta SQL que inserta los datos relevantes, como la identificación del jugador, la puntuación final y el resultado del juego. La conexión a la base de datos se maneja utilizando una biblioteca específica para la base de datos utilizada (por ejemplo, MySQL, PostgreSQL).</p>
+            </p>
+        </div>
+    </div>
+
     <div><div class = "column_espacio"></div></div>
 
     <footer class = "footer"><center>&copy; Marc, Yeray, Diego y Gerard</center></footer>

@@ -2,7 +2,7 @@
 from random import choice, randint
 from cartas import baraja_española, baraja_poker
 from jugadores import mostrar_jugadores  # Importamos mostrar_jugadores() del archivo jugadores.py
-from Titulos_ascii import calcular_ancho_terminal, titulo_settings
+from titulos_ascii import  titulo_settings
 
 
 
@@ -68,8 +68,7 @@ def set_max_rondas():
 
 def menu_settings():
     while True:
-        ancho_terminal = calcular_ancho_terminal()
-        print(titulo_settings())
+        print(titulo_settings)
         
         opciones = [
             "\n",
@@ -81,11 +80,11 @@ def menu_settings():
         ]
 
         for opcion in opciones:
-            print(opcion.center(ancho_terminal))
+            print(opcion)
         
         correcto = False
         while not correcto:
-            eleccion = input("\n"+"Option: ".center(ancho_terminal))
+            eleccion = input("\n"+"Option: ")
             if eleccion.isdigit():
                 eleccion = int(eleccion)
                 if 1 <= eleccion <= 4:
@@ -94,7 +93,7 @@ def menu_settings():
                 else:
                     print("El número no está entre 1 y 4. Inténtalo de nuevo.")
                 jugadores = crear_set_jugadores()
-                print("\nJugadores creados para la partida:".center(ancho_terminal))
+                print("\nJugadores creados para la partida:")
                 for jugador_id, jugador in jugadores.items():
                     tipo = "Humano" if jugador["human"] else "Bot"
                     print(f"{jugador_id}: {jugador['name']} ({tipo}, {jugador['perfil']})")
@@ -103,7 +102,7 @@ def menu_settings():
             elif eleccion == 3:
                 max_rondas = set_max_rondas()
             elif eleccion == 4:
-                print("Volviendo al menú principal...\n".center(ancho_terminal))
+                print("Volviendo al menú principal...\n")
             return
                 
             

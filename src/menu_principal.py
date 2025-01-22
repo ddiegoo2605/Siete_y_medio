@@ -3,7 +3,7 @@ import jugadores
 import random
 
 #Imports
-from Titulos_ascii import centrar_titulo, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
+from titulos_ascii import centrar_titulo, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
 
 import jugadores
 from Utilidades import menu_settings
@@ -37,10 +37,10 @@ def menu_principal():
         ]
         
         for opcion in opciones:
-            print(opcion.center(calcular_ancho_terminal()))
+            print(opcion)
         
 
-        seleccion = input("\n"+"Selecciona una opción (1-6): ".center(calcular_ancho_terminal()))
+        seleccion = input("\n"+"Selecciona una opción (1-6): ")
 
         if seleccion == '1':
             return primera_opcion()
@@ -54,7 +54,7 @@ def menu_principal():
         elif seleccion == '5':
             print("Reportes. Todavia falta por implementar")
         elif seleccion == '6':
-            print("\n"+"Gracias por jugar, hasta la próxima".center(calcular_ancho_terminal()))
+            print("\n"+"Gracias por jugar, hasta la próxima")
             break
         else:
             print("Error. Escoge una opción valida entre (1-6)")
@@ -76,7 +76,7 @@ def primera_opcion():
         ]
         
         for opcion in opciones:
-            print(opcion.center(calcular_ancho_terminal()))
+            print(opcion)
 
         opciones = [
             "\n",
@@ -88,7 +88,7 @@ def primera_opcion():
         ]
         
         for opcion in opciones:
-            print(opcion.center(calcular_ancho_terminal()))
+            print(opcion)
 
 
         menu = [
@@ -100,11 +100,11 @@ def primera_opcion():
         "4)Go Back",
         ]
         for opcion in menu:
-            print(opcion.center(calcular_ancho_terminal())) 
+            print(opcion) 
         
         correcto = False
         while correcto == False:
-                option = input("\n"+"Selecciona una opción (1-4): ".center(calcular_ancho_terminal()))
+                option = input("\n"+"Selecciona una opción (1-4): ")
                 if option.isdigit():
                     num_opcion = int(option)
                     if 1 <= num_opcion <= 4:
@@ -428,19 +428,19 @@ def cuarta_opcion():
         "4)Go back",
     ]
     for opcion in menu:
-        print(opcion.center(calcular_ancho_terminal()))
+        print(opcion)
     correcto = False
     while correcto == False:
-        option = input("Option:\n".center(calcular_ancho_terminal()))
+        option = input("Option:\n")
         if option.isdigit():
             num_opcion = int(option)
             if 1 <= num_opcion <= 4:
                 print(f"Número válido: {num_opcion}!")
                 correcto = True 
             else:
-                print("El número no está entre 1 y 4. Inténtalo de nuevo.".center(calcular_ancho_terminal()))
+                print("El número no está entre 1 y 4. Inténtalo de nuevo.")
         else:
-            print("Por favor, introduce un número válido (entero).").center(calcular_ancho_terminal())  
+            print("Por favor, introduce un número válido (entero).")
     if num_opcion == 1:
        return players_with_more_earnigns()
     elif num_opcion == 2:
