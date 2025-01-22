@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-import jugadores
-import random
-from titulos_ascii import centrar_titulo, titulo_menu
-centrar_titulo()
+
 #Imports
-from titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking, titulo_goodbye
-=======
-from Titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
->>>>>>> parent of fee0b66 (Merge pull request #54 from ddiegoo2605/Diego)
+
+from titulos_ascii import calcular_ancho_terminal, titulo_menu_principal, titulo_players, titulo_settings, titulo_ranking
+
 import jugadores
 from Utilidades import menu_settings
 import random
@@ -286,7 +281,7 @@ def show_players():
     if len(jugadorazos) > len(botardo):
         for i in range(len(jugadorazos)):
             if i <= len(botardo):
-                print(f"{}. {botardo[i]['nombre']} - {botardo[i]['tipo']}")
+                print(f"{botardo[i]['nif']}. {botardo[i]['nombre']} - {botardo[i]['tipo']}")
     
 
 #FALTA IMPLEMENTAR UNA FUNCION QUE ELIMINE LOS JUGADORES
@@ -328,7 +323,7 @@ def automatic_play(jugador):
     print("Playing automatically")
 
     while jugador["puntos"] < 5.5:  # El juego pide carta si los puntos son bajos
-        pedir_carta(jugador)
+        #pedir_carta(jugador)
         break
 
 def playGame():
@@ -362,16 +357,16 @@ def playGame():
                 input("Enter to continue")
             else:
                 apuesta_personalizada = int(input("Set the new Bet: "))
-                if 1 <= apuesta_personalizada <= jugador["puntos"]:
-                    jugador["apuesta"] = apuesta_personalizada
-                    input("Enter to continue")
-                else:
-                    print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
+#                if 1 <= apuesta_personalizada <= jugador["puntos"]:
+#                    jugador["apuesta"] = apuesta_personalizada
+#                    input("Enter to continue")
+#                else:
+#                    print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
         elif num_opcion == 4:
             ask_card = True
         elif num_opcion == 5:
-            automatic_play(jugador)
-        elif num_opcion == 6:
+#            automatic_play(jugador)
+ #       elif num_opcion == 6:
             return menu_principal()
 
 #def humanRound(id, mazo):
@@ -638,7 +633,4 @@ def agregar_jugador_bdd(jugador,nif,quien = ""):
 
     
 menu_principal()
-<<<<<<< HEAD
 
-=======
->>>>>>> main
