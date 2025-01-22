@@ -6,13 +6,16 @@
     <title>Siete y medio</title>
     <link rel="stylesheet" href="css_index.css">
     <link rel="scriptsheet" href="js_index.js">
+    <script src="js_global.js"></script>
 </head>
 <body>
     
 
-    <header class="flex-container"> <img src="imagenes/logo.webp" alt="Logo" class="float-image-left">
+    <header> 
+        <img src="imagenes/logo.webp" alt="float-image-left" class="float-image-left">
         <div class="navbar">
-            <nav>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <nav id="menu" class="menu">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="tutorial.html">Tutorial</a></li>
@@ -22,6 +25,7 @@
             </nav>
         </div>
     </header>
+    
 
     <div class="portada">
         <h1>Sobre nosotros</h1>
@@ -38,7 +42,7 @@
                 <h1>Marc</h1>
             </div>    
             <p class="flex-container">
-                <p>Yo me encargado la mayor parte de la <b><i>pagina web</i></b>, parte del <b><i>documento README.md</i></b></p>
+                <p>Yo me encargado la mayor parte de la <b><i>pagina web</i></b>, el <b><i>documento README.md</i></b> y de <b><i>programacion.</i></b></p>
             </p>
         </div>
     </div>
@@ -53,7 +57,7 @@
                 <h1>Yeray</h1>
             </div>    
             <p class="flex-container">
-                <!--Aqui poned lo que habeis hecho-->
+                <p>Me he encargado de <b><i>programacion, base de datos</i></b> y de la <b><i>pagina web.</i></b></p>
             </p>
         </div>
     </div>
@@ -62,13 +66,13 @@
     <div class="contenido">
         <div class="column">
             <div class="container-foto">
-                <img src="imagenes/sin_foto.png" alt="imagen">
+                <img src="imagenes/Diego.jpg" alt="imagen" width="300" height="400">
             </div>
             <div class="flex-container">
                 <h1>Diego</h1>
             </div>    
             <p class="flex-container">
-                <!--Aqui poned lo que habeis hecho-->
+                <p>Me he encargado de <b><i>programacion</i></b> y de la <b><i>base de datos.</i></b></p>
             </p>
         </div>
     </div>
@@ -76,14 +80,16 @@
     <!--Gerard-->
     <div class="contenido">
         <div class="column">
-            <div class="container-foto">
-                <img src="imagenes/sin_foto.png" alt="imagen">
+            <div class="flex-container">
+                <div class="container-foto">
+                    <img src="imagenes/Gerard.jpg" alt="imagen" width="300" height="400">
+                </div>
             </div>
             <div class="flex-container">
                 <h1>Gerard</h1>
             </div>    
             <p class="flex-container">
-                <!--Aqui poned lo que habeis hecho-->
+                <p>Me he encargado de <b><i>programacion.</i></b></p>
             </p>
         </div>
     </div>
