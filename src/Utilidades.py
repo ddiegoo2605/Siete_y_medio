@@ -2,7 +2,7 @@
 from random import choice, randint
 from cartas import baraja_española, baraja_poker
 from jugadores import mostrar_jugadores  # Importamos mostrar_jugadores() del archivo jugadores.py
-from Titulos_ascii import calcular_ancho_terminal, titulo_settings
+from titulos_ascii import calcular_ancho_terminal, titulo_settings
 
 
 
