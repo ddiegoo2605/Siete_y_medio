@@ -321,6 +321,15 @@ def set_game_players():
             
 
 #   TERCERA OPCIÓN
+def automatic_play(jugador):
+
+    #Lógica para la opción 5
+
+    print("Playing automatically")
+
+    while jugador["puntos"] < 5.5:  # El juego pide carta si los puntos son bajos
+        pedir_carta(jugador)
+        break
 
 def playGame():
     ask_card = False
@@ -348,11 +357,6 @@ def playGame():
         elif num_opcion == 2:
             print("Aún no implementado")
         elif num_opcion == 3:
-<<<<<<< HEAD
-            print("Aún no implementado")
-        elif num_opcion == 4:
-            print("Aún no implementado")
-=======
             if ask_card:
                 print("You're not allowed to change the bet if you have ordered some card.")
                 input("Enter to continue")
@@ -365,9 +369,8 @@ def playGame():
                     print(f"The New Bet has to be a number between 1 and {jugador['puntos']}.")
         elif num_opcion == 4:
             ask_card = True
->>>>>>> main
         elif num_opcion == 5:
-            print("Aún no implementado")
+            automatic_play(jugador)
         elif num_opcion == 6:
             return menu_principal()
 
